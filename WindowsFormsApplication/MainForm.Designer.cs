@@ -29,31 +29,32 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.ExitButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.webBrowser1);
+            this.panel1.Controls.Add(this.webBrowser);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(585, 364);
             this.panel1.TabIndex = 0;
             // 
-            // webBrowser1
+            // webBrowser
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(585, 364);
-            this.webBrowser1.TabIndex = 0;
+            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(585, 364);
+            this.webBrowser.TabIndex = 0;
+            this.webBrowser.Navigate("https://github.com/imwack/csharp");
             // 
             // ExitButton
             // 
-            this.ExitButton.Location = new System.Drawing.Point(581, 29);
+            this.ExitButton.Location = new System.Drawing.Point(625, 28);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(65, 23);
             this.ExitButton.TabIndex = 1;
@@ -65,7 +66,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 364);
+            this.ClientSize = new System.Drawing.Size(713, 364);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
@@ -78,7 +79,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.Button ExitButton;
     }
 }
