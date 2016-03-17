@@ -38,5 +38,14 @@ namespace WindowsFormsApplication
             username.Text = null;
             password.Text = null;
         }
+
+        private void username_Click(object sender, EventArgs e)
+        {
+            username.Text = null;
+        }
+        private void password_Click(object sender,EventArgs e)
+        {
+            password.Text = null;
+        }
     }
 }
