@@ -81,6 +81,7 @@
             this.username.Size = new System.Drawing.Size(100, 21);
             this.username.TabIndex = 4;
             this.username.Text = "1";
+            this.username.Click += new System.EventHandler(this.username_Click);
             // 
             // password
             // 
@@ -90,6 +91,7 @@
             this.password.TabIndex = 5;
             this.password.Text = "1";
             this.password.UseSystemPasswordChar = true;
+            this.password.Click += new System.EventHandler(this.password_Click);
             // 
             // LoginForm
             // 
