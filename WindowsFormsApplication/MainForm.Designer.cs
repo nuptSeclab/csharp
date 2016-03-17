@@ -50,7 +50,7 @@
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.Size = new System.Drawing.Size(585, 364);
             this.webBrowser.TabIndex = 0;
-            this.webBrowser.Navigate("www.DaiCR.com");   //test branch
+            this.webBrowser.Navigate("www.baidu.com");   //test branch
 
             // 
             // ExitButton
