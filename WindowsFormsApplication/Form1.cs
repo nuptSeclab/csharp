@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApplication
 {
 
@@ -40,8 +41,6 @@ namespace WindowsFormsApplication
         private static extern IntPtr WindowFromPoint(
         Point Point  //坐标 
         );
-
-
         public Form1()
         {
             InitializeComponent();
@@ -96,5 +95,6 @@ namespace WindowsFormsApplication
             this.textBox3.Text = className.ToString();
 
         }
+
     }
    }
