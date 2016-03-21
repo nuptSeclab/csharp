@@ -40,6 +40,7 @@ namespace WindowsFormsApplication
 
         private void Initialize()
         {
+            
             this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
             //this.webBrowser.Navigate("https://www.jsds.gov.cn/index/sbLogin.do");
         }
@@ -57,52 +58,25 @@ namespace WindowsFormsApplication
            // MessageBox.Show(elemColl.Count.ToString() );
             foreach (HtmlElement elem in elemColl)
             {
-                string elemName = elem.GetAttribute("href");
+                string elemName = elem.GetAttribute("href");    //按钮
                 if(elemName.Equals("http://www.jsds.gov.cn/index/caLogin.html#"))
                 {
-                    //MessageBox.Show("find!");
+                    //find!
                     elem.InvokeMember("click"); //点击登陆
-                    this.timer1.Enabled = true;
-                    //Thread.Sleep(3000);
-                    //模拟输入 密码
-                    //IntPtr hwndCalc = FindWindow("#32770", null); //查找窗口句柄
-                    //if (hwndCalc != IntPtr.Zero)//找到
-                    //{
-                    //    SetForegroundWindow(hwndCalc);
-                    //    System.Windows.Forms.SendKeys.SendWait("{TAB}");
-                    //    System.Windows.Forms.SendKeys.SendWait("{TAB}");
-                    //    System.Windows.Forms.SendKeys.SendWait("123456");
-                    //    System.Windows.Forms.SendKeys.SendWait("{TAB}");
-                    //    System.Windows.Forms.SendKeys.SendWait("{ENTER}");
-                    //}
-                    //else
-                    //{
-                    //   // MessageBox.Show("没有启动 ");
-                    //}
+                    this.timer1.Enabled = true; //开timer
                 }         
 
             }
-            //if (doc.All.Count != 0)
-            //{
-
-            //    for (int i = 0; i < doc.All.Count; i++)          //循环查找这个对象的每一个元素
-            //    {
-            //        if (doc.All[i].GetAttribute("class") == "link-login")
-            //        {
-            //            doc.All[i].InvokeMember("click");
-            //            break;
-            //        }
-
-            //    }
-            //}
         }
 
+        //timer1 每隔1s钟 查找登陆界面，若找到则输入密码 并且销毁timer
         private void timer1_Tick(object sender, EventArgs e)
         {
             IntPtr mwh1 = IntPtr.Zero;
             mwh1 = FindWindow(null, "数字证书登录");
+            //MessageBox.Show("timer");
             if (mwh1 != IntPtr.Zero)
-            {
+            {               
                 IntPtr edit = FindWindowEx(mwh1, IntPtr.Zero, "Edit", null);
               //  IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确定");
                 if (edit != IntPtr.Zero)
@@ -114,6 +88,11 @@ namespace WindowsFormsApplication
                     this.timer1.Dispose();    //关闭定时器
                 }
             }
+        }
+
+        private void button_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
