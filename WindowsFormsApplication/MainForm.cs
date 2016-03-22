@@ -45,11 +45,6 @@ namespace WindowsFormsApplication
             //this.webBrowser.Navigate("https://www.jsds.gov.cn/index/sbLogin.do");
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             HtmlDocument doc = this.webBrowser.Document;   //把当前的webBrowser1显示的文档实例
@@ -86,6 +81,11 @@ namespace WindowsFormsApplication
                     this.timer1.Dispose();    //关闭定时器
                 }
             }
+        }
+
+        private void button_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
