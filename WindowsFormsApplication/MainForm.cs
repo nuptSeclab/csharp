@@ -69,14 +69,12 @@ namespace WindowsFormsApplication
             }
         }
 
-        //timer1 每隔1s钟 查找登陆界面，若找到则输入密码 并且销毁timer
         private void timer1_Tick(object sender, EventArgs e)
         {
             IntPtr mwh1 = IntPtr.Zero;
             mwh1 = FindWindow(null, "数字证书登录");
-            //MessageBox.Show("timer");
             if (mwh1 != IntPtr.Zero)
-            {               
+            {
                 IntPtr edit = FindWindowEx(mwh1, IntPtr.Zero, "Edit", null);
               //  IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确定");
                 if (edit != IntPtr.Zero)
@@ -88,11 +86,6 @@ namespace WindowsFormsApplication
                     this.timer1.Dispose();    //关闭定时器
                 }
             }
-        }
-
-        private void button_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }
