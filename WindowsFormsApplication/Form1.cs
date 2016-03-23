@@ -12,7 +12,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication
 {
-
+    /*
+    Form1 用于捕捉窗口句柄测试
+    */
     public partial class Form1 : Form
     {
         [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
