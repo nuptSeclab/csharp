@@ -38,6 +38,7 @@
             this.textBox_url = new System.Windows.Forms.TextBox();
             this.button_go = new System.Windows.Forms.Button();
             this.button_submit = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timer1
@@ -52,6 +53,8 @@
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.Size = new System.Drawing.Size(873, 400);
             this.webBrowser.TabIndex = 3;
+            this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
+            this.webBrowser.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser_NewWindow);
             // 
             // button
             // 
@@ -110,6 +113,11 @@
             this.button_submit.UseVisualStyleBackColor = true;
             this.button_submit.Click += new System.EventHandler(this.button_submit_Click);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -138,5 +146,6 @@
         private System.Windows.Forms.TextBox textBox_url;
         private System.Windows.Forms.Button button_go;
         private System.Windows.Forms.Button button_submit;
+        private System.Windows.Forms.Timer timer2;
     }
 }
