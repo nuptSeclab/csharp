@@ -30,7 +30,7 @@ namespace WindowsFormsApplication
             {
                 MainForm mf = new MainForm();
                 mf.Show();
-               this.Visible = false;
+               // this.Visible = false;
 
             }
             else
