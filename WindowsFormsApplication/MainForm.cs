@@ -29,6 +29,7 @@ namespace WindowsFormsApplication
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool SetForegroundWindow(IntPtr hWnd);
 
+        public bool first;   //第一次打开
         public MainForm()
         {
             InitializeComponent();
@@ -71,13 +72,14 @@ namespace WindowsFormsApplication
             
             this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
             //this.webBrowser.Navigate("https://www.jsds.gov.cn/index/sbLogin.do");
+            first = true;
             
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             //到主页关闭定时器1
-            if(webBrowser.Document.Url.ToString() != "https://ca.jsds.gov.cn/index/caLogin.html")
+            if(webBrowser.Document.Url.ToString() != "https://ca.jsds.gov.cn/index/caLogin.html"|| webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
             {
                 timer1.Enabled = false;
                // MessageBox.Show("timer1 stop");
@@ -109,10 +111,11 @@ namespace WindowsFormsApplication
                     SendMessage(edit, 0xC, IntPtr.Zero, "123456");
                     SendKeys.SendWait("{Enter}");
                     SendKeys.Flush();
-                    this.timer1.Enabled = false;    //关闭定时器
+                //    this.timer1.Enabled = false;    //关闭定时器
                     //MessageBox.Show("timer1 stop");
                 }
             }
+          
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -148,12 +151,19 @@ namespace WindowsFormsApplication
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            timer1.Enabled = true;
+            LoginCheck();   //检测是否登陆成功
+            //登陆主页 打开timer1
+            if (webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html" || webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
+            {
+                timer1.Enabled = true;
+            }
             // timer2.Enabled = true;
-            if (webBrowser.Document.Url.ToString() == "https://ca.jsds.gov.cn/")
+
+            //提交失败等情况 返回主页了
+            if (webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/")
             {
                 this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
-                //  this.timer1.Enabled = true;
+                this.timer1.Enabled = true;
                 IntPtr mwh1 = IntPtr.Zero;
                 mwh1 = FindWindow(null, "安全警告");
                 if (mwh1 != IntPtr.Zero)
@@ -169,8 +179,24 @@ namespace WindowsFormsApplication
                     }
                 }
             }
-            //显示UR
+            //显示URL
             textBox_url.Text = this.webBrowser.Url.ToString();
+        }
+
+        private void LoginCheck()
+        {
+            HtmlDocument doc = this.webBrowser.Document;   //把当前的webBrowser1显示的文档实例
+            HtmlElementCollection elemColl = doc.GetElementsByTagName("div");
+            foreach (HtmlElement elem in elemColl)
+            {
+                string elemName = elem.GetAttribute("id");
+                if (elemName.Equals("无法显示此页"))
+                {
+                    MessageBox.Show("登陆失败");
+                    this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+                    this.timer1.Enabled = true;
+                }
+            }
         }
 
         private void webBrowser_NewWindow(object sender, CancelEventArgs e)
