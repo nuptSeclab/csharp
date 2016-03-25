@@ -39,6 +39,7 @@
             this.button_go = new System.Windows.Forms.Button();
             this.button_submit = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.button_reset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -105,7 +106,7 @@
             // 
             // button_submit
             // 
-            this.button_submit.Location = new System.Drawing.Point(900, 75);
+            this.button_submit.Location = new System.Drawing.Point(897, 75);
             this.button_submit.Name = "button_submit";
             this.button_submit.Size = new System.Drawing.Size(71, 24);
             this.button_submit.TabIndex = 11;
@@ -118,11 +119,22 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // button_reset
+            // 
+            this.button_reset.Location = new System.Drawing.Point(897, 126);
+            this.button_reset.Name = "button_reset";
+            this.button_reset.Size = new System.Drawing.Size(71, 24);
+            this.button_reset.TabIndex = 12;
+            this.button_reset.Text = "重试";
+            this.button_reset.UseVisualStyleBackColor = true;
+            this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 462);
+            this.Controls.Add(this.button_reset);
             this.Controls.Add(this.button_submit);
             this.Controls.Add(this.button_go);
             this.Controls.Add(this.textBox_url);
@@ -147,5 +159,6 @@
         private System.Windows.Forms.Button button_go;
         private System.Windows.Forms.Button button_submit;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button button_reset;
     }
 }

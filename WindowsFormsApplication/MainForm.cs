@@ -79,13 +79,13 @@ namespace WindowsFormsApplication
         private void timer1_Tick(object sender, EventArgs e)
         {
             //到主页关闭定时器1
-            if(webBrowser.Document.Url.ToString() != "https://ca.jsds.gov.cn/index/caLogin.html"|| webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
+            if (webBrowser.Document.Url.ToString() != "https://ca.jsds.gov.cn/index/caLogin.html" && webBrowser.Document.Url.ToString() != "http://www.jsds.gov.cn/index/caLogin.html#" && webBrowser.Document.Url.ToString() != "http://www.jsds.gov.cn/index/caLogin.html") 
             {
                 timer1.Enabled = false;
-               // MessageBox.Show("timer1 stop");
+           //     MessageBox.Show("timer1 stop");
+                return;
             }
             
-
             HtmlDocument doc = this.webBrowser.Document;   //把当前的webBrowser1显示的文档实例
             HtmlElementCollection elemColl = doc.GetElementsByTagName("a");
             foreach (HtmlElement elem in elemColl)
@@ -95,23 +95,36 @@ namespace WindowsFormsApplication
                 {
                     //find!
                     elem.InvokeMember("click"); //点击登陆
+                  //  MessageBox.Show("timer1 click");
                 }
+                /*
+                string elemName2 = elem.GetAttribute("class");
+                if (elemName.Equals("link-login"))
+                {
+                    //find!
+                    elem.InvokeMember("click"); //点击登陆
+                    MessageBox.Show("timer1 click");
+                }
+                */
 
             }
-
+            
             IntPtr mwh1 = IntPtr.Zero;
             mwh1 = FindWindow(null, "数字证书登录");
             if (mwh1 != IntPtr.Zero)
             {
                 IntPtr edit = FindWindowEx(mwh1, IntPtr.Zero, "Edit", null);
-              //  IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确定");
+                IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确定");
                 if (edit != IntPtr.Zero)
                 {
                     //MessageBox.Show("find edit");
                     SendMessage(edit, 0xC, IntPtr.Zero, "123456");
-                    SendKeys.SendWait("{Enter}");
-                    SendKeys.Flush();
-                //    this.timer1.Enabled = false;    //关闭定时器
+                    //SendMessage(button, 0x0201, IntPtr.Zero, null);
+                    //SendMessage(button, 0x0202, IntPtr.Zero, null);
+                        SendKeys.SendWait("{Enter}");
+                        SendKeys.Flush();
+                        this.timer1.Enabled = false;    //关闭定时器
+                        first = false;
                     //MessageBox.Show("timer1 stop");
                 }
             }
@@ -155,6 +168,7 @@ namespace WindowsFormsApplication
             //登陆主页 打开timer1
             if (webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html" || webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
             {
+               //Thread.Sleep(2000);
                 timer1.Enabled = true;
             }
             // timer2.Enabled = true;
@@ -187,15 +201,27 @@ namespace WindowsFormsApplication
         {
             HtmlDocument doc = this.webBrowser.Document;   //把当前的webBrowser1显示的文档实例
             HtmlElementCollection elemColl = doc.GetElementsByTagName("div");
+            HtmlElementCollection elemColl2 = doc.GetElementsByTagName("h2");
+            //未插入Ukey
             foreach (HtmlElement elem in elemColl)
             {
                 string elemName = elem.GetAttribute("id");
-                if (elemName.Equals("无法显示此页"))
+                if (elemName.Equals("mainTitle"))
                 {
-                    MessageBox.Show("登陆失败");
-                    this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
-                    this.timer1.Enabled = true;
+                    if(elem.InnerText.Equals("无法显示此页"))
+                    {
+                        MessageBox.Show("登陆失败!\n请检测USB Key是否插入\n点击重试按钮");
+                        return;
+                    }
+                    
                 }
+            }
+            //404
+            foreach (HtmlElement elem2 in elemColl2)
+            {
+                elem2.Equals("Error 404--Not Found");
+                MessageBox.Show("登陆失败 404\n点击重试按钮");
+                return;
             }
         }
 
@@ -213,9 +239,16 @@ namespace WindowsFormsApplication
         {
             if(webBrowser.Document.Url.ToString() == "https://ca.jsds.gov.cn/")
             {
-                this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
-                this.timer1.Enabled = true;
+                webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+                timer1.Enabled = true;
             }
+        }
+
+        private void button_reset_Click(object sender, EventArgs e)
+        {
+            webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+            timer1.Enabled = true;
+
         }
     }
 }
