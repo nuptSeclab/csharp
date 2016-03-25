@@ -79,24 +79,10 @@ namespace WindowsFormsApplication
         private void timer1_Tick(object sender, EventArgs e)
         {
             //到主页关闭定时器1
-            if(webBrowser.Document.Url.ToString() != "https://ca.jsds.gov.cn/index/caLogin.html"|| webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
+            if(webBrowser.Document.Url.ToString() != "http://ca.jsds.gov.cn/index/caLogin.html"|| webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
             {
                 timer1.Enabled = false;
                // MessageBox.Show("timer1 stop");
-            }
-            
-
-            HtmlDocument doc = this.webBrowser.Document;   //把当前的webBrowser1显示的文档实例
-            HtmlElementCollection elemColl = doc.GetElementsByTagName("a");
-            foreach (HtmlElement elem in elemColl)
-            {
-                string elemName = elem.GetAttribute("href");    //按钮
-                if (elemName.Equals("http://www.jsds.gov.cn/index/caLogin.html#"))
-                {
-                    //find!
-                    elem.InvokeMember("click"); //点击登陆
-                }
-
             }
 
             IntPtr mwh1 = IntPtr.Zero;
@@ -155,7 +141,20 @@ namespace WindowsFormsApplication
             //登陆主页 打开timer1
             if (webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html" || webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
             {
-                timer1.Enabled = true;
+                HtmlDocument doc = this.webBrowser.Document;   //把当前的webBrowser1显示的文档实例
+                HtmlElementCollection elemColl = doc.GetElementsByTagName("a");
+                foreach (HtmlElement elem in elemColl)
+                {
+                    string elemName = elem.GetAttribute("href");    //按钮
+                    if (elemName.Equals("http://www.jsds.gov.cn/index/caLogin.html#"))
+                    {
+                        //find!
+                        elem.InvokeMember("click"); //点击登陆
+                        timer1.Enabled = true;
+                    }
+
+                }
+               
             }
             // timer2.Enabled = true;
 
@@ -189,12 +188,12 @@ namespace WindowsFormsApplication
             HtmlElementCollection elemColl = doc.GetElementsByTagName("div");
             foreach (HtmlElement elem in elemColl)
             {
-                string elemName = elem.GetAttribute("id");
-                if (elemName.Equals("无法显示此页"))
+                string elemName = elem.GetAttribute("mainTitle");
+                if (elem.InnerHtml.Equals("无法显示此页"))
                 {
                     MessageBox.Show("登陆失败");
                     this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
-                    this.timer1.Enabled = true;
+                    //this.timer1.Enabled = true;
                 }
             }
         }
