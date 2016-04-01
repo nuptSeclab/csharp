@@ -35,33 +35,7 @@ namespace WindowsFormsApplication
             InitializeComponent();
             Initialize();
         }
-        public void post_test(string cookie)
-        {
-            string postData = "tbrq=2016-03-23&nsrmc=%E5%8D%97%E4%BA%AC%E5%B0%8F%E6%80%AA%E5%85%BD%E8%B4%A2%E5%8A%A1%E4%BF%A1%E6%81%AF%E5%92%A8%E8%AF%A2%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&nsrsbh=320104302723175&swglm=320100100396501&zspmdm=1202&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmmc=1202%20%E8%B5%84%E6%9C%AC%E5%A2%9E%E5%80%BC%E9%A2%9D%EF%BC%88%E5%AE%9E%E6%94%B6%E8%B5%84%E6%9C%AC%E3%80%81%E8%B5%84%E6%9C%AC%E5%85%AC%E7%A7%AF%E7%AD%89%EF%BC%89&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zsfsdm=10&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&sbqx=2016-03-31&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&ssqq=2015-01-01&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqz=2015-12-31&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&jsje=1.00&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&sl=0.000500&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&ying_nse=0.0&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&ybtse=0.0&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&hj_ying_nse=0.0&hj_jmje=&hj_yi_nse=&hj_znje=&hj_ybtse=0.0&sqjc=&bqgj=&bqth=&bqjc=&bbzt=null&bizData=%7B%22BIZDATA%22%3A%5B%7B%22bqybtseje%22%3A%22%22%2C%22bqyjseje%22%3A%22%22%2C%22hdbl%22%3A%22%22%2C%22hdjsje%22%3A%22%22%2C%22impactRowNum%22%3A0%2C%22jmje%22%3A%22%22%2C%22jsje%22%3A%22%22%2C%22pzxh%22%3A%22%22%2C%22qyzt%22%3A%22%22%2C%22req%22%3Anull%2C%22sbbxh%22%3A%22%22%2C%22sbmxxh%22%3A%22%22%2C%22sbqx%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A31%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A2%2C%22seconds%22%3A0%2C%22time%22%3A1459353600000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A116%7D%2C%22timeInMillis%22%3A1459353600000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22sfssqqsrq%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A1%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A0%2C%22seconds%22%3A0%2C%22time%22%3A1420041600000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A115%7D%2C%22timeInMillis%22%3A1420041600000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22sfssqzzrq%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A31%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A11%2C%22seconds%22%3A0%2C%22time%22%3A1451491200000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A115%7D%2C%22timeInMillis%22%3A1451491200000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22shbj%22%3A%22%22%2C%22sl%22%3A%220.0005%22%2C%22sqlParams%22%3A%5B%5D%2C%22status%22%3A%7B%22ZSFS_DM%22%3A%2210%22%2C%22SFSSQ_QSRQ%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A1%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A0%2C%22seconds%22%3A0%2C%22time%22%3A1420041600000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A115%7D%2C%22timeInMillis%22%3A1420041600000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22SFSSQ_ZZRQ%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A31%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A11%2C%22seconds%22%3A0%2C%22time%22%3A1451491200000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A115%7D%2C%22timeInMillis%22%3A1451491200000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22SL%22%3A5.0E-4%2C%22ZSXM_DM%22%3A%2216%22%2C%22SB_QX%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A31%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A2%2C%22seconds%22%3A0%2C%22time%22%3A1459353600000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A116%7D%2C%22timeInMillis%22%3A1459353600000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22ZSPM_DM%22%3A%221202%22%7D%2C%22str_sbqx%22%3A%222016-03-31%22%2C%22str_sfssqqsrq%22%3A%222015-01-01%22%2C%22str_sfssqzzrq%22%3A%222015-12-31%22%2C%22swglm%22%3A%22%22%2C%22yingnseje%22%3A%22%22%2C%22znje%22%3A%22%22%2C%22zsfsdm%22%3A%2210%22%2C%22zspmdm%22%3A%221202%22%2C%22zsxmdm%22%3A%2216%22%7D%5D%2C%22autoSel%22%3A%5B%7B%22content%22%3A%221202%7C%7C0.0005%7C%7Cnull%7C%7C2015-01-01%7C%7C2015-12-31%7C%7C10%7C%7C2016-03-31%22%2C%22parentCode%22%3A%22%22%2C%22text%22%3A%221202%20%E8%B5%84%E6%9C%AC%E5%A2%9E%E5%80%BC%E9%A2%9D%EF%BC%88%E5%AE%9E%E6%94%B6%E8%B5%84%E6%9C%AC%E3%80%81%E8%B5%84%E6%9C%AC%E5%85%AC%E7%A7%AF%E7%AD%89%EF%BC%89%22%7D%5D%7D&gljgdm=23201031300&yhzh=522266790983&qybj=1&errorMessage=&handleDesc=%E5%8D%B0%E8%8A%B1%E7%A8%8E%E8%A1%A8%E6%9A%82%E5%AD%98&handleCode=tempSave&pzxh=&cfsbbh=&fbbj=0&sucessMsg=&hjje=0&proMessage=&caVO.str_signature=&caVO.str_certificate=&nsrQrtjBz=0&txlJyCount=0&qzlJyCount=0&ymKj_Info=&cqSb=0";
-            Byte[] postBuffer = Encoding.UTF8.GetBytes(postData);
-            //String additionalHeaders = String.Format("{0}:{1}\r\n{2}:{3}", "Accept", "*/*", "User-Agent", "Mozilla/5.0 (Windows NT 5.1; rv:14.0) Gecko/20100101 Firefox/14.0.1");
-            String additionalHeaders =
-                 "Accept: text/javascript, text/html, application/xml, text/xml, */*\n" +
-                "Accept-Language: zh-cn\n" +
-                "x-prototype-version: 1.6.0\n" +
-                "Referer:https://ca.jsds.gov.cn/wb029_WByhssbAction.do?SSQS=&SSQZ=&SBQX=&SWGLM=320100100396501&ksbsbqxrdm=\n" +
-                "x-requested-with: XMLHttpRequest\n" +
-                "Content-Type: application/x-www-form-urlencoded; charset=UTF-8\n" +
-                "Accept-Encoding: gzip, deflate\n" +
-                "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)\n" +
-                "Host: ca.jsds.gov.cn\n" +
-                "Content-Length:" + postBuffer.Length +
-                "\nConnection: Keep-Alive\n" +
-                "Cache-Control: no-cache\n" + 
-                "Cookie:"+cookie
-                ;
-            //Cookie: _gscu_1112616140=52985877gk6s5596; JSID_WSBS=WhRjQQrSxWV0t1qv79n7hCBntrH1hq0yQ8q8nPMJY15kT5X21sw2!1516671385; Secure; _gscu_1161164261=41071794gwlnkd14
-           // MessageBox.Show(postData);
-            //MessageBox.Show(additionalHeaders);
-            string url = "https://ca.jsds.gov.cn/wb029_WByhssbAction.do";
-            this.webBrowser.Navigate(url,null, postBuffer, additionalHeaders);
-        }
-       
+        
         public WebBrowser getWebBrowser()
         {
             return this.webBrowser;
@@ -84,7 +58,7 @@ namespace WindowsFormsApplication
                 timer1.Enabled = false;
                // MessageBox.Show("timer1 stop");
             }
-
+            //检测数字证书登陆输入框
             IntPtr mwh1 = IntPtr.Zero;
             mwh1 = FindWindow(null, "数字证书登录");
             if (mwh1 != IntPtr.Zero)
@@ -138,10 +112,12 @@ namespace WindowsFormsApplication
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             LoginCheck();   //检测是否登陆成功
-            //登陆主页 打开timer1
-            if (webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html" || webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
+            //登陆主页 点击按钮
+            string url = webBrowser.Document.Url.ToString();
+            if ( url == "http://www.jsds.gov.cn/index/caLogin.html" || url == "http://www.jsds.gov.cn/index/caLogin.html#")
             {
-                HtmlDocument doc = this.webBrowser.Document;   //把当前的webBrowser1显示的文档实例
+                //点击按钮登陆主页
+                HtmlDocument doc = webBrowser.Document;   //把当前的webBrowser1显示的文档实例
                 HtmlElementCollection elemColl = doc.GetElementsByTagName("a");
                 foreach (HtmlElement elem in elemColl)
                 {
@@ -150,6 +126,7 @@ namespace WindowsFormsApplication
                     {
                         //find!
                         elem.InvokeMember("click"); //点击登陆
+                        //定时器1用于输入Ukey密码
                         timer1.Enabled = true;
                     }
 
@@ -159,7 +136,7 @@ namespace WindowsFormsApplication
             // timer2.Enabled = true;
 
             //提交失败等情况 返回主页了
-            if (webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/")
+            if (url == "http://www.jsds.gov.cn/")
             {
                 this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
                 this.timer1.Enabled = true;
@@ -168,11 +145,8 @@ namespace WindowsFormsApplication
                 if (mwh1 != IntPtr.Zero)
                 {
                     IntPtr Button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "否(&N)");
-                    //  IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确定");
                     if (Button != IntPtr.Zero)
                     {
-                        //MessageBox.Show("find edit");
-                    //    SendMessage(Button, 0xC, IntPtr.Zero, "123456");
                         SendKeys.SendWait("{Enter}");
                         SendKeys.Flush();
                     }
@@ -200,7 +174,6 @@ namespace WindowsFormsApplication
 
         private void webBrowser_NewWindow(object sender, CancelEventArgs e)
         {
-
             //打开新窗口的方式是在已有的窗口内打开
             webBrowser.Url = new Uri(((WebBrowser)sender).StatusText);
             e.Cancel = true;
@@ -215,6 +188,345 @@ namespace WindowsFormsApplication
                 this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
                 this.timer1.Enabled = true;
             }
+        }
+
+        private void button_grsd_Click(object sender, EventArgs e)
+        {
+            
+            post_grsds(webBrowser.Document.Cookie);
+        }
+        private void button_submit_grsds_Click(object sender, EventArgs e)
+        {
+            submit_grsds(webBrowser.Document.Cookie);
+        }
+
+        /*印花税暂存POST设置*/
+        public void post_test(string cookie)
+        {
+            
+            string postData = "tbrq=2016-03-23&nsrmc=%E5%8D%97%E4%BA%AC%E5%B0%8F%E6%80%AA%E5%85%BD%E8%B4%A2%E5%8A%A1%E4%BF%A1%E6%81%AF%E5%92%A8%E8%AF%A2%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&nsrsbh=320104302723175&swglm=320100100396501&zspmdm=1202&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmdm=&zspmmc=1202%20%E8%B5%84%E6%9C%AC%E5%A2%9E%E5%80%BC%E9%A2%9D%EF%BC%88%E5%AE%9E%E6%94%B6%E8%B5%84%E6%9C%AC%E3%80%81%E8%B5%84%E6%9C%AC%E5%85%AC%E7%A7%AF%E7%AD%89%EF%BC%89&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zspmmc=&zsfsdm=10&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&zsfsdm=&sbqx=2016-03-31&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&sbqx=&ssqq=2015-01-01&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqq=&ssqz=2015-12-31&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&ssqz=&jsje=1.00&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_jsje=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&hd_bl=&sl=0.000500&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&sl=&ying_nse=0.0&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&ying_nse=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&jmje=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&yi_nse=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&znje=&ybtse=0.0&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&ybtse=&hj_ying_nse=0.0&hj_jmje=&hj_yi_nse=&hj_znje=&hj_ybtse=0.0&sqjc=&bqgj=&bqth=&bqjc=&bbzt=null&bizData=%7B%22BIZDATA%22%3A%5B%7B%22bqybtseje%22%3A%22%22%2C%22bqyjseje%22%3A%22%22%2C%22hdbl%22%3A%22%22%2C%22hdjsje%22%3A%22%22%2C%22impactRowNum%22%3A0%2C%22jmje%22%3A%22%22%2C%22jsje%22%3A%22%22%2C%22pzxh%22%3A%22%22%2C%22qyzt%22%3A%22%22%2C%22req%22%3Anull%2C%22sbbxh%22%3A%22%22%2C%22sbmxxh%22%3A%22%22%2C%22sbqx%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A31%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A2%2C%22seconds%22%3A0%2C%22time%22%3A1459353600000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A116%7D%2C%22timeInMillis%22%3A1459353600000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22sfssqqsrq%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A1%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A0%2C%22seconds%22%3A0%2C%22time%22%3A1420041600000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A115%7D%2C%22timeInMillis%22%3A1420041600000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22sfssqzzrq%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A31%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A11%2C%22seconds%22%3A0%2C%22time%22%3A1451491200000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A115%7D%2C%22timeInMillis%22%3A1451491200000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22shbj%22%3A%22%22%2C%22sl%22%3A%220.0005%22%2C%22sqlParams%22%3A%5B%5D%2C%22status%22%3A%7B%22ZSFS_DM%22%3A%2210%22%2C%22SFSSQ_QSRQ%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A1%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A0%2C%22seconds%22%3A0%2C%22time%22%3A1420041600000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A115%7D%2C%22timeInMillis%22%3A1420041600000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22SFSSQ_ZZRQ%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A31%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A11%2C%22seconds%22%3A0%2C%22time%22%3A1451491200000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A115%7D%2C%22timeInMillis%22%3A1451491200000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22SL%22%3A5.0E-4%2C%22ZSXM_DM%22%3A%2216%22%2C%22SB_QX%22%3A%7B%22firstDayOfWeek%22%3A1%2C%22gregorianChange%22%3A%7B%22date%22%3A15%2C%22day%22%3A5%2C%22hours%22%3A8%2C%22minutes%22%3A0%2C%22month%22%3A9%2C%22seconds%22%3A0%2C%22time%22%3A-12219292800000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A-318%7D%2C%22lenient%22%3Atrue%2C%22minimalDaysInFirstWeek%22%3A1%2C%22time%22%3A%7B%22date%22%3A31%2C%22day%22%3A4%2C%22hours%22%3A0%2C%22minutes%22%3A0%2C%22month%22%3A2%2C%22seconds%22%3A0%2C%22time%22%3A1459353600000%2C%22timezoneOffset%22%3A-480%2C%22year%22%3A116%7D%2C%22timeInMillis%22%3A1459353600000%2C%22timeZone%22%3A%7B%22DSTSavings%22%3A0%2C%22ID%22%3A%22PRC%22%2C%22displayName%22%3A%22China%20Standard%20Time%22%2C%22lastRuleInstance%22%3Anull%2C%22rawOffset%22%3A28800000%7D%7D%2C%22ZSPM_DM%22%3A%221202%22%7D%2C%22str_sbqx%22%3A%222016-03-31%22%2C%22str_sfssqqsrq%22%3A%222015-01-01%22%2C%22str_sfssqzzrq%22%3A%222015-12-31%22%2C%22swglm%22%3A%22%22%2C%22yingnseje%22%3A%22%22%2C%22znje%22%3A%22%22%2C%22zsfsdm%22%3A%2210%22%2C%22zspmdm%22%3A%221202%22%2C%22zsxmdm%22%3A%2216%22%7D%5D%2C%22autoSel%22%3A%5B%7B%22content%22%3A%221202%7C%7C0.0005%7C%7Cnull%7C%7C2015-01-01%7C%7C2015-12-31%7C%7C10%7C%7C2016-03-31%22%2C%22parentCode%22%3A%22%22%2C%22text%22%3A%221202%20%E8%B5%84%E6%9C%AC%E5%A2%9E%E5%80%BC%E9%A2%9D%EF%BC%88%E5%AE%9E%E6%94%B6%E8%B5%84%E6%9C%AC%E3%80%81%E8%B5%84%E6%9C%AC%E5%85%AC%E7%A7%AF%E7%AD%89%EF%BC%89%22%7D%5D%7D&gljgdm=23201031300&yhzh=522266790983&qybj=1&errorMessage=&handleDesc=%E5%8D%B0%E8%8A%B1%E7%A8%8E%E8%A1%A8%E6%9A%82%E5%AD%98&handleCode=tempSave&pzxh=&cfsbbh=&fbbj=0&sucessMsg=&hjje=0&proMessage=&caVO.str_signature=&caVO.str_certificate=&nsrQrtjBz=0&txlJyCount=0&qzlJyCount=0&ymKj_Info=&cqSb=0";
+            Byte[] postBuffer = Encoding.UTF8.GetBytes(postData);
+           
+            String additionalHeaders =
+                 "Accept: text/javascript, text/html, application/xml, text/xml, */*\n" +
+                "Accept-Language: zh-cn\n" +
+                "x-prototype-version: 1.6.0\n" +
+                "Referer:https://ca.jsds.gov.cn/wb029_WByhssbAction.do?SSQS=&SSQZ=&SBQX=&SWGLM=320100100396501&ksbsbqxrdm=\n" +
+                "x-requested-with: XMLHttpRequest\n" +
+                "Content-Type: application/x-www-form-urlencoded; charset=UTF-8\n" +
+                "Accept-Encoding: gzip, deflate\n" +
+                "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)\n" +
+                "Host: ca.jsds.gov.cn\n" +
+                "Content-Length:" + postBuffer.Length +
+                "\nConnection: Keep-Alive\n" +
+                "Cache-Control: no-cache\n" +
+                "Cookie:" + cookie
+                ;
+            //Cookie: _gscu_1112616140=52985877gk6s5596; JSID_WSBS=WhRjQQrSxWV0t1qv79n7hCBntrH1hq0yQ8q8nPMJY15kT5X21sw2!1516671385; Secure; _gscu_1161164261=41071794gwlnkd14
+            // MessageBox.Show(postData);
+            //MessageBox.Show(additionalHeaders);
+            string url = "https://ca.jsds.gov.cn/wb029_WByhssbAction.do";
+            this.webBrowser.Navigate(url, null, postBuffer, additionalHeaders);
+        }
+
+        /*个人所得税 普通算法 上传测试*/
+        private void submit_grsds(string cookie)
+        {
+            string postData =
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"tbrq\"\n" +
+
+              "2016 - 04 - 01\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"nsrsbh\"\n" +
+
+              "320104302723175\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"swglm\"\n" +
+
+              "320100100396501\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"nsrmc\"\n" +
+
+              "南京小怪兽财务信息咨询有限公司\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"ssqq\"\n" +
+
+              "2016 - 03 - 01\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"ssqz\"\n" +
+
+              "2016 - 03 - 31\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"zclx\"\n" +
+
+              "鍏朵粬鏈夐檺璐ｄ换鍏徃\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"fddbr\"\n" +
+
+              "鐜嬪瓬璞 ?\n" +
+              "-----------------------------7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"dh\"\n" +
+
+              "13776601441\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"yb\"\n" +
+
+              "210000\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"file\"; filename = \"\"\n" +
+              "Content - Type: application / octet - stream\n" +
+
+
+                "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"file1\"; filename = \"C:\\Users\\wack\\Desktop\\鏂板缓鏂囦欢澶筡灏忔€吔\\灏忔€吔2016骞?鏈?dat\n" +
+              "Content - Type: application / octet - stream\n" +
+
+              "C: \\Users\\wack\\Desktop\\新建文件夹\\个人所得税明细申报客户端软件（适用新税法）\\templates\\个人所得税申报_A_普通算法明细数据.htm\n" +
+              "7.0\n" +
+              "320100100396501\n" +
+              "南京小怪兽财务信息咨询有限公司\n" +
+              "S\n" +
+              "王孜豫,06,320106198110073214,156,0,1,,,,,010001,2000.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,3500.00,0.00,0.00,0.030,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,\n" +
+              "张雪婷,06,320121199401192123,156,0,1,,,南京市鼓楼区中环国际广场4726,南京小怪兽财务信息咨询有限公司,040000,800.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,800.00,0.00,0.00,0.200,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,\n" +
+              "苗婷,06,320107199503303421,156,0,1,,,南京市鼓楼区中环国际广场4726,南京小怪兽财务信息咨询有限公司,040000,800.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,800.00,0.00,0.00,0.200,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,\n" +
+              "6ac665fbf3b563b6efcfbcd70e1cb730\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"handleCode\"\n" +
+
+              "upload\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"bb\"\n" +
+
+              "2\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"errorMessage\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"filename\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"bj\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"handleDesc\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"sbqx\"\n" +
+
+              "2016 - 04 - 20\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"path\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"pzxh\"\n" +
+
+              "2EDDC2FC3F9191BEE053C0A8661591BE\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"khyh\"\n" +
+
+              "涓浗閾惰鑲′唤鏈夐檺鍏徃鍗椾含鍩庝腑鏀\n" +
+              "-----------------------------7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"yhzh\"\n" +
+
+              "522266790983\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"sbje\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"cfsbbh\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"sucessMsg\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"caVO.str_signature\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"caVO.str_certificate\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"nsrQrtjBz\"\n" +
+
+              "0\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"txlJyCount\"\n" +
+
+              "0\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"qzlJyCount\"\n" +
+
+              "0\n" +
+              "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"ymKj_Info\"\n" +
+
+
+                  "---------------------------- - 7e01571c110d1a\n" +
+              "Content - Disposition: form - data; name = \"cqSb\"\n" +
+
+              "0\n" +
+              "---------------------------- - 7e01571c110d1a--\n"
+              ;
+            Byte[] postBuffer = Encoding.UTF8.GetBytes(postData);
+            //MessageBox.Show(postData);
+            String additionalHeaders =
+               "Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*\n" +
+               "Referer:Referer: https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15\n" +
+               "Accept-Encoding:gzip, deflate\n" +
+               "Accept-Language: zh-cn\n" +
+               "x-prototype-version: 1.6.0\n" +
+               "x-requested-with: XMLHttpRequest\n" +
+               "Content-Type: multipart/form-data; boundary=---------------------------7e01571c110d1a\n" +
+               "Accept-Encoding: gzip, deflate\n" +
+               "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)\n" +
+               "Host: ca.jsds.gov.cn\n" +
+               "Content-Length:" + postBuffer.Length +
+               "\nConnection: Keep-Alive\n" +
+               "Cache-Control: no-cache\n" +
+               "Cookie:" + cookie
+               ;
+
+            string url = "https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do";
+            this.webBrowser.Navigate(url, null, postBuffer, additionalHeaders);
+        }
+        
+
+        /*个人所得税 普通算法 POST测试 （上传文件）*/
+        public void post_grsds(string cookie)
+        {
+            string postData = "-----------------------------7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"tbrq\"\n\n" +
+                "2016 - 04 - 01\n---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"nsrsbh\"\n\n" +
+                "320104302723175\n---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"swglm\"\n\n" +
+                "320100100396501\n---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"nsrmc\"\n\n" +
+                "南京小怪兽财务信息咨询有限公司\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"ssqq\"\n\n" +
+                "2016 - 03 - 01\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"ssqz\"\n\n" +
+                "2016 - 03 - 31\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"zclx\"\n\n" +
+                "其他有限责任公司\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"fddbr\"\n\n" +
+                "王孜豫\n" +
+                "-----------------------------7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"dh\"\n\n" +
+                "13776601441\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"yb\"\n\n" +
+                "210000\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"file\"; filename = \"\"\n" +
+                "Content - Type: application / octet - stream\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"file1\"; filename = \"C:\\Users\\wack\\Desktop\\鏂板缓鏂囦欢澶筡灏忔€吔\\灏忔€吔2016骞?鏈?dat\"\n" +
+                "Content - Type: application / octet - stream\n" +
+
+                @"C: \Users\wack\Desktop\新建文件夹\个人所得税明细申报客户端软件（适用新税法）\templates\个人所得税申报_A_普通算法明细数据.htm
+                7.0
+                320100100396501
+                南京小怪兽财务信息咨询有限公司
+                S
+                王孜豫,06,320106198110073214,156,0,1,,,,,010001,2000.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,3500.00,0.00,0.00,0.030,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,
+                张雪婷,06,320121199401192123,156,0,1,,,南京市鼓楼区中环国际广场4726,南京小怪兽财务信息咨询有限公司,040000,800.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,800.00,0.00,0.00,0.200,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,
+                苗婷,06,320107199503303421,156,0,1,,,南京市鼓楼区中环国际广场4726,南京小怪兽财务信息咨询有限公司,040000,800.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,800.00,0.00,0.00,0.200,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,
+                6ac665fbf3b563b6efcfbcd70e1cb730
+                ---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"handleCode\"\n" +
+                "upload\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"bb\"\n" +
+                "2\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"errorMessage\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"filename\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"bj\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"handleDesc\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"sbqx\"\n" +
+                "2016 - 04 - 20\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"path\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"pzxh\"\n" +
+                "2F121B98B88DA07AE053C0A86615A07A\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"khyh\"\n" +
+                "涓浗閾惰鑲′唤鏈夐檺鍏徃鍗椾含鍩庝腑鏀\n" +
+                "-----------------------------7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"yhzh\"\n" +
+                "522266790983\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"sbje\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"cfsbbh\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"sucessMsg\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"caVO.str_signature\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"caVO.str_certificate\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"nsrQrtjBz\"\n" +
+                "0\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"txlJyCount\"\n" +
+                "0\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"qzlJyCount\"\n" +
+                "0\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"ymKj_Info\"\n" +
+                "---------------------------- - 7e0147213067c\n" +
+                "Content - Disposition: form - data; name = \"cqSb\"\n" +
+                "0\n" +
+                "---------------------------- - 7e0147213067c--";
+            Byte[] postBuffer = Encoding.UTF8.GetBytes(postData);
+            MessageBox.Show(postData);
+            String additionalHeaders =
+               "Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*\n" +
+               "Accept-Encoding:gzip, deflate\n" +
+               "Accept-Language: zh-cn\n" +
+               "x-prototype-version: 1.6.0\n" +
+               "Referer:https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15\n" +
+               "x-requested-with: XMLHttpRequest\n" +
+               "Content-Type: multipart/form-data; boundary=---------------------------7e0147213067c\n" +
+               "Accept-Encoding: gzip, deflate\n" +
+               "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)\n" +
+               "Host: ca.jsds.gov.cn\n" +
+               "Content-Length:" + postBuffer.Length +
+               "\nConnection: Keep-Alive\n" +
+               "Cache-Control: no-cache\n" +
+               "Cookie:" + cookie
+               ;
+
+            string url = "https://ca.jsds.gov.cn//wb_DkdjptUpLoadAction.do";
+            this.webBrowser.Navigate(url, null, postBuffer, additionalHeaders);
+        }
+
+
+        private void button_test_Click(object sender, EventArgs e)
+        {
+            webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
         }
     }
 }

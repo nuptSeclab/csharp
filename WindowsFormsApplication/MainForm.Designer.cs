@@ -39,6 +39,9 @@
             this.button_go = new System.Windows.Forms.Button();
             this.button_submit = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.button_grsds = new System.Windows.Forms.Button();
+            this.button_submit_grsds = new System.Windows.Forms.Button();
+            this.button_test = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -105,11 +108,11 @@
             // 
             // button_submit
             // 
-            this.button_submit.Location = new System.Drawing.Point(900, 75);
+            this.button_submit.Location = new System.Drawing.Point(897, 75);
             this.button_submit.Name = "button_submit";
-            this.button_submit.Size = new System.Drawing.Size(71, 24);
+            this.button_submit.Size = new System.Drawing.Size(74, 24);
             this.button_submit.TabIndex = 11;
-            this.button_submit.Text = "submit";
+            this.button_submit.Text = "印花税暂存";
             this.button_submit.UseVisualStyleBackColor = true;
             this.button_submit.Click += new System.EventHandler(this.button_submit_Click);
             // 
@@ -118,11 +121,44 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // button_grsds
+            // 
+            this.button_grsds.Location = new System.Drawing.Point(885, 149);
+            this.button_grsds.Name = "button_grsds";
+            this.button_grsds.Size = new System.Drawing.Size(86, 23);
+            this.button_grsds.TabIndex = 12;
+            this.button_grsds.Text = "提交个人所得";
+            this.button_grsds.UseVisualStyleBackColor = true;
+            this.button_grsds.Click += new System.EventHandler(this.button_grsd_Click);
+            // 
+            // button_submit_grsds
+            // 
+            this.button_submit_grsds.Location = new System.Drawing.Point(885, 119);
+            this.button_submit_grsds.Name = "button_submit_grsds";
+            this.button_submit_grsds.Size = new System.Drawing.Size(86, 24);
+            this.button_submit_grsds.TabIndex = 13;
+            this.button_submit_grsds.Text = "上传个人所得";
+            this.button_submit_grsds.UseVisualStyleBackColor = true;
+            this.button_submit_grsds.Click += new System.EventHandler(this.button_submit_grsds_Click);
+            // 
+            // button_test
+            // 
+            this.button_test.Location = new System.Drawing.Point(904, 189);
+            this.button_test.Name = "button_test";
+            this.button_test.Size = new System.Drawing.Size(66, 29);
+            this.button_test.TabIndex = 14;
+            this.button_test.Text = "test";
+            this.button_test.UseVisualStyleBackColor = true;
+            this.button_test.Click += new System.EventHandler(this.button_test_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 462);
+            this.Controls.Add(this.button_test);
+            this.Controls.Add(this.button_submit_grsds);
+            this.Controls.Add(this.button_grsds);
             this.Controls.Add(this.button_submit);
             this.Controls.Add(this.button_go);
             this.Controls.Add(this.textBox_url);
@@ -147,5 +183,8 @@
         private System.Windows.Forms.Button button_go;
         private System.Windows.Forms.Button button_submit;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button button_grsds;
+        private System.Windows.Forms.Button button_submit_grsds;
+        private System.Windows.Forms.Button button_test;
     }
 }
