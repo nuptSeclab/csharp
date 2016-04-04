@@ -533,22 +533,26 @@ namespace WindowsFormsApplication
         }
 
 
+        //点击个税 按钮
         private void button_test_Click(object sender, EventArgs e)
         {
             webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
         }
 
+        //点击浏览
         private void button_test2_Click(object sender, EventArgs e)
         {
-            webBrowser.Document.GetElementById("file1").SetAttribute("value", @"C:\Users\wack\Desktop\小怪兽2016年1月.dat");
+            //webBrowser.Document.GetElementById("file1").SetAttribute("value", @"C:\Users\wack\Desktop\小怪兽2016年1月.dat");
             webBrowser.Document.GetElementById("file1").InvokeMember("click");
         }
 
+        //点击提交
         private void button_sbmt_Click(object sender, EventArgs e)
         {
             webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
         }
 
+        //点击上传
         private void button_upld_Click(object sender, EventArgs e)
         {
             webBrowser.Document.GetElementById("UploadBtn-btnInnerEl").InvokeMember("click");
