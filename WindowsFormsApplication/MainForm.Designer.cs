@@ -41,7 +41,10 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.button_grsds = new System.Windows.Forms.Button();
             this.button_submit_grsds = new System.Windows.Forms.Button();
-            this.button_test = new System.Windows.Forms.Button();
+            this.button_gs = new System.Windows.Forms.Button();
+            this.button_file1 = new System.Windows.Forms.Button();
+            this.button_upld = new System.Windows.Forms.Button();
+            this.button_sbmt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -141,22 +144,55 @@
             this.button_submit_grsds.UseVisualStyleBackColor = true;
             this.button_submit_grsds.Click += new System.EventHandler(this.button_submit_grsds_Click);
             // 
-            // button_test
+            // button_gs
             // 
-            this.button_test.Location = new System.Drawing.Point(904, 189);
-            this.button_test.Name = "button_test";
-            this.button_test.Size = new System.Drawing.Size(66, 29);
-            this.button_test.TabIndex = 14;
-            this.button_test.Text = "test";
-            this.button_test.UseVisualStyleBackColor = true;
-            this.button_test.Click += new System.EventHandler(this.button_test_Click);
+            this.button_gs.Location = new System.Drawing.Point(904, 189);
+            this.button_gs.Name = "button_gs";
+            this.button_gs.Size = new System.Drawing.Size(66, 29);
+            this.button_gs.TabIndex = 14;
+            this.button_gs.Text = "个税";
+            this.button_gs.UseVisualStyleBackColor = true;
+            this.button_gs.Click += new System.EventHandler(this.button_test_Click);
+            // 
+            // button_file1
+            // 
+            this.button_file1.Location = new System.Drawing.Point(907, 234);
+            this.button_file1.Name = "button_file1";
+            this.button_file1.Size = new System.Drawing.Size(62, 26);
+            this.button_file1.TabIndex = 15;
+            this.button_file1.Text = "浏览";
+            this.button_file1.UseVisualStyleBackColor = true;
+            this.button_file1.Click += new System.EventHandler(this.button_test2_Click);
+            // 
+            // button_upld
+            // 
+            this.button_upld.Location = new System.Drawing.Point(910, 272);
+            this.button_upld.Name = "button_upld";
+            this.button_upld.Size = new System.Drawing.Size(58, 24);
+            this.button_upld.TabIndex = 16;
+            this.button_upld.Text = "上传";
+            this.button_upld.UseVisualStyleBackColor = true;
+            this.button_upld.Click += new System.EventHandler(this.button_upld_Click);
+            // 
+            // button_sbmt
+            // 
+            this.button_sbmt.Location = new System.Drawing.Point(913, 305);
+            this.button_sbmt.Name = "button_sbmt";
+            this.button_sbmt.Size = new System.Drawing.Size(54, 22);
+            this.button_sbmt.TabIndex = 17;
+            this.button_sbmt.Text = "提交";
+            this.button_sbmt.UseVisualStyleBackColor = true;
+            this.button_sbmt.Click += new System.EventHandler(this.button_sbmt_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 462);
-            this.Controls.Add(this.button_test);
+            this.Controls.Add(this.button_sbmt);
+            this.Controls.Add(this.button_upld);
+            this.Controls.Add(this.button_file1);
+            this.Controls.Add(this.button_gs);
             this.Controls.Add(this.button_submit_grsds);
             this.Controls.Add(this.button_grsds);
             this.Controls.Add(this.button_submit);
@@ -185,6 +221,9 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button button_grsds;
         private System.Windows.Forms.Button button_submit_grsds;
-        private System.Windows.Forms.Button button_test;
+        private System.Windows.Forms.Button button_gs;
+        private System.Windows.Forms.Button button_file1;
+        private System.Windows.Forms.Button button_upld;
+        private System.Windows.Forms.Button button_sbmt;
     }
 }

@@ -111,32 +111,20 @@ namespace WindowsFormsApplication
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            LoginCheck();   //检测是否登陆成功
-            //登陆主页 点击按钮
+            LoginCheck();       //检测是否登陆成功
             string url = webBrowser.Document.Url.ToString();
-            if ( url == "http://www.jsds.gov.cn/index/caLogin.html" || url == "http://www.jsds.gov.cn/index/caLogin.html#")
-            {
-                //点击按钮登陆主页
-                HtmlDocument doc = webBrowser.Document;   //把当前的webBrowser1显示的文档实例
-                HtmlElementCollection elemColl = doc.GetElementsByTagName("a");
-                foreach (HtmlElement elem in elemColl)
-                {
-                    string elemName = elem.GetAttribute("href");    //按钮
-                    if (elemName.Equals("http://www.jsds.gov.cn/index/caLogin.html#"))
-                    {
-                        //find!
-                        elem.InvokeMember("click"); //点击登陆
-                        //定时器1用于输入Ukey密码
-                        timer1.Enabled = true;
-                    }
 
-                }
-               
-            }
-            // timer2.Enabled = true;
+            ClickLogin(url);    //登陆主页 点击按钮            
+            // timer2.Enabled = true;            
+            FailCheck(url);     //提交失败等情况 返回主页了
+           
+            textBox_url.Text = this.webBrowser.Url.ToString();   //显示URL
+        }
 
-            //提交失败等情况 返回主页了
-            if (url == "http://www.jsds.gov.cn/")
+        /*提交失败等情况 返回主页了*/
+        private void FailCheck(string url)
+        {
+            if (url == "http://www.jsds.gov.cn/" || url== "https://ca.jsds.gov.cn/")
             {
                 this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
                 this.timer1.Enabled = true;
@@ -152,8 +140,29 @@ namespace WindowsFormsApplication
                     }
                 }
             }
-            //显示URL
-            textBox_url.Text = this.webBrowser.Url.ToString();
+        }
+
+        //主页 点击登陆按钮 开timer1
+        private void ClickLogin(string url)
+        {
+            
+            if (url == "http://www.jsds.gov.cn/index/caLogin.html" || url == "http://www.jsds.gov.cn/index/caLogin.html#")
+            {
+                //点击按钮登陆主页
+                HtmlDocument doc = webBrowser.Document;   //把当前的webBrowser1显示的文档实例
+                HtmlElementCollection elemColl = doc.GetElementsByTagName("a");
+                foreach (HtmlElement elem in elemColl)
+                {
+                    string elemName = elem.GetAttribute("href");    //按钮
+                    if (elemName.Equals("http://www.jsds.gov.cn/index/caLogin.html#"))
+                    {
+                        //find!
+                        elem.InvokeMember("click"); //点击登陆
+                        //定时器1用于输入Ukey密码
+                        timer1.Enabled = true;
+                    }
+                }
+            }
         }
 
         private void LoginCheck()
@@ -527,6 +536,22 @@ namespace WindowsFormsApplication
         private void button_test_Click(object sender, EventArgs e)
         {
             webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
+        }
+
+        private void button_test2_Click(object sender, EventArgs e)
+        {
+            webBrowser.Document.GetElementById("file1").SetAttribute("value", @"C:\Users\wack\Desktop\小怪兽2016年1月.dat");
+            webBrowser.Document.GetElementById("file1").InvokeMember("click");
+        }
+
+        private void button_sbmt_Click(object sender, EventArgs e)
+        {
+            webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
+        }
+
+        private void button_upld_Click(object sender, EventArgs e)
+        {
+            webBrowser.Document.GetElementById("UploadBtn-btnInnerEl").InvokeMember("click");
         }
     }
 }
