@@ -160,6 +160,7 @@ namespace WindowsFormsApplication
                         elem.InvokeMember("click"); //点击登陆
                         //定时器1用于输入Ukey密码
                         timer1.Enabled = true;
+                        break;
                     }
                 }
             }
@@ -543,19 +544,42 @@ namespace WindowsFormsApplication
         private void button_test2_Click(object sender, EventArgs e)
         {
             //webBrowser.Document.GetElementById("file1").SetAttribute("value", @"C:\Users\wack\Desktop\小怪兽2016年1月.dat");
-            webBrowser.Document.GetElementById("file1").InvokeMember("click");
+            if (webBrowser.Document.GetElementById("file1") != null)
+                webBrowser.Document.GetElementById("file1").InvokeMember("click");
+            else
+                MessageBox.Show("error!");
         }
 
         //点击提交
         private void button_sbmt_Click(object sender, EventArgs e)
         {
-            webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
+            if (webBrowser.Document.GetElementById("submitBtn-btnInnerEl")!=null)
+                webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
+            else
+                MessageBox.Show("error!");
         }
 
         //点击上传
         private void button_upld_Click(object sender, EventArgs e)
         {
-            webBrowser.Document.GetElementById("UploadBtn-btnInnerEl").InvokeMember("click");
+            if(webBrowser.Document.GetElementById("UploadBtn-btnInnerEl")!=null)
+                webBrowser.Document.GetElementById("UploadBtn-btnInnerEl").InvokeMember("click");
+            else
+                MessageBox.Show("error!");
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button_home_Click(object sender, EventArgs e)
+        {
+            go_to_homepage();
+        }
+        private void go_to_homepage()
+        {
+            webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
         }
     }
 }

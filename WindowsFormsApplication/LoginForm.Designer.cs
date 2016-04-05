@@ -80,7 +80,7 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(100, 21);
             this.username.TabIndex = 4;
-            this.username.Text = "1";
+            this.username.Text = "admin";
             this.username.Click += new System.EventHandler(this.username_Click);
             // 
             // password
@@ -89,7 +89,7 @@
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(100, 21);
             this.password.TabIndex = 5;
-            this.password.Text = "1";
+            this.password.Text = "admin";
             this.password.UseSystemPasswordChar = true;
             this.password.Click += new System.EventHandler(this.password_Click);
             // 
@@ -105,7 +105,7 @@
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.LoginButton);
             this.Name = "LoginForm";
-            this.Text = "Login";
+            this.Text = "登陆";
             this.ResumeLayout(false);
             this.PerformLayout();
 

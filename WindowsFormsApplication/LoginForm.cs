@@ -30,8 +30,7 @@ namespace WindowsFormsApplication
             {
                 MainForm mf = new MainForm();
                 mf.Show();
-               // this.Visible = false;
-
+                Visible = false; //隐藏登陆窗口
             }
             else
             {
