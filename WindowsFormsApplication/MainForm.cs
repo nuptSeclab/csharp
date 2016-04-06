@@ -175,7 +175,7 @@ namespace WindowsFormsApplication
                 string elemName = elem.GetAttribute("mainTitle");
                 if (elem.InnerHtml.Equals("无法显示此页"))
                 {
-                    MessageBox.Show("登陆失败");
+                    MessageBox.Show("登陆失败"+ elem.InnerHtml);
                     this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
                     //this.timer1.Enabled = true;
                 }
@@ -208,6 +208,7 @@ namespace WindowsFormsApplication
         private void button_submit_grsds_Click(object sender, EventArgs e)
         {
             submit_grsds(webBrowser.Document.Cookie);
+            //webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
         }
 
         /*印花税暂存POST设置*/
@@ -270,11 +271,11 @@ namespace WindowsFormsApplication
               "---------------------------- - 7e01571c110d1a\n" +
               "Content - Disposition: form - data; name = \"zclx\"\n" +
 
-              "鍏朵粬鏈夐檺璐ｄ换鍏徃\n" +
+              "其他有限责任公司\n" +
               "---------------------------- - 7e01571c110d1a\n" +
               "Content - Disposition: form - data; name = \"fddbr\"\n" +
 
-              "鐜嬪瓬璞 ?\n" +
+              "王孜豫\n" +
               "-----------------------------7e01571c110d1a\n" +
               "Content - Disposition: form - data; name = \"dh\"\n" +
 
@@ -407,7 +408,7 @@ namespace WindowsFormsApplication
                ;
 
             string url = "https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do";
-            this.webBrowser.Navigate(url, null, postBuffer, additionalHeaders);
+            webBrowser.Navigate(url, null, postBuffer, additionalHeaders);       
         }
         
 
@@ -579,7 +580,13 @@ namespace WindowsFormsApplication
         }
         private void go_to_homepage()
         {
-            webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+            //webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+            webBrowser.Navigate("https://ca.jsds.gov.cn/sbLogin.do");
+        }
+
+        private void gs_tag_Click(object sender, EventArgs e)
+        {
+            webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15");        
         }
     }
 }

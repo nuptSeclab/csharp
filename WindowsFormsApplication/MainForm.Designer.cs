@@ -48,8 +48,14 @@
             this.groupBox_gs = new System.Windows.Forms.GroupBox();
             this.groupBox_yhs = new System.Windows.Forms.GroupBox();
             this.button_home = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox_gs.SuspendLayout();
             this.groupBox_yhs.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -59,10 +65,11 @@
             // 
             // webBrowser
             // 
-            this.webBrowser.Location = new System.Drawing.Point(6, 56);
+            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser.Location = new System.Drawing.Point(3, 3);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(744, 400);
+            this.webBrowser.Size = new System.Drawing.Size(705, 328);
             this.webBrowser.TabIndex = 3;
             this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
             this.webBrowser.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser_NewWindow);
@@ -195,7 +202,7 @@
             this.groupBox_gs.Controls.Add(this.button_sbmt);
             this.groupBox_gs.Controls.Add(this.button_file1);
             this.groupBox_gs.Controls.Add(this.button_upld);
-            this.groupBox_gs.Location = new System.Drawing.Point(772, 196);
+            this.groupBox_gs.Location = new System.Drawing.Point(20, 133);
             this.groupBox_gs.Name = "groupBox_gs";
             this.groupBox_gs.Size = new System.Drawing.Size(161, 100);
             this.groupBox_gs.TabIndex = 18;
@@ -205,7 +212,7 @@
             // groupBox_yhs
             // 
             this.groupBox_yhs.Controls.Add(this.button_submit);
-            this.groupBox_yhs.Location = new System.Drawing.Point(772, 92);
+            this.groupBox_yhs.Location = new System.Drawing.Point(20, 23);
             this.groupBox_yhs.Name = "groupBox_yhs";
             this.groupBox_yhs.Size = new System.Drawing.Size(91, 73);
             this.groupBox_yhs.TabIndex = 19;
@@ -222,14 +229,46 @@
             this.button_home.UseVisualStyleBackColor = true;
             this.button_home.Click += new System.EventHandler(this.button_home_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(47, 56);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(719, 360);
+            this.tabControl1.TabIndex = 21;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox_gs);
+            this.tabPage1.Controls.Add(this.groupBox_yhs);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(711, 334);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "主页";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.webBrowser);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(711, 334);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "浏览器";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 462);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button_home);
-            this.Controls.Add(this.groupBox_yhs);
-            this.Controls.Add(this.groupBox_gs);
             this.Controls.Add(this.button_submit_grsds);
             this.Controls.Add(this.button_grsds);
             this.Controls.Add(this.button_go);
@@ -237,12 +276,14 @@
             this.Controls.Add(this.button_forward);
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.button);
-            this.Controls.Add(this.webBrowser);
             this.Name = "MainForm";
             this.Text = "自动报税 v1.2";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.groupBox_gs.ResumeLayout(false);
             this.groupBox_yhs.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,5 +308,8 @@
         private System.Windows.Forms.GroupBox groupBox_gs;
         private System.Windows.Forms.GroupBox groupBox_yhs;
         private System.Windows.Forms.Button button_home;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
