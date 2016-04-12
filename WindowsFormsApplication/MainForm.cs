@@ -6,7 +6,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Security;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,6 +32,7 @@ namespace WindowsFormsApplication
         static extern bool SetForegroundWindow(IntPtr hWnd);
 
         public bool first;   //第一次打开
+        int failCount = 0;  //登陆失败次数
         public MainForm()
         {
             InitializeComponent();
@@ -44,12 +47,12 @@ namespace WindowsFormsApplication
         private void Initialize()
         {
             
-            this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+        //    webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
             //this.webBrowser.Navigate("https://www.jsds.gov.cn/index/sbLogin.do");
-            first = true;
-            
+            webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/static/main.jsp");
         }
 
+        //timer1 用于数字登陆输入密码
         private void timer1_Tick(object sender, EventArgs e)
         {
             //到主页关闭定时器1
@@ -78,27 +81,34 @@ namespace WindowsFormsApplication
           
         }
 
+        //退出按钮
         private void button_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        //后退按钮
         private void button1_Click(object sender, EventArgs e)
         {
             this.webBrowser.GoBack();
+            textBox_url.Text = this.webBrowser.Url.ToString();   //显示URL
         }
 
+        //前进按钮
         private void button2_Click(object sender, EventArgs e)
         {
             this.webBrowser.GoForward();
+            textBox_url.Text = this.webBrowser.Url.ToString();   //显示URL
         }
 
+        //Go按钮
         private void button_go_Click(object sender, EventArgs e)
         {
             string url = this.textBox_url.Text;
             this.webBrowser.Navigate(url);
         }
 
+        //印花税暂存按钮
         private void button_submit_Click(object sender, EventArgs e)
         {
         
@@ -107,8 +117,8 @@ namespace WindowsFormsApplication
             //webBrowser.Navigate("https://ca.jsds.gov.cn/sbLogin.do");
         }
 
-      
 
+        //地税浏览器webBrowser_DocumentCompleted
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             LoginCheck();       //检测是否登陆成功
@@ -117,8 +127,8 @@ namespace WindowsFormsApplication
             ClickLogin(url);    //登陆主页 点击按钮            
             // timer2.Enabled = true;            
             FailCheck(url);     //提交失败等情况 返回主页了
-           
-            textBox_url.Text = this.webBrowser.Url.ToString();   //显示URL
+
+            textBox_HTML.Text = webBrowser.DocumentText;            
         }
 
         /*提交失败等情况 返回主页了*/
@@ -142,7 +152,7 @@ namespace WindowsFormsApplication
             }
         }
 
-        //主页 点击登陆按钮 开timer1
+        //地税主页 点击登陆按钮 开timer1
         private void ClickLogin(string url)
         {
             
@@ -166,6 +176,7 @@ namespace WindowsFormsApplication
             }
         }
 
+        //地税登陆失败检测
         private void LoginCheck()
         {
             HtmlDocument doc = this.webBrowser.Document;   //把当前的webBrowser1显示的文档实例
@@ -175,8 +186,10 @@ namespace WindowsFormsApplication
                 string elemName = elem.GetAttribute("mainTitle");
                 if (elem.InnerHtml.Equals("无法显示此页"))
                 {
-                    MessageBox.Show("登陆失败"+ elem.InnerHtml);
-                    this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+                    //   MessageBox.Show("登陆失败"+ elem.InnerHtml);
+                    failCount++;
+                   if(failCount<10)
+                        this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
                     //this.timer1.Enabled = true;
                 }
             }
@@ -187,10 +200,9 @@ namespace WindowsFormsApplication
             //打开新窗口的方式是在已有的窗口内打开
             webBrowser.Url = new Uri(((WebBrowser)sender).StatusText);
             e.Cancel = true;
-
-    }
-
-
+        }
+        
+        //timer2 
         private void timer2_Tick(object sender, EventArgs e)
         {
             if(webBrowser.Document.Url.ToString() == "https://ca.jsds.gov.cn/")
@@ -198,17 +210,6 @@ namespace WindowsFormsApplication
                 this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
                 this.timer1.Enabled = true;
             }
-        }
-
-        private void button_grsd_Click(object sender, EventArgs e)
-        {
-            
-            post_grsds(webBrowser.Document.Cookie);
-        }
-        private void button_submit_grsds_Click(object sender, EventArgs e)
-        {
-            submit_grsds(webBrowser.Document.Cookie);
-            //webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
         }
 
         /*印花税暂存POST设置*/
@@ -541,7 +542,7 @@ namespace WindowsFormsApplication
             webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
         }
 
-        //点击浏览
+        //个税 点击浏览
         private void button_test2_Click(object sender, EventArgs e)
         {
             //webBrowser.Document.GetElementById("file1").SetAttribute("value", @"C:\Users\wack\Desktop\小怪兽2016年1月.dat");
@@ -551,7 +552,7 @@ namespace WindowsFormsApplication
                 MessageBox.Show("error!");
         }
 
-        //点击提交
+        //个税 点击提交
         private void button_sbmt_Click(object sender, EventArgs e)
         {
             if (webBrowser.Document.GetElementById("submitBtn-btnInnerEl")!=null)
@@ -560,7 +561,7 @@ namespace WindowsFormsApplication
                 MessageBox.Show("error!");
         }
 
-        //点击上传
+        //个税 点击上传
         private void button_upld_Click(object sender, EventArgs e)
         {
             if(webBrowser.Document.GetElementById("UploadBtn-btnInnerEl")!=null)
@@ -573,7 +574,7 @@ namespace WindowsFormsApplication
         {
             Application.Exit();
         }
-
+        //回地税主页
         private void button_home_Click(object sender, EventArgs e)
         {
             go_to_homepage();
@@ -587,6 +588,53 @@ namespace WindowsFormsApplication
         private void gs_tag_Click(object sender, EventArgs e)
         {
             webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15");        
+        }
+
+        private void webBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            textBox_url.Text = this.webBrowser.Url.ToString();   //显示URL
+        }
+
+        private void pictureBox_yzm_Click(object sender, EventArgs e)
+        {
+            if (webBrowserGS.Document.GetElementById("right") != null)
+            {
+                StringBuilder sb = new StringBuilder();
+                HtmlElement right = webBrowserGS.Document.GetElementById("right");
+                HtmlElementCollection hc = webBrowserGS.Document.GetElementById("right").All;
+                //遍历所有元素--此处改成你要的逻辑，
+                foreach (HtmlElement he in hc)
+                {
+                    //如果为要保留的标签名
+                    sb.Append(he.OuterHtml);
+                }
+                webBrowserGS.DocumentText = sb.ToString();//设置html代码
+                textBox_HTML.Text = sb.ToString();
+            }
+        }
+
+        private void webBrowser_gs_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            textBox_url.Text = webBrowserGS.Url.ToString(); 
+            if (webBrowserGS.Document.GetElementById("right") != null)
+            {
+                StringBuilder sb = new StringBuilder();
+                HtmlElementCollection hc = webBrowserGS.Document.GetElementById("right").All;
+                //遍历所有元素--此处改成你要的逻辑，
+                foreach (HtmlElement he in hc)
+                {
+                    MessageBox.Show(he.OuterHtml);   
+                    //如果为要保留的标签名
+                    sb.Append(he.OuterHtml);
+                }
+                webBrowserGS.DocumentText = sb.ToString();//设置html代码
+                textBox_HTML.Text = sb.ToString();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -39,8 +39,6 @@
             this.button_go = new System.Windows.Forms.Button();
             this.button_submit = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.button_grsds = new System.Windows.Forms.Button();
-            this.button_submit_grsds = new System.Windows.Forms.Button();
             this.button_gs = new System.Windows.Forms.Button();
             this.button_file1 = new System.Windows.Forms.Button();
             this.button_upld = new System.Windows.Forms.Button();
@@ -51,11 +49,21 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox_yzm = new System.Windows.Forms.PictureBox();
+            this.textBox_yzm = new System.Windows.Forms.TextBox();
+            this.webBrowserGS = new System.Windows.Forms.WebBrowser();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox_HTML = new System.Windows.Forms.TextBox();
             this.groupBox_gs.SuspendLayout();
             this.groupBox_yhs.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yzm)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -72,6 +80,7 @@
             this.webBrowser.Size = new System.Drawing.Size(705, 328);
             this.webBrowser.TabIndex = 3;
             this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
+            this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
             this.webBrowser.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser_NewWindow);
             // 
             // button
@@ -135,26 +144,6 @@
             // 
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // button_grsds
-            // 
-            this.button_grsds.Location = new System.Drawing.Point(886, 131);
-            this.button_grsds.Name = "button_grsds";
-            this.button_grsds.Size = new System.Drawing.Size(86, 23);
-            this.button_grsds.TabIndex = 12;
-            this.button_grsds.Text = "提交个人所得";
-            this.button_grsds.UseVisualStyleBackColor = true;
-            this.button_grsds.Click += new System.EventHandler(this.button_grsd_Click);
-            // 
-            // button_submit_grsds
-            // 
-            this.button_submit_grsds.Location = new System.Drawing.Point(886, 101);
-            this.button_submit_grsds.Name = "button_submit_grsds";
-            this.button_submit_grsds.Size = new System.Drawing.Size(86, 24);
-            this.button_submit_grsds.TabIndex = 13;
-            this.button_submit_grsds.Text = "上传个人所得";
-            this.button_submit_grsds.UseVisualStyleBackColor = true;
-            this.button_submit_grsds.Click += new System.EventHandler(this.button_submit_grsds_Click);
             // 
             // button_gs
             // 
@@ -233,6 +222,8 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(47, 56);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -262,6 +253,76 @@
             this.tabPage2.Text = "浏览器";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.button1);
+            this.tabPage4.Controls.Add(this.pictureBox_yzm);
+            this.tabPage4.Controls.Add(this.textBox_yzm);
+            this.tabPage4.Controls.Add(this.webBrowserGS);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(711, 334);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "验证码";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(568, 136);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(56, 29);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // pictureBox_yzm
+            // 
+            this.pictureBox_yzm.Location = new System.Drawing.Point(557, 14);
+            this.pictureBox_yzm.Name = "pictureBox_yzm";
+            this.pictureBox_yzm.Size = new System.Drawing.Size(128, 62);
+            this.pictureBox_yzm.TabIndex = 0;
+            this.pictureBox_yzm.TabStop = false;
+            this.pictureBox_yzm.Click += new System.EventHandler(this.pictureBox_yzm_Click);
+            // 
+            // textBox_yzm
+            // 
+            this.textBox_yzm.Location = new System.Drawing.Point(559, 98);
+            this.textBox_yzm.Name = "textBox_yzm";
+            this.textBox_yzm.Size = new System.Drawing.Size(125, 21);
+            this.textBox_yzm.TabIndex = 2;
+            // 
+            // webBrowserGS
+            // 
+            this.webBrowserGS.Location = new System.Drawing.Point(4, 14);
+            this.webBrowserGS.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserGS.Name = "webBrowserGS";
+            this.webBrowserGS.Size = new System.Drawing.Size(536, 300);
+            this.webBrowserGS.TabIndex = 1;
+            this.webBrowserGS.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_gs_DocumentCompleted);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.textBox_HTML);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(711, 334);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "HTML";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // textBox_HTML
+            // 
+            this.textBox_HTML.Location = new System.Drawing.Point(0, 0);
+            this.textBox_HTML.Multiline = true;
+            this.textBox_HTML.Name = "textBox_HTML";
+            this.textBox_HTML.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox_HTML.Size = new System.Drawing.Size(711, 334);
+            this.textBox_HTML.TabIndex = 0;
+            this.textBox_HTML.Text = "HTML";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -269,8 +330,6 @@
             this.ClientSize = new System.Drawing.Size(984, 462);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button_home);
-            this.Controls.Add(this.button_submit_grsds);
-            this.Controls.Add(this.button_grsds);
             this.Controls.Add(this.button_go);
             this.Controls.Add(this.textBox_url);
             this.Controls.Add(this.button_forward);
@@ -284,6 +343,11 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yzm)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,8 +363,6 @@
         private System.Windows.Forms.Button button_go;
         private System.Windows.Forms.Button button_submit;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Button button_grsds;
-        private System.Windows.Forms.Button button_submit_grsds;
         private System.Windows.Forms.Button button_gs;
         private System.Windows.Forms.Button button_file1;
         private System.Windows.Forms.Button button_upld;
@@ -311,5 +373,12 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox textBox_HTML;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.PictureBox pictureBox_yzm;
+        private System.Windows.Forms.WebBrowser webBrowserGS;
+        private System.Windows.Forms.TextBox textBox_yzm;
+        private System.Windows.Forms.Button button1;
     }
 }
