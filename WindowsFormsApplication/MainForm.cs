@@ -46,17 +46,20 @@ namespace WindowsFormsApplication
 
         private void Initialize()
         {
-            
-        //    webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+
+            //    webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
             //this.webBrowser.Navigate("https://www.jsds.gov.cn/index/sbLogin.do");
             webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/static/main.jsp");
+            webBrowserGS.ScrollBarsEnabled = false;
+
         }
 
         //timer1 用于数字登陆输入密码
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             //到主页关闭定时器1
-            if(webBrowser.Document.Url.ToString() != "http://ca.jsds.gov.cn/index/caLogin.html"|| webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
+            if (webBrowser.Document.Url.ToString() != "http://ca.jsds.gov.cn/index/caLogin.html"|| webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
             {
                 timer1.Enabled = false;
                // MessageBox.Show("timer1 stop");
@@ -128,6 +131,8 @@ namespace WindowsFormsApplication
             // timer2.Enabled = true;            
             FailCheck(url);     //提交失败等情况 返回主页了
 
+
+
             textBox_HTML.Text = webBrowser.DocumentText;            
         }
 
@@ -151,6 +156,23 @@ namespace WindowsFormsApplication
                 }
             }
         }
+
+        private void CertificateCheck()
+        {
+            IntPtr mwh1 = IntPtr.Zero;
+            mwh1 = FindWindow(null, "安全警报");
+            if (mwh1 != IntPtr.Zero)
+            {
+                IntPtr Button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "是(&Y)");
+                if (Button != IntPtr.Zero)
+                {
+                    SendKeys.SendWait("{Enter}");
+                    SendKeys.Flush();
+                }
+            }
+        }
+
+
 
         //地税主页 点击登陆按钮 开timer1
         private void ClickLogin(string url)
@@ -615,26 +637,60 @@ namespace WindowsFormsApplication
 
         private void webBrowser_gs_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            textBox_url.Text = webBrowserGS.Url.ToString(); 
-            if (webBrowserGS.Document.GetElementById("right") != null)
-            {
-                StringBuilder sb = new StringBuilder();
-                HtmlElementCollection hc = webBrowserGS.Document.GetElementById("right").All;
-                //遍历所有元素--此处改成你要的逻辑，
-                foreach (HtmlElement he in hc)
-                {
-                    MessageBox.Show(he.OuterHtml);   
-                    //如果为要保留的标签名
-                    sb.Append(he.OuterHtml);
-                }
-                webBrowserGS.DocumentText = sb.ToString();//设置html代码
-                textBox_HTML.Text = sb.ToString();
-            }
+            
+            webBrowserGS.Document.Window.ScrollTo(700, 150);
+            //textBox_url.Text = webBrowserGS.Url.ToString(); 
+            //if (webBrowserGS.Document.GetElementById("right") != null)
+            //{
+            //    StringBuilder sb = new StringBuilder();
+            //    HtmlElementCollection hc = webBrowserGS.Document.GetElementById("right").All;
+
+            //    if (webBrowserGS.Document.All["j_username"] != null)
+            //    {
+            //        HtmlElement user = webBrowserGS.Document.All["j_username"];
+            //        user.SetAttribute("value", "nupt");
+            //    }
+            //    //遍历所有元素--此处改成你要的逻辑，
+            //    int i = 1;
+            //    foreach (HtmlElement he in hc)
+            //    {
+            //        //MessageBox.Show(he.OuterHtml);   
+            //        //如果为要保留的标签名
+            //        if(i == 2) {
+            //            sb.Append(he.OuterHtml);
+            //            break;
+            //        }
+            //        i++;
+            //    }
+            //    webBrowserGS.DocumentText = sb.ToString();//设置html代码
+            //    textBox_HTML.Text = sb.ToString();
+
+            //}
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (this.tabControl1.SelectedIndex)
+            {
+                case 0:
+                    //MessageBox.Show("主页标签");
+                    break;
+                case 1:
+                    //MessageBox.Show("浏览器标签");
+                    break;
+                case 2:
+                    //webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/static/main.jsp");
+                    //MessageBox.Show("验证码标签");
+                    break;
+                case 3:
+                    //MessageBox.Show("HTML标签");
+                    break;
+            }
         }
     }
 }

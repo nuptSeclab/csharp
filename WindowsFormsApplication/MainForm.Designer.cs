@@ -229,6 +229,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(719, 360);
             this.tabControl1.TabIndex = 21;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -295,10 +296,10 @@
             // 
             // webBrowserGS
             // 
-            this.webBrowserGS.Location = new System.Drawing.Point(4, 14);
+            this.webBrowserGS.Location = new System.Drawing.Point(0, 3);
             this.webBrowserGS.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserGS.Name = "webBrowserGS";
-            this.webBrowserGS.Size = new System.Drawing.Size(536, 300);
+            this.webBrowserGS.Size = new System.Drawing.Size(272, 205);
             this.webBrowserGS.TabIndex = 1;
             this.webBrowserGS.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_gs_DocumentCompleted);
             // 
