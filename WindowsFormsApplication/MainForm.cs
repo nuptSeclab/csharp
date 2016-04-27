@@ -157,7 +157,7 @@ namespace WindowsFormsApplication
             }
         }
 
-        private void CertificateCheck()
+        private void GsSecurityCheck()
         {
             IntPtr mwh1 = IntPtr.Zero;
             mwh1 = FindWindow(null, "安全警报");
@@ -166,13 +166,10 @@ namespace WindowsFormsApplication
                 IntPtr Button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "是(&Y)");
                 if (Button != IntPtr.Zero)
                 {
-                    SendKeys.SendWait("{Enter}");
-                    SendKeys.Flush();
+                    SendMessage(Button, 0xF5,IntPtr.Zero, null);
                 }
             }
         }
-
-
 
         //地税主页 点击登陆按钮 开timer1
         private void ClickLogin(string url)
@@ -637,7 +634,28 @@ namespace WindowsFormsApplication
 
         private void webBrowser_gs_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            
+            if(webBrowserGS.Document.Url.ToString() == "https://221.226.83.19:7001/newtax/ShowInform.do")
+            {
+                webBrowserGS.Visible = false;
+                MessageBox.Show("登陆成功！");
+                
+            }
+
+            if (webBrowserGS.Document.Url.ToString() == "https://221.226.83.19:7001/newtax/static/login.jsp?login_error=2")
+            {
+                webBrowserGS.Visible = false;
+                button1.Visible = true;
+                MessageBox.Show("验证码错误，请重新登陆！");
+            }
+
+            if (webBrowserGS.Document.Url.ToString() == "https://221.226.83.19:7001/newtax/static/j_spring_security_check")
+            {
+                webBrowserGS.Visible = false;
+                button1.Visible = true;
+                MessageBox.Show("登陆失败，请重新登陆！");
+            }
+
+        
             webBrowserGS.Document.Window.ScrollTo(700, 150);
             //textBox_url.Text = webBrowserGS.Url.ToString(); 
             //if (webBrowserGS.Document.GetElementById("right") != null)
@@ -670,7 +688,10 @@ namespace WindowsFormsApplication
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/static/main.jsp");
+            webBrowserGS.ScrollBarsEnabled = false;
+            webBrowserGS.Visible = true;
+            button1.Visible = false;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -691,6 +712,12 @@ namespace WindowsFormsApplication
                     //MessageBox.Show("HTML标签");
                     break;
             }
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            GsSecurityCheck();
+
         }
     }
 }

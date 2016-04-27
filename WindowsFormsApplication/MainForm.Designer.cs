@@ -56,6 +56,7 @@
             this.webBrowserGS = new System.Windows.Forms.WebBrowser();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.textBox_HTML = new System.Windows.Forms.TextBox();
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.groupBox_gs.SuspendLayout();
             this.groupBox_yhs.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -270,12 +271,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(568, 136);
+            this.button1.Location = new System.Drawing.Point(278, 179);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 29);
+            this.button1.Size = new System.Drawing.Size(73, 29);
             this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
+            this.button1.Text = "重新登陆";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBox_yzm
@@ -323,6 +325,12 @@
             this.textBox_HTML.Size = new System.Drawing.Size(711, 334);
             this.textBox_HTML.TabIndex = 0;
             this.textBox_HTML.Text = "HTML";
+            // 
+            // timer3
+            // 
+            this.timer3.Enabled = true;
+            this.timer3.Interval = 1000;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // MainForm
             // 
@@ -381,5 +389,6 @@
         private System.Windows.Forms.WebBrowser webBrowserGS;
         private System.Windows.Forms.TextBox textBox_yzm;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer timer3;
     }
 }
