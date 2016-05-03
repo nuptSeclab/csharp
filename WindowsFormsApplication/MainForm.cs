@@ -54,10 +54,10 @@ namespace WindowsFormsApplication
         {
 
             //到主页关闭定时器1
-            if (webBrowser.Document.Url.ToString() != "http://ca.jsds.gov.cn/index/caLogin.html"|| webBrowser.Document.Url.ToString() == "http://www.jsds.gov.cn/index/caLogin.html#")
+            if (webBrowser.Document.Url.ToString() != "http://ca.jsds.gov.cn/index/caLogin.html" && webBrowser.Document.Url.ToString() != "http://www.jsds.gov.cn/index/caLogin.html#")
             {
+                //MessageBox.Show("timer1 disable");
                 timer1.Enabled = false;
-               // MessageBox.Show("timer1 stop");
             }
             //检测数字证书登陆输入框
             IntPtr mwh1 = IntPtr.Zero;
