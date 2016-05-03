@@ -780,12 +780,12 @@ namespace WindowsFormsApplication
                     webBrowser.Document.GetElementById("button-1005-btnInnerEl").InvokeMember("click");
                     confirm =1;
                 }
-                if (upload ==2 && submit==0 && confirm ==1)
+                if (upload >=2 && submit<2 && confirm ==1)
                 {
                     if (webBrowser.Document.GetElementById("submitBtn-btnInnerEl") != null)
                     {
                         webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
-                        submit = 1;
+                        submit++;
                     }
                 }
                 
