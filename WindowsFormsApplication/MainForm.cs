@@ -25,7 +25,9 @@ namespace WindowsFormsApplication
         private extern static IntPtr FindWindowEx(IntPtr parent, IntPtr child, string classname, string captionName);
 
         [DllImport("user32.dll")]
-        static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, [MarshalAs(UnmanagedType.LPStr)] string lParam);
+        static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, [MarshalAs(UnmanagedType.LPStr)] StringBuilder lParam);
+        [DllImport("user32.dll")]
+        static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, bool wParam, int lParam);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -69,7 +71,8 @@ namespace WindowsFormsApplication
                 if (edit != IntPtr.Zero)
                 {
                     //MessageBox.Show("find edit");
-                    SendMessage(edit, 0xC, IntPtr.Zero, "123456");
+                    StringBuilder s = new StringBuilder("123456");
+                    SendMessage(edit, 0xC, IntPtr.Zero, s);
                     SendKeys.SendWait("{Enter}");
                     SendKeys.Flush();
                 //    this.timer1.Enabled = false;    //关闭定时器
@@ -245,11 +248,39 @@ namespace WindowsFormsApplication
             mwh1 = FindWindow(null, "选择证书");
             if (mwh1 != IntPtr.Zero)
             {
+                IntPtr ListBox = FindWindowEx(mwh1, IntPtr.Zero, "ListBox", "");
+                int count = 0,ret,len;
+                if(ListBox != IntPtr.Zero)
+                {
+                    count = (int)SendMessage(ListBox,0x018b, IntPtr.Zero, null);
+                   // MessageBox.Show(count.ToString());
+                }
+                else
+                {
+                    return;
+                }
+                for(int i=0;i<count;i++)
+                {
+                    len = (int)SendMessage(ListBox, 0x018a, (IntPtr)i,null);
+                    StringBuilder buf = new StringBuilder(len);
+                   // MessageBox.Show(buf.Length.ToString());
+                    ret = (int)SendMessage(ListBox,0x0189, (IntPtr)i,buf);
+                    //MessageBox.Show("ret:" + ret.ToString() +"buf"+ buf.ToString());
+                    string cer = buf.ToString();
+                    if(cer.IndexOf("小怪兽")>-1)   //find
+                    {
+                        MessageBox.Show("find  "+i.ToString());
+                        SendMessage(ListBox, 0x0185,true,i);
+                        break;
+                    }
+                } 
+                /* 
                 IntPtr Button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确认(&O)");
                 if (Button != IntPtr.Zero)
                 {
                     SendMessage(Button, 0xF5, IntPtr.Zero, null);
-                }
+                }*/
+                
             }
         }
 
