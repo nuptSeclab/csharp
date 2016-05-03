@@ -35,6 +35,7 @@ namespace WindowsFormsApplication
 
         public bool first;   //第一次打开
         int failCount = 0;  //登陆失败次数
+        int file, upload, submit, upload_click, confirm;
         public MainForm()
         {
             InitializeComponent();
@@ -130,10 +131,11 @@ namespace WindowsFormsApplication
             }
             if(url.StartsWith("http://www.jsds.gov.cn/index/caLogin.jsp"))
             {              
-                ClickLogin();    //登陆主页 点击按钮           
+                ClickLogin();    //登陆主页 点击按钮    
+
+
             }
-             
-            // timer2.Enabled = true;            
+       
             FailCheck(url);     //提交失败等情况 返回主页了
 
 
@@ -141,6 +143,7 @@ namespace WindowsFormsApplication
             textBox_HTML.Text = webBrowser.DocumentText;            
         }
 
+        //选择上传的文件
 
         private void ClickNextStep()
         {
@@ -245,43 +248,30 @@ namespace WindowsFormsApplication
         private void timer2_Tick(object sender, EventArgs e)
         {
             IntPtr mwh1 = IntPtr.Zero;
-            mwh1 = FindWindow(null, "选择证书");
-            if (mwh1 != IntPtr.Zero)
+            mwh1 = FindWindow(null, "选择要加载的文件");
+            IntPtr ComboBoxEx32 = FindWindowEx(mwh1, IntPtr.Zero, "ComboBoxEx32", "");
+            if (ComboBoxEx32 != IntPtr.Zero)
             {
-                IntPtr ListBox = FindWindowEx(mwh1, IntPtr.Zero, "ListBox", "");
-                int count = 0,ret,len;
-                if(ListBox != IntPtr.Zero)
+                IntPtr ComboBox = FindWindowEx(ComboBoxEx32, IntPtr.Zero, "ComboBox", "");
+                if(ComboBox != IntPtr.Zero)
                 {
-                    count = (int)SendMessage(ListBox,0x018b, IntPtr.Zero, null);
-                   // MessageBox.Show(count.ToString());
-                }
-                else
-                {
-                    return;
-                }
-                for(int i=0;i<count;i++)
-                {
-                    len = (int)SendMessage(ListBox, 0x018a, (IntPtr)i,null);
-                    StringBuilder buf = new StringBuilder(len);
-                   // MessageBox.Show(buf.Length.ToString());
-                    ret = (int)SendMessage(ListBox,0x0189, (IntPtr)i,buf);
-                    //MessageBox.Show("ret:" + ret.ToString() +"buf"+ buf.ToString());
-                    string cer = buf.ToString();
-                    if(cer.IndexOf("小怪兽")>-1)   //find
+                    IntPtr Edit = FindWindowEx(ComboBox, IntPtr.Zero, "Edit", "");
+                    if(Edit != IntPtr.Zero)
                     {
-                        MessageBox.Show("find  "+i.ToString());
-                        SendMessage(ListBox, 0x0185,true,i);
-                        break;
+                        StringBuilder s = new StringBuilder("D:\\小怪兽2016年1月.dat");
+                        SendMessage(Edit, 0xC, IntPtr.Zero, s);
+                        IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "打开(&O)");
+                        if(button != IntPtr.Zero)
+                        {
+                            SendMessage(button, 0xF5, IntPtr.Zero, null);
+                            timer2.Enabled = false;
+                            file = 1;
+                        }
+
                     }
                 } 
-                /* 
-                IntPtr Button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确认(&O)");
-                if (Button != IntPtr.Zero)
-                {
-                    SendMessage(Button, 0xF5, IntPtr.Zero, null);
-                }*/
-                
             }
+            
         }
 
         /*印花税暂存POST设置 通过*/
@@ -611,7 +601,15 @@ namespace WindowsFormsApplication
         //点击个税 按钮
         private void button_grsds_Click(object sender, EventArgs e)
         {
-            webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
+            file = 0;
+            upload = 0;
+            submit = 0;
+            upload_click = 0;
+            confirm = 0;
+            timer4.Enabled = true;
+            timer2.Enabled = true;
+            webBrowser.Navigate("http://www.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
+                          //       http://www.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15
         }
 
         //个税 点击浏览
@@ -650,7 +648,7 @@ namespace WindowsFormsApplication
         //回地税主页
         private void button_home_Click(object sender, EventArgs e)
         {
-            webBrowser.Navigate("https://ca.jsds.gov.cn/sbLogin.do");
+            webBrowser.Navigate("http://www.jsds.gov.cn/sbMain.do");
         }
 
         //地税浏览器 显示URL
@@ -722,6 +720,7 @@ namespace WindowsFormsApplication
             button1.Visible = false;
         }
 
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (this.tabControl1.SelectedIndex)
@@ -750,6 +749,47 @@ namespace WindowsFormsApplication
         {
             GsSecurityCheck();
 
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            if (webBrowser.Url.ToString().StartsWith("http://www.jsds.gov.cn/wb_DkdjptUpLoadAction"))  //个税页面
+            {
+                if (file==0)
+                {
+                    if (webBrowser.Document.GetElementById("file1") != null)
+                    {
+                        webBrowser.Document.GetElementById("file1").InvokeMember("click");
+                    }
+                }
+                if (upload_click==0 &&file ==1)
+                {
+                    if (webBrowser.Document.GetElementById("UploadBtn-btnInnerEl") != null)
+                    {
+                        webBrowser.Document.GetElementById("UploadBtn-btnInnerEl").InvokeMember("click");
+                        upload_click = 1;
+                    }
+                }
+                if (webBrowser.Document.GetElementById("button-1006-btnInnerEl") != null)
+                {
+                        webBrowser.Document.GetElementById("button-1006-btnInnerEl").InvokeMember("click");
+                        upload ++;
+                }
+                if (webBrowser.Document.GetElementById("button-1005-btnInnerEl") != null)
+                {
+                    webBrowser.Document.GetElementById("button-1005-btnInnerEl").InvokeMember("click");
+                    confirm =1;
+                }
+                if (upload ==2 && submit==0 && confirm ==1)
+                {
+                    if (webBrowser.Document.GetElementById("submitBtn-btnInnerEl") != null)
+                    {
+                        webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
+                        submit = 1;
+                    }
+                }
+                
+            }
         }
     }
 }

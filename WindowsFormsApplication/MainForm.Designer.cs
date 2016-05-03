@@ -41,6 +41,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox_yzm = new System.Windows.Forms.TextBox();
+            this.webBrowserGS = new System.Windows.Forms.WebBrowser();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox_HTML = new System.Windows.Forms.TextBox();
             this.groupBox_gs = new System.Windows.Forms.GroupBox();
             this.button_gs = new System.Windows.Forms.Button();
             this.button_sbmt = new System.Windows.Forms.Button();
@@ -49,19 +55,14 @@
             this.button_home = new System.Windows.Forms.Button();
             this.groupBox_yhs = new System.Windows.Forms.GroupBox();
             this.button_submit = new System.Windows.Forms.Button();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox_yzm = new System.Windows.Forms.TextBox();
-            this.webBrowserGS = new System.Windows.Forms.WebBrowser();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox_HTML = new System.Windows.Forms.TextBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox_gs.SuspendLayout();
-            this.groupBox_yhs.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox_gs.SuspendLayout();
+            this.groupBox_yhs.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -158,9 +159,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox_gs);
-            this.tabPage2.Controls.Add(this.button_home);
-            this.tabPage2.Controls.Add(this.groupBox_yhs);
             this.tabPage2.Controls.Add(this.webBrowser);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -169,83 +167,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "个税";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox_gs
-            // 
-            this.groupBox_gs.Controls.Add(this.button_gs);
-            this.groupBox_gs.Controls.Add(this.button_sbmt);
-            this.groupBox_gs.Controls.Add(this.button_file1);
-            this.groupBox_gs.Controls.Add(this.button_upld);
-            this.groupBox_gs.Location = new System.Drawing.Point(510, 160);
-            this.groupBox_gs.Name = "groupBox_gs";
-            this.groupBox_gs.Size = new System.Drawing.Size(161, 100);
-            this.groupBox_gs.TabIndex = 22;
-            this.groupBox_gs.TabStop = false;
-            this.groupBox_gs.Text = "个税";
-            // 
-            // button_gs
-            // 
-            this.button_gs.Location = new System.Drawing.Point(17, 26);
-            this.button_gs.Name = "button_gs";
-            this.button_gs.Size = new System.Drawing.Size(60, 25);
-            this.button_gs.TabIndex = 14;
-            this.button_gs.Text = "个税";
-            this.button_gs.UseVisualStyleBackColor = true;
-            // 
-            // button_sbmt
-            // 
-            this.button_sbmt.Location = new System.Drawing.Point(83, 57);
-            this.button_sbmt.Name = "button_sbmt";
-            this.button_sbmt.Size = new System.Drawing.Size(60, 25);
-            this.button_sbmt.TabIndex = 17;
-            this.button_sbmt.Text = "提交";
-            this.button_sbmt.UseVisualStyleBackColor = true;
-            // 
-            // button_file1
-            // 
-            this.button_file1.Location = new System.Drawing.Point(17, 57);
-            this.button_file1.Name = "button_file1";
-            this.button_file1.Size = new System.Drawing.Size(60, 25);
-            this.button_file1.TabIndex = 15;
-            this.button_file1.Text = "浏览";
-            this.button_file1.UseVisualStyleBackColor = true;
-            // 
-            // button_upld
-            // 
-            this.button_upld.Location = new System.Drawing.Point(83, 26);
-            this.button_upld.Name = "button_upld";
-            this.button_upld.Size = new System.Drawing.Size(60, 25);
-            this.button_upld.TabIndex = 16;
-            this.button_upld.Text = "上传";
-            this.button_upld.UseVisualStyleBackColor = true;
-            // 
-            // button_home
-            // 
-            this.button_home.Location = new System.Drawing.Point(561, 24);
-            this.button_home.Name = "button_home";
-            this.button_home.Size = new System.Drawing.Size(60, 25);
-            this.button_home.TabIndex = 21;
-            this.button_home.Text = "home";
-            this.button_home.UseVisualStyleBackColor = true;
-            // 
-            // groupBox_yhs
-            // 
-            this.groupBox_yhs.Controls.Add(this.button_submit);
-            this.groupBox_yhs.Location = new System.Drawing.Point(540, 69);
-            this.groupBox_yhs.Name = "groupBox_yhs";
-            this.groupBox_yhs.Size = new System.Drawing.Size(91, 73);
-            this.groupBox_yhs.TabIndex = 20;
-            this.groupBox_yhs.TabStop = false;
-            this.groupBox_yhs.Text = "印花税";
-            // 
-            // button_submit
-            // 
-            this.button_submit.Location = new System.Drawing.Point(7, 29);
-            this.button_submit.Name = "button_submit";
-            this.button_submit.Size = new System.Drawing.Size(74, 24);
-            this.button_submit.TabIndex = 11;
-            this.button_submit.Text = "印花税暂存";
-            this.button_submit.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -308,17 +229,104 @@
             this.textBox_HTML.TabIndex = 0;
             this.textBox_HTML.Text = "HTML";
             // 
+            // groupBox_gs
+            // 
+            this.groupBox_gs.Controls.Add(this.button_gs);
+            this.groupBox_gs.Controls.Add(this.button_sbmt);
+            this.groupBox_gs.Controls.Add(this.button_file1);
+            this.groupBox_gs.Controls.Add(this.button_upld);
+            this.groupBox_gs.Location = new System.Drawing.Point(791, 275);
+            this.groupBox_gs.Name = "groupBox_gs";
+            this.groupBox_gs.Size = new System.Drawing.Size(161, 100);
+            this.groupBox_gs.TabIndex = 22;
+            this.groupBox_gs.TabStop = false;
+            this.groupBox_gs.Text = "个税";
+            // 
+            // button_gs
+            // 
+            this.button_gs.Location = new System.Drawing.Point(17, 26);
+            this.button_gs.Name = "button_gs";
+            this.button_gs.Size = new System.Drawing.Size(60, 25);
+            this.button_gs.TabIndex = 14;
+            this.button_gs.Text = "个税";
+            this.button_gs.UseVisualStyleBackColor = true;
+            this.button_gs.Click += new System.EventHandler(this.button_grsds_Click);
+            // 
+            // button_sbmt
+            // 
+            this.button_sbmt.Location = new System.Drawing.Point(83, 57);
+            this.button_sbmt.Name = "button_sbmt";
+            this.button_sbmt.Size = new System.Drawing.Size(60, 25);
+            this.button_sbmt.TabIndex = 17;
+            this.button_sbmt.Text = "提交";
+            this.button_sbmt.UseVisualStyleBackColor = true;
+            // 
+            // button_file1
+            // 
+            this.button_file1.Location = new System.Drawing.Point(17, 57);
+            this.button_file1.Name = "button_file1";
+            this.button_file1.Size = new System.Drawing.Size(60, 25);
+            this.button_file1.TabIndex = 15;
+            this.button_file1.Text = "浏览";
+            this.button_file1.UseVisualStyleBackColor = true;
+            // 
+            // button_upld
+            // 
+            this.button_upld.Location = new System.Drawing.Point(83, 26);
+            this.button_upld.Name = "button_upld";
+            this.button_upld.Size = new System.Drawing.Size(60, 25);
+            this.button_upld.TabIndex = 16;
+            this.button_upld.Text = "上传";
+            this.button_upld.UseVisualStyleBackColor = true;
+            // 
+            // button_home
+            // 
+            this.button_home.Location = new System.Drawing.Point(815, 117);
+            this.button_home.Name = "button_home";
+            this.button_home.Size = new System.Drawing.Size(60, 25);
+            this.button_home.TabIndex = 21;
+            this.button_home.Text = "home";
+            this.button_home.UseVisualStyleBackColor = true;
+            this.button_home.Click += new System.EventHandler(this.button_home_Click);
+            // 
+            // groupBox_yhs
+            // 
+            this.groupBox_yhs.Controls.Add(this.button_submit);
+            this.groupBox_yhs.Location = new System.Drawing.Point(808, 181);
+            this.groupBox_yhs.Name = "groupBox_yhs";
+            this.groupBox_yhs.Size = new System.Drawing.Size(91, 73);
+            this.groupBox_yhs.TabIndex = 20;
+            this.groupBox_yhs.TabStop = false;
+            this.groupBox_yhs.Text = "印花税";
+            // 
+            // button_submit
+            // 
+            this.button_submit.Location = new System.Drawing.Point(7, 29);
+            this.button_submit.Name = "button_submit";
+            this.button_submit.Size = new System.Drawing.Size(74, 24);
+            this.button_submit.TabIndex = 11;
+            this.button_submit.Text = "印花税暂存";
+            this.button_submit.UseVisualStyleBackColor = true;
+            // 
             // timer3
             // 
             this.timer3.Enabled = true;
             this.timer3.Interval = 1000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // timer4
+            // 
+            this.timer4.Interval = 1000;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 462);
+            this.Controls.Add(this.button_home);
+            this.Controls.Add(this.groupBox_gs);
+            this.Controls.Add(this.groupBox_yhs);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button_go);
             this.Controls.Add(this.textBox_url);
@@ -326,16 +334,16 @@
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.button);
             this.Name = "MainForm";
-            this.Text = "自动报税 v1.2";
+            this.Text = "自动报税 v1.3.1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.groupBox_gs.ResumeLayout(false);
-            this.groupBox_yhs.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox_gs.ResumeLayout(false);
+            this.groupBox_yhs.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,5 +376,6 @@
         private System.Windows.Forms.Button button_home;
         private System.Windows.Forms.GroupBox groupBox_yhs;
         private System.Windows.Forms.Button button_submit;
+        private System.Windows.Forms.Timer timer4;
     }
 }
