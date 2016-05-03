@@ -51,7 +51,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox_yzm = new System.Windows.Forms.PictureBox();
             this.textBox_yzm = new System.Windows.Forms.TextBox();
             this.webBrowserGS = new System.Windows.Forms.WebBrowser();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -63,7 +62,6 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yzm)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +80,6 @@
             this.webBrowser.TabIndex = 3;
             this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
             this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
-            this.webBrowser.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser_NewWindow);
             // 
             // button
             // 
@@ -154,7 +151,7 @@
             this.button_gs.TabIndex = 14;
             this.button_gs.Text = "个税";
             this.button_gs.UseVisualStyleBackColor = true;
-            this.button_gs.Click += new System.EventHandler(this.button_test_Click);
+            this.button_gs.Click += new System.EventHandler(this.button_grsds_Click);
             // 
             // button_file1
             // 
@@ -164,7 +161,7 @@
             this.button_file1.TabIndex = 15;
             this.button_file1.Text = "浏览";
             this.button_file1.UseVisualStyleBackColor = true;
-            this.button_file1.Click += new System.EventHandler(this.button_test2_Click);
+            this.button_file1.Click += new System.EventHandler(this.button_browse_Click);
             // 
             // button_upld
             // 
@@ -252,13 +249,12 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(711, 334);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "浏览器";
+            this.tabPage2.Text = "个税";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.button1);
-            this.tabPage4.Controls.Add(this.pictureBox_yzm);
             this.tabPage4.Controls.Add(this.textBox_yzm);
             this.tabPage4.Controls.Add(this.webBrowserGS);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -266,7 +262,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(711, 334);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "验证码";
+            this.tabPage4.Text = "国税";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -279,15 +275,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // pictureBox_yzm
-            // 
-            this.pictureBox_yzm.Location = new System.Drawing.Point(557, 14);
-            this.pictureBox_yzm.Name = "pictureBox_yzm";
-            this.pictureBox_yzm.Size = new System.Drawing.Size(128, 62);
-            this.pictureBox_yzm.TabIndex = 0;
-            this.pictureBox_yzm.TabStop = false;
-            this.pictureBox_yzm.Click += new System.EventHandler(this.pictureBox_yzm_Click);
             // 
             // textBox_yzm
             // 
@@ -354,7 +341,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_yzm)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
@@ -385,7 +371,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TextBox textBox_HTML;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.PictureBox pictureBox_yzm;
         private System.Windows.Forms.WebBrowser webBrowserGS;
         private System.Windows.Forms.TextBox textBox_yzm;
         private System.Windows.Forms.Button button1;
