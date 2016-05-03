@@ -54,11 +54,11 @@ namespace WindowsFormsApplication
         {
 
             //到主页关闭定时器1
-            if (webBrowser.Document.Url.ToString() != "http://ca.jsds.gov.cn/index/caLogin.html" && webBrowser.Document.Url.ToString() != "http://www.jsds.gov.cn/index/caLogin.html#")
-            {
-                //MessageBox.Show("timer1 disable");
-                timer1.Enabled = false;
-            }
+            //if (webbrowser.document.url.tostring() != "http://ca.jsds.gov.cn/index/calogin.html" && webbrowser.document.url.tostring() != "http://www.jsds.gov.cn/index/calogin.html#")
+            //{
+                //messagebox.show("timer1 disable");
+                //timer1.enabled = false;
+            //}
             //检测数字证书登陆输入框
             IntPtr mwh1 = IntPtr.Zero;
             mwh1 = FindWindow(null, "数字证书登录");
@@ -121,14 +121,39 @@ namespace WindowsFormsApplication
         {
             LoginCheck();       //检测是否登陆成功
             string url = webBrowser.Document.Url.ToString();
-
-            ClickLogin(url);    //登陆主页 点击按钮            
+            if (url.Equals("https://ca.jsds.gov.cn:2443/"))
+            { 
+                ClickNextStep();
+            }
+            if(url.StartsWith("http://www.jsds.gov.cn/index/caLogin.jsp"))
+            {              
+                ClickLogin();    //登陆主页 点击按钮           
+            }
+             
             // timer2.Enabled = true;            
             FailCheck(url);     //提交失败等情况 返回主页了
 
 
 
             textBox_HTML.Text = webBrowser.DocumentText;            
+        }
+
+
+        private void ClickNextStep()
+        {
+            //点击按钮登陆主页
+            HtmlDocument doc = webBrowser.Document;   //把当前的webBrowser1显示的文档实例
+            HtmlElementCollection elemColl = doc.GetElementsByTagName("input");
+            foreach (HtmlElement elem in elemColl)
+            {
+                string elemName = elem.GetAttribute("name");    //按钮
+                if (elemName.Equals("sign"))
+                {
+                    //find!
+                    elem.InvokeMember("click"); //点击登陆                                                
+                    break;
+                }
+            }
         }
 
         /*提交失败等情况 返回主页了*/
@@ -164,30 +189,34 @@ namespace WindowsFormsApplication
                     SendMessage(Button, 0xF5,IntPtr.Zero, null);
                 }
             }
+            mwh1 = FindWindow(null, "安全警告");
+            if (mwh1 != IntPtr.Zero)
+            {
+                IntPtr Button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "是(&Y)");
+                if (Button != IntPtr.Zero)
+                {
+                    SendMessage(Button, 0xF5, IntPtr.Zero, null);
+                }
+            }
         }
 
         //地税主页 点击登陆按钮 开timer1
-        private void ClickLogin(string url)
+        private void ClickLogin()
         {
-            
-            if (url == "http://www.jsds.gov.cn/index/caLogin.html" || url == "http://www.jsds.gov.cn/index/caLogin.html#")
-            {
+
                 //点击按钮登陆主页
                 HtmlDocument doc = webBrowser.Document;   //把当前的webBrowser1显示的文档实例
                 HtmlElementCollection elemColl = doc.GetElementsByTagName("a");
                 foreach (HtmlElement elem in elemColl)
                 {
-                    string elemName = elem.GetAttribute("href");    //按钮
-                    if (elemName.Equals("http://www.jsds.gov.cn/index/caLogin.html#"))
+                    string elemName = elem.GetAttribute("className");    //按钮
+                    if (elemName.Equals("link-login"))
                     {
                         //find!
                         elem.InvokeMember("click"); //点击登陆
-                        //定时器1用于输入Ukey密码
-                        timer1.Enabled = true;
                         break;
                     }
                 }
-            }
         }
 
         //地税登陆失败检测
@@ -212,10 +241,15 @@ namespace WindowsFormsApplication
         //timer2 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if(webBrowser.Document.Url.ToString() == "https://ca.jsds.gov.cn/")
+            IntPtr mwh1 = IntPtr.Zero;
+            mwh1 = FindWindow(null, "选择证书");
+            if (mwh1 != IntPtr.Zero)
             {
-                this.webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
-                this.timer1.Enabled = true;
+                IntPtr Button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确认(&O)");
+                if (Button != IntPtr.Zero)
+                {
+                    SendMessage(Button, 0xF5, IntPtr.Zero, null);
+                }
             }
         }
 
@@ -665,7 +699,8 @@ namespace WindowsFormsApplication
                     //MessageBox.Show("主页标签");
                     break;
                 case 1:
-                    webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+                    //webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+                    webBrowser.Navigate("https://ca.jsds.gov.cn:2443/");
                     //MessageBox.Show("地税标签");
                     break;
                 case 2:
