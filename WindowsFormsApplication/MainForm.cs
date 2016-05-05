@@ -258,7 +258,7 @@ namespace WindowsFormsApplication
                     IntPtr Edit = FindWindowEx(ComboBox, IntPtr.Zero, "Edit", "");
                     if(Edit != IntPtr.Zero)
                     {
-                        StringBuilder s = new StringBuilder("D:\\小怪兽2016年1月.dat");
+                        StringBuilder s = new StringBuilder("E:\\小怪兽2016年1月.dat");
                         SendMessage(Edit, 0xC, IntPtr.Zero, s);
                         IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "打开(&O)");
                         if(button != IntPtr.Zero)
@@ -608,7 +608,7 @@ namespace WindowsFormsApplication
             confirm = 0;
             timer4.Enabled = true;
             timer2.Enabled = true;
-            webBrowser.Navigate("http://www.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
+            webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
                           //       http://www.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15
         }
 
@@ -712,6 +712,35 @@ namespace WindowsFormsApplication
             //}
         }
 
+        //营业税、城市维护建设税、教育费附加、文化事业建设费零申报
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            string postData = "swglm=320100100396501&yyssbVO.str_sfssqqsrq=2016-04-01&yyssbVO.str_sfssqzzrq=2016-04-30&ZSXMDM=02&ZSXMDM=02&ZSXMDM=02&ZSXMDM=02&ZSXMDM=02&ZSXMDM=02&ZSXMDM=02&ZSXMDM=02&ZSXMDM=02&HH=1&HH=2&HH=3&HH=4&HH=5&HH=6&HH=7&HH=8&HH=9&HH=9&ZSPMDLDM=&ZSPMDLDM=&ZSPMDLDM=&ZSPMDLDM=&ZSPMDLDM=&ZSPMDLDM=&ZSPMDLDM=&ZSPMDLDM=&ZSPMDLDM=&ZSPMDLMC=&ZSPMDLMC=&ZSPMDLMC=&ZSPMDLMC=&ZSPMDLMC=&ZSPMDLMC=&ZSPMDLMC=&ZSPMDLMC=&ZSPMDLMC=&ZSPMDM=&ZSPMDM=&ZSPMDM=&ZSPMDM=&ZSPMDM=&ZSPMDM=&ZSPMDM=&ZSPMDM=&ZSPMDM=&ZSPMMC=&ZSPMMC=&ZSPMMC=&ZSPMMC=&ZSPMMC=&ZSPMMC=&ZSPMMC=&ZSPMMC=&ZSPMMC=&YSSR_JE=0.00&YSSR_JE=&YSSR_JE=&YSSR_JE=&YSSR_JE=&YSSR_JE=&YSSR_JE=&YSSR_JE=&YSSR_JE=&YSJCXMJE_JE=&YSJCXMJE_JE=&YSJCXMJE_JE=&YSJCXMJE_JE=&YSJCXMJE_JE=&YSJCXMJE_JE=&YSJCXMJE_JE=&YSJCXMJE_JE=&YSJCXMJE_JE=&YSYYE_JE=0.00&YSYYE_JE=&YSYYE_JE=&YSYYE_JE=&YSYYE_JE=&YSYYE_JE=&YSYYE_JE=&YSYYE_JE=&YSYYE_JE=&SL=&SL=&SL=&SL=&SL=&SL=&SL=&SL=&SL=&BQSK_JE=0.00&BQSK_JE=&BQSK_JE=&BQSK_JE=&BQSK_JE=&BQSK_JE=&BQSK_JE=&BQSK_JE=&BQSK_JE=&JMSE_JE=&JMSE_JE=&JMSE_JE=&JMSE_JE=&JMSE_JE=&JMSE_JE=&JMSE_JE=&JMSE_JE=&JMSE_JE=&BQYIJSE_JE=&BQYIJSE_JE=&BQYIJSE_JE=&BQYIJSE_JE=&BQYIJSE_JE=&BQYIJSE_JE=&BQYIJSE_JE=&BQYIJSE_JE=&BQYIJSE_JE=&BQYINGJSE_JE=0.00&BQYINGJSE_JE=&BQYINGJSE_JE=&BQYINGJSE_JE=&BQYINGJSE_JE=&BQYINGJSE_JE=&BQYINGJSE_JE=&BQYINGJSE_JE=&BQYINGJSE_JE=&YSSR_JE_HJ=0.00&YSJCXMJE_JE_HJ=&YSYYE_JE_HJ=0.00&BQSK_JE_HJ=0.00&JMSE_JE_HJ=&BQYIJSE_JE_HJ=&BQYINGJSE_JE_HJ=0.00&CS_HH=10&CS_HH=12&CS_HH=13&CS_HH=14&CS_ZSXMDM=10&CS_ZSXMDM=10&CS_ZSXMDM=10&CS_ZSXMDM=10&CS_ZSPMDM=0100&CS_ZSPMDM=0100&CS_ZSPMDM=0100&CS_ZSPMDM=0100&CS_YSYYE_JE=0.00&CS_YSYYE_JE=&CS_YSYYE_JE=&CS_YSYYE_JE=&CS_SL=0.07&CS_SL=0.07&CS_SL=0.07&CS_SL=0.07&CS_BQSK_JE=0.00&CS_BQSK_JE=0.00&CS_BQSK_JE=0.00&CS_BQSK_JE=0.00&CS_JMSE_JE=&CS_JMSE_JE=&CS_JMSE_JE=&CS_JMSE_JE=&CS_BQYIJSE_JE=&CS_BQYIJSE_JE=&CS_BQYIJSE_JE=&CS_BQYIJSE_JE=&CS_BQYINGJSE_JE=0.00&CS_BQYINGJSE_JE=0.00&CS_BQYINGJSE_JE=0.00&CS_BQYINGJSE_JE=0.00&CS_YSYYE_JE_HJ=0.00&CS_BQSK_JE_HJ=0.00&CS_JMSE_JE_HJ=&CS_BQYIJSE_JE_HJ=&CS_BQYINGJSE_JE_HJ=0.00&JYFJ_HH=17&JYFJ_ZSXMDM=61&JYFJ_ZSPMDM=0100&JYFJ_YSYYE_JE=0.00&JYFJ_SL=0.0300&JYFJ_BQSK_JE=0.00&JYFJ_JMSE_JE=&JYFJ_BQYIJSE_JE=&JYFJ_BQYINGJSE_JE=0.00&DFJY_HH=18&DFJY_ZSXMDM=63&DFJY_ZSPMDM=0100&DFJY_YSYYE_JE=0.00&DFJY_SL=0.0200&DFJY_BQSK_JE=0.00&DFJY_JMSE_JE=&DFJY_BQYIJSE_JE=&DFJY_BQYINGJSE_JE=0.00&WHSY_HH=19&WHSY_ZSXMDM=65&WHSY_ZSPMDM=0001&WHSY_YSYYE_JE=&WHSY_SL=0.0300&WHSY_BQSK_JE=0.00&WHSY_JMSE_JE=&WHSY_BQYIJSE_JE=&WHSY_BQYINGJSE_JE=0.00&YSSR_JE_ZJ=0.00&YSJCXMJE_JE_ZJ=&YSYYE_JE_ZJ=0.00&BQSK_JE_ZJ=0.00&JMSE_JE_ZJ=&BQYIJSE_JE_ZJ=&BQYINGJSE_JE_ZJ=0.00&bqysyye=0.00&bqysxse=&bbzt=null&tbrq=2016-05-05&bizData=&handleDesc=%E8%90%A5%E4%B8%9A%E7%A8%8E%E6%8F%90%E4%BA%A4&handleCode=submit&mrcjsl=0.07&returnvalue=&yuanpzxh=&whsyfbj=1&ljyye=&errorMessage=&sucessMsg=&cfsbbh=&xwyh_zqhjje=&xwyh_hjje=&xwyh_czlx=&xwyh_tsxx=&pzxh=3212DDEF0786E156E053C0A86615E156&zhuPzxh=&pzxhStrs=&bbsl2w=&proMessage=&hz3wzt=&ybtsje3whzje=&tempzt=&caVO.str_signature=HRXGIJahdS0VfeYduWsRbuEK38zfdf9DFw1urpRFdPcFyQDrhpyWgj4xq%2Fif6VsnEIVhTzPlzzgcSFGIzaLaHs2q2E5N6fsDdbatzzxLtJEmS6rajDGhK3wtqkyo9DCU%2B5D4ikvui9JLhji74%2Bp9FOblWizetpjH%2BGnWI7E03Ik%3D&caVO.str_certificate=MIIEZzCCA9CgAwIBAgIMGD%2B82LzGzd573WL9MA0GCSqGSIb3DQEBBQUAMIGOMQ0wCwYDVQQGHgQAQwBOMQ8wDQYDVQQIHgZsX4LPdwExDzANBgNVBAceBlNXTqxeAjEvMC0GA1UECh4mbF%2BCz3cBdTVbUFVGUqGLwU5mi6SLwU4tX8NnCZZQjSNO%2B1FsU%2FgxETAPBgNVBAseCABKAFMAQwBBMRcwFQYDVQQDHg4ASgBTAEMAQQBfAEMAQTAeFw0xNTA0MDYxNjAwMDBaFw0xNzA0MDYxNjAwMDBaMIIBTjESMBAGA1UEGgwJ56em5reu5Yy6MRgwFgYDVQQPDA8zMjAxMDQwMDAyMjIzMzcxEjAQBgNVBAEMCTMwMjcyMzE3NTELMAkGBFUEiFcMATIxETAPBgNVBC0MCGVudENlcnQyMRgwFgYDVQQfDA8zMjAxMDQzMDI3MjMxNzUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAnmsZ%2Foi4%2FnnIExEjAQBgNVBAcMCeWNl%2BS6rOW4gjE2MDQGA1UECgwt5Y2X5Lqs5bCP5oCq5YW96LSi5Yqh5L%2Bh5oGv5ZKo6K%2Bi5pyJ6ZmQ5YWs5Y%2B4MQwwCgYDVQQLDAMwMDAxGDAWBgNVBCoMDzMyMDEwMDEwMDM5NjUwMTE7MDkGA1UEAwwy5Y2X5Lqs5bCP5oCq5YW96LSi5Yqh5L%2Bh5oGv5ZKo6K%2Bi5pyJ6ZmQ5YWs5Y%2B4KDAwMCkwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALjh%2BC4Ojtug5vvwlqrNrkWkPqd%2BRmgmALSRRFuUWLrxRbThQNwHjOnR9n71taSE0NNOYP9ktrue1THErA5mrQPXgJcfFQPJehw8SCpEvzRJvfuSbpzs87BJjDRuhX%2FCCmVoD8QPV2goF1th9NL0YGx1cv2vm95%2Bxqu1hXhBQyjVAgMBAAGjggEFMIIBATAJBgNVHRMEAjAAMAsGA1UdDwQEAwIGwDAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwHwYDVR0jBBgwFoAUVsDIEVRVNgZKfe0mUOiIvbejegkwRwYIKwYBBQUHAQEEOzA5MDcGCCsGAQUFBzAChitodHRwOi8vMTAuMTA4LjUuMjo4ODgwL2Rvd25sb2FkL0pTQ0FfQ0EuY2VyMD8GA1UdHwQ4MDYwNKAyoDCGLmh0dHA6Ly93d3cuanNjYS5jb20uY24vY3JsZG93bmxvYWQvSlNDQV9DQS5jcmwwHQYDVR0OBBYEFFR6TzCNMBFvfJrRkgJ33jff6dlEMA0GCSqGSIb3DQEBBQUAA4GBACszlPZYbLBIVBMLoWHd6Y8V5XlfhtLoA2I8q%2BeZ4BiiqR4gx22y2Ou6cwdYgPi8ctyy7bd1pfRagbUwhWEf8sEZnHsHXo1z%2BsNYiDNzuunWC%2FH0ZdNSp5dXOKQKeNnfMZOERFzhARHOlu8E0Sj6eFVn6x3b9bEXBMIQx6XB6Gxr&nsrQrtjBz=0&txlJyCount=0&qzlJyCount=0&ymKj_Info=&cqSb=0&jzybj=&fdcbj=&sbbjqx=2016-05-16&sbqx=2016-05-16&sbqxrdm=&jcxmzcbz=&gljgdm=23201031300";
+            Byte[] postBuffer = Encoding.UTF8.GetBytes(postData);
+
+            String additionalHeaders =
+                 "x-requested-with: XMLHttpRequest\n" +
+                "X-HttpWatch-RID: 70108-10215\n" +
+                "Accept-Language: zh-CN\n" +
+                "x-prototype-version: 1.6.0\n" +
+                "Referer: https://ca.jsds.gov.cn/WB366yyssbAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15\n" +
+                "Accept: text/javascript, text/html, application/xml, text/xml, */*\n" +
+                "Content-Type: application/x-www-form-urlencoded; charset=UTF-8\n" +
+                "Accept-Encoding: gzip, deflate\n" +
+                "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; GWX:QUALIFIED)\n" +
+                "Host: ca.jsds.gov.cn\n" +
+                "Content-Length:" + postBuffer.Length +   
+                "\nConnection: Keep-Alive\n" +
+                "Cache-Control: no-cache\n" +
+                "Cookie:" + this.webBrowser.Document.Cookie
+                ;
+            //Cookie: _gscu_1112616140=52985877gk6s5596; JSID_WSBS=WhRjQQrSxWV0t1qv79n7hCBntrH1hq0yQ8q8nPMJY15kT5X21sw2!1516671385; Secure; _gscu_1161164261=41071794gwlnkd14
+            // MessageBox.Show(postData);
+            //MessageBox.Show(additionalHeaders);
+            string url = "https://ca.jsds.gov.cn/WB366yyssbAction.do";
+            this.webBrowser.Navigate(url, null, postBuffer, additionalHeaders);
+        }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/static/main.jsp");
@@ -753,7 +782,7 @@ namespace WindowsFormsApplication
 
         private void timer4_Tick(object sender, EventArgs e)
         {
-            if (webBrowser.Url.ToString().StartsWith("http://www.jsds.gov.cn/wb_DkdjptUpLoadAction"))  //个税页面
+            if (webBrowser.Url.ToString().StartsWith("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction"))  //个税页面
             {
                 if (file==0)
                 {

@@ -33,8 +33,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.button = new System.Windows.Forms.Button();
-            this.button_back = new System.Windows.Forms.Button();
-            this.button_forward = new System.Windows.Forms.Button();
             this.textBox_url = new System.Windows.Forms.TextBox();
             this.button_go = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
@@ -57,6 +55,9 @@
             this.button_submit = new System.Windows.Forms.Button();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.button_forward = new System.Windows.Forms.Button();
+            this.button_back = new System.Windows.Forms.Button();
+            this.yys_button = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -73,59 +74,27 @@
             // 
             // webBrowser
             // 
-            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser.Location = new System.Drawing.Point(3, 3);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            resources.ApplyResources(this.webBrowser, "webBrowser");
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(705, 328);
-            this.webBrowser.TabIndex = 3;
             this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
             this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
             // 
             // button
             // 
-            this.button.Location = new System.Drawing.Point(886, 35);
+            resources.ApplyResources(this.button, "button");
             this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(75, 23);
-            this.button.TabIndex = 6;
-            this.button.Text = "exit";
             this.button.UseVisualStyleBackColor = true;
             this.button.Click += new System.EventHandler(this.button_Click);
             // 
-            // button_back
-            // 
-            this.button_back.Image = ((System.Drawing.Image)(resources.GetObject("button_back.Image")));
-            this.button_back.Location = new System.Drawing.Point(25, 20);
-            this.button_back.Name = "button_back";
-            this.button_back.Size = new System.Drawing.Size(30, 30);
-            this.button_back.TabIndex = 7;
-            this.button_back.UseVisualStyleBackColor = true;
-            this.button_back.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button_forward
-            // 
-            this.button_forward.Image = ((System.Drawing.Image)(resources.GetObject("button_forward.Image")));
-            this.button_forward.Location = new System.Drawing.Point(71, 20);
-            this.button_forward.Name = "button_forward";
-            this.button_forward.Size = new System.Drawing.Size(30, 30);
-            this.button_forward.TabIndex = 8;
-            this.button_forward.UseVisualStyleBackColor = true;
-            this.button_forward.Click += new System.EventHandler(this.button2_Click);
-            // 
             // textBox_url
             // 
-            this.textBox_url.Location = new System.Drawing.Point(124, 26);
+            resources.ApplyResources(this.textBox_url, "textBox_url");
             this.textBox_url.Name = "textBox_url";
-            this.textBox_url.Size = new System.Drawing.Size(450, 21);
-            this.textBox_url.TabIndex = 9;
             // 
             // button_go
             // 
-            this.button_go.Location = new System.Drawing.Point(591, 20);
+            resources.ApplyResources(this.button_go, "button_go");
             this.button_go.Name = "button_go";
-            this.button_go.Size = new System.Drawing.Size(30, 30);
-            this.button_go.TabIndex = 10;
-            this.button_go.Text = "Go";
             this.button_go.UseVisualStyleBackColor = true;
             this.button_go.Click += new System.EventHandler(this.button_go_Click);
             // 
@@ -136,176 +105,120 @@
             // 
             // tabControl1
             // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(47, 56);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(719, 360);
-            this.tabControl1.TabIndex = 21;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(711, 334);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "主页";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Controls.Add(this.webBrowser);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(711, 334);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "个税";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
+            resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.textBox_yzm);
             this.tabPage4.Controls.Add(this.webBrowserGS);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(711, 334);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "国税";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(278, 179);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 29);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "重新登陆";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // textBox_yzm
             // 
-            this.textBox_yzm.Location = new System.Drawing.Point(559, 98);
+            resources.ApplyResources(this.textBox_yzm, "textBox_yzm");
             this.textBox_yzm.Name = "textBox_yzm";
-            this.textBox_yzm.Size = new System.Drawing.Size(125, 21);
-            this.textBox_yzm.TabIndex = 2;
             // 
             // webBrowserGS
             // 
-            this.webBrowserGS.Location = new System.Drawing.Point(0, 3);
-            this.webBrowserGS.MinimumSize = new System.Drawing.Size(20, 20);
+            resources.ApplyResources(this.webBrowserGS, "webBrowserGS");
             this.webBrowserGS.Name = "webBrowserGS";
-            this.webBrowserGS.Size = new System.Drawing.Size(272, 205);
-            this.webBrowserGS.TabIndex = 1;
             this.webBrowserGS.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_gs_DocumentCompleted);
             // 
             // tabPage3
             // 
+            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Controls.Add(this.textBox_HTML);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(711, 334);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "HTML";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // textBox_HTML
             // 
-            this.textBox_HTML.Location = new System.Drawing.Point(0, 0);
-            this.textBox_HTML.Multiline = true;
+            resources.ApplyResources(this.textBox_HTML, "textBox_HTML");
             this.textBox_HTML.Name = "textBox_HTML";
-            this.textBox_HTML.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox_HTML.Size = new System.Drawing.Size(711, 334);
-            this.textBox_HTML.TabIndex = 0;
-            this.textBox_HTML.Text = "HTML";
             // 
             // groupBox_gs
             // 
+            resources.ApplyResources(this.groupBox_gs, "groupBox_gs");
             this.groupBox_gs.Controls.Add(this.button_gs);
             this.groupBox_gs.Controls.Add(this.button_sbmt);
             this.groupBox_gs.Controls.Add(this.button_file1);
             this.groupBox_gs.Controls.Add(this.button_upld);
-            this.groupBox_gs.Location = new System.Drawing.Point(791, 275);
             this.groupBox_gs.Name = "groupBox_gs";
-            this.groupBox_gs.Size = new System.Drawing.Size(161, 100);
-            this.groupBox_gs.TabIndex = 22;
             this.groupBox_gs.TabStop = false;
-            this.groupBox_gs.Text = "个税";
             // 
             // button_gs
             // 
-            this.button_gs.Location = new System.Drawing.Point(17, 26);
+            resources.ApplyResources(this.button_gs, "button_gs");
             this.button_gs.Name = "button_gs";
-            this.button_gs.Size = new System.Drawing.Size(60, 25);
-            this.button_gs.TabIndex = 14;
-            this.button_gs.Text = "个税";
             this.button_gs.UseVisualStyleBackColor = true;
             this.button_gs.Click += new System.EventHandler(this.button_grsds_Click);
             // 
             // button_sbmt
             // 
-            this.button_sbmt.Location = new System.Drawing.Point(83, 57);
+            resources.ApplyResources(this.button_sbmt, "button_sbmt");
             this.button_sbmt.Name = "button_sbmt";
-            this.button_sbmt.Size = new System.Drawing.Size(60, 25);
-            this.button_sbmt.TabIndex = 17;
-            this.button_sbmt.Text = "提交";
             this.button_sbmt.UseVisualStyleBackColor = true;
             // 
             // button_file1
             // 
-            this.button_file1.Location = new System.Drawing.Point(17, 57);
+            resources.ApplyResources(this.button_file1, "button_file1");
             this.button_file1.Name = "button_file1";
-            this.button_file1.Size = new System.Drawing.Size(60, 25);
-            this.button_file1.TabIndex = 15;
-            this.button_file1.Text = "浏览";
             this.button_file1.UseVisualStyleBackColor = true;
             // 
             // button_upld
             // 
-            this.button_upld.Location = new System.Drawing.Point(83, 26);
+            resources.ApplyResources(this.button_upld, "button_upld");
             this.button_upld.Name = "button_upld";
-            this.button_upld.Size = new System.Drawing.Size(60, 25);
-            this.button_upld.TabIndex = 16;
-            this.button_upld.Text = "上传";
             this.button_upld.UseVisualStyleBackColor = true;
             // 
             // button_home
             // 
-            this.button_home.Location = new System.Drawing.Point(815, 117);
+            resources.ApplyResources(this.button_home, "button_home");
             this.button_home.Name = "button_home";
-            this.button_home.Size = new System.Drawing.Size(60, 25);
-            this.button_home.TabIndex = 21;
-            this.button_home.Text = "home";
             this.button_home.UseVisualStyleBackColor = true;
             this.button_home.Click += new System.EventHandler(this.button_home_Click);
             // 
             // groupBox_yhs
             // 
+            resources.ApplyResources(this.groupBox_yhs, "groupBox_yhs");
             this.groupBox_yhs.Controls.Add(this.button_submit);
-            this.groupBox_yhs.Location = new System.Drawing.Point(808, 181);
             this.groupBox_yhs.Name = "groupBox_yhs";
-            this.groupBox_yhs.Size = new System.Drawing.Size(91, 73);
-            this.groupBox_yhs.TabIndex = 20;
             this.groupBox_yhs.TabStop = false;
-            this.groupBox_yhs.Text = "印花税";
             // 
             // button_submit
             // 
-            this.button_submit.Location = new System.Drawing.Point(7, 29);
+            resources.ApplyResources(this.button_submit, "button_submit");
             this.button_submit.Name = "button_submit";
-            this.button_submit.Size = new System.Drawing.Size(74, 24);
-            this.button_submit.TabIndex = 11;
-            this.button_submit.Text = "印花税暂存";
             this.button_submit.UseVisualStyleBackColor = true;
             // 
             // timer3
@@ -319,11 +232,32 @@
             this.timer4.Interval = 1000;
             this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
+            // button_forward
+            // 
+            resources.ApplyResources(this.button_forward, "button_forward");
+            this.button_forward.Name = "button_forward";
+            this.button_forward.UseVisualStyleBackColor = true;
+            this.button_forward.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button_back
+            // 
+            resources.ApplyResources(this.button_back, "button_back");
+            this.button_back.Name = "button_back";
+            this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // yys_button
+            // 
+            resources.ApplyResources(this.yys_button, "yys_button");
+            this.yys_button.Name = "yys_button";
+            this.yys_button.UseVisualStyleBackColor = true;
+            this.yys_button.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 462);
+            this.Controls.Add(this.yys_button);
             this.Controls.Add(this.button_home);
             this.Controls.Add(this.groupBox_gs);
             this.Controls.Add(this.groupBox_yhs);
@@ -334,7 +268,6 @@
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.button);
             this.Name = "MainForm";
-            this.Text = "自动报税 v1.3.1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -377,5 +310,6 @@
         private System.Windows.Forms.GroupBox groupBox_yhs;
         private System.Windows.Forms.Button button_submit;
         private System.Windows.Forms.Timer timer4;
+        private System.Windows.Forms.Button yys_button;
     }
 }
