@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,14 +23,15 @@ namespace WindowsFormsApplication
 
         private void Initialize()
         {
-            this.username.Text = "admin";
-            this.password.Text = "admin";
+            this.username.Text = "15150577554";
+            this.password.Text = "DCRns123";
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string strId = "18602538904";
-            string strPassword = "dsfdsf";
+            CookieContainer myCookieContainer = new CookieContainer();
+            string strId = this.username.Text;
+            string strPassword = this.password.Text;
             ASCIIEncoding encoding = new ASCIIEncoding();
             string postData = "loginName=" + strId;
             postData += ("&password=" + strPassword);
@@ -38,6 +40,7 @@ namespace WindowsFormsApplication
             HttpWebRequest myRequest =
             (HttpWebRequest)WebRequest.Create("http://test2.58tax.com/loginCheck");
             myRequest.Method = "POST";
+            myRequest.CookieContainer = myCookieContainer;
             myRequest.ContentType = "application/x-www-form-urlencoded"; myRequest.ContentLength = data.Length;
             Stream newStream = myRequest.GetRequestStream();
             // Send the data. 
@@ -45,29 +48,53 @@ namespace WindowsFormsApplication
             newStream.Close();
             // Get response 
             HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse();
-            StreamReader reader = new StreamReader(myResponse.GetResponseStream(), Encoding.Default);
-            string content = reader.ReadToEnd();
-            //MessageBox.Show(content);
-            StreamWriter sw = new StreamWriter("E:\\1.txt");
-          
-            sw.Write(content);
-            sw.Close();
+            //StreamReader reader = new StreamReader(myResponse.GetResponseStream(), Encoding.Default);
+            //string content = reader.ReadToEnd();
+
+            //Get header
+            //foreach (Cookie ck in myResponse.Cookies)
+            //{
+            //    myCookieContainer.Add(ck);
+            //}
+            //IEnumerator iem = head.GetEnumerator();
+            //ArrayList value = new ArrayList();
+            //StreamWriter sw = new StreamWriter("E:\\1.txt");
+            //for (int i = 0; iem.MoveNext(); i++)
+            //{
+            //    string key = head.GetKey(i);
+            //    value.Add(head.Get(key));
+            //    sw.WriteLine(value[i]);
+            //}
+
+            if (myResponse.ResponseUri.ToString().StartsWith("http://test2.58tax.com/index"))
+            {
+                MainForm mf = new MainForm();
+                mf.Show();
+                Visible = false; //隐藏登陆窗口
+            }
+            else {
+                MessageBox.Show("failed");
+            }
+            
+
+            
+           // sw.Close();
             //Response.Write(content);
             //return retString;
 
 
 
 
-            if (username.Text=="admin" && password.Text=="admin")
-            {
-                MainForm mf = new MainForm();
-                mf.Show();
-                Visible = false; //隐藏登陆窗口
-            }
-            else
-            {
-                MessageBox.Show("failed");
-            }
+            //if (username.Text=="admin" && password.Text=="admin")
+            //{
+            //    MainForm mf = new MainForm();
+            //    mf.Show();
+            //    Visible = false; //隐藏登陆窗口
+            //}
+            //else
+            //{
+            //    MessageBox.Show("failed");
+            //}
             
         }
 
