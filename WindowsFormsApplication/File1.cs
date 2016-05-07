@@ -15,7 +15,7 @@ namespace WindowsFormsApplication
          * http://xxx/xxx/tax_report_files.jsp?id=18061683389&month=01&info=2（文件2）
          * 存储到本地taxfile1.txt*/
         public string taxNumber;
-        public bool repeatTax;
+        public int repeatTax;
         public int loginTimes;
         public int submitTime;
         public string uKey;

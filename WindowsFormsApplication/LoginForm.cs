@@ -15,9 +15,9 @@ namespace WindowsFormsApplication
 {
     public partial class LoginForm : Form
     {
-        string path1 = "D:\\taxfile1.txt";
-        string path2 = "D:\\taxfile2.txt";
-        string path3 = "D:\\taxfile3.txt";
+        string path1 = "E:\\taxfile1.txt";
+        string path2 = "E:\\taxfile2.txt";
+        //string path3 = "E:\\taxfile3.txt";
         public LoginForm()
         {
             InitializeComponent();
@@ -54,13 +54,15 @@ namespace WindowsFormsApplication
 
             if (myResponse.ResponseUri.ToString().StartsWith("http://test2.58tax.com/index"))
             {
-                DownloadFile1(this.username.Text);
+                myCookieContainer.Add(myResponse.Cookies);
+                DownloadFile1(this.username.Text,myCookieContainer);
                 File1 f1 = ReadFile(path1);
                 if (f1 == null)
                 {
                     MessageBox.Show("读取文件错误！");
                     return;
                 }
+                DownloadFile2(f1, myCookieContainer);
                 MainForm mf = new MainForm();
                 mf.Show();
                 Visible = false; //隐藏登陆窗口
@@ -90,6 +92,29 @@ namespace WindowsFormsApplication
             
         }
 
+        private void DownloadFile2(File1 f1, CookieContainer cookie)
+        {
+            // 设置参数
+            string file2 = f1.file2Url;
+            HttpWebRequest request = WebRequest.Create(file2) as HttpWebRequest;
+            //发送请求并获取相应回应数据
+            request.CookieContainer = cookie;
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+            //直到request.GetResponse()程序才开始向目标网页发送Post请求
+            Stream responseStream = response.GetResponseStream();
+            //创建本地文件写入流
+            Stream stream = new FileStream(path2, FileMode.Create);
+            byte[] bArr = new byte[1024];
+            int size = responseStream.Read(bArr, 0, (int)bArr.Length);
+            while (size > 0)
+            {
+                stream.Write(bArr, 0, size);
+                size = responseStream.Read(bArr, 0, (int)bArr.Length);
+            }
+            stream.Close();
+            responseStream.Close();
+        }
+
         private File1 ReadFile(string path1)
         {
             StreamReader sr = new StreamReader(path1, Encoding.Default);
@@ -98,10 +123,12 @@ namespace WindowsFormsApplication
             string l = line.ToString();
             File1 f1 = new File1();
             string []str = l.Split(',');
-            if (str.Length != 7)
+            
+            if (str.Length != 8)
                 return null;
+            //MessageBox.Show(str[0]);
             f1.taxNumber = str[0];
-            f1.repeatTax = Convert.ToBoolean( str[1] );
+            f1.repeatTax = Convert.ToInt32(str[1]);
             f1.loginTimes = Convert.ToInt32(str[2]);
             f1.submitTime = Convert.ToInt32(str[3]);
             f1.uKey = str[4];
@@ -111,11 +138,12 @@ namespace WindowsFormsApplication
             return f1;
         }
 
-        private void DownloadFile1(string uname)
+        private void DownloadFile1(string uname,CookieContainer cookie)
         {
             // 设置参数
             HttpWebRequest request = WebRequest.Create("http://test2.58tax.com/autoApply/tax_report_files?id="+uname+"&month=01&info=1") as HttpWebRequest;
             //发送请求并获取相应回应数据
+            request.CookieContainer = cookie;
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;
             //直到request.GetResponse()程序才开始向目标网页发送Post请求
             Stream responseStream = response.GetResponseStream();
