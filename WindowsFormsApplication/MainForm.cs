@@ -125,6 +125,7 @@ namespace WindowsFormsApplication
         {
             LoginCheck();       //检测是否登陆成功
             string url = webBrowser.Document.Url.ToString();
+            
             if (url.Equals("https://ca.jsds.gov.cn:2443/"))
             { 
                 ClickNextStep();
@@ -740,6 +741,30 @@ namespace WindowsFormsApplication
             //MessageBox.Show(additionalHeaders);
             string url = "https://ca.jsds.gov.cn/WB366yyssbAction.do";
             this.webBrowser.Navigate(url, null, postBuffer, additionalHeaders);
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            this.webBrowser.Navigate("https://ca.jsds.gov.cn/WB366yyssbAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
+            timer5.Enabled = true;
+            
+        }
+
+        private void timer5_Tick(object sender, EventArgs e)
+        {
+            if (webBrowser.Url.ToString().StartsWith("https://ca.jsds.gov.cn/WB366yyssbAction.do"))
+            {
+                
+                HtmlDocument doc = webBrowser.Document;
+                HtmlElement yssr = doc.All["YSSR_JE"];   //把当前的webBrowser1显示的文档实例
+                if (yssr != null)
+                {
+                    yssr.InnerText = "0";
+                }
+
+
+
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)

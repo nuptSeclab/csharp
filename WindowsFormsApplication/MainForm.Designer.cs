@@ -58,6 +58,8 @@
             this.button_forward = new System.Windows.Forms.Button();
             this.button_back = new System.Windows.Forms.Button();
             this.yys_button = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.timer5 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -105,11 +107,11 @@
             // 
             // tabControl1
             // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -122,17 +124,17 @@
             // 
             // tabPage2
             // 
-            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Controls.Add(this.webBrowser);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.textBox_yzm);
             this.tabPage4.Controls.Add(this.webBrowserGS);
+            resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
@@ -156,8 +158,8 @@
             // 
             // tabPage3
             // 
-            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Controls.Add(this.textBox_HTML);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
@@ -168,11 +170,11 @@
             // 
             // groupBox_gs
             // 
-            resources.ApplyResources(this.groupBox_gs, "groupBox_gs");
             this.groupBox_gs.Controls.Add(this.button_gs);
             this.groupBox_gs.Controls.Add(this.button_sbmt);
             this.groupBox_gs.Controls.Add(this.button_file1);
             this.groupBox_gs.Controls.Add(this.button_upld);
+            resources.ApplyResources(this.groupBox_gs, "groupBox_gs");
             this.groupBox_gs.Name = "groupBox_gs";
             this.groupBox_gs.TabStop = false;
             // 
@@ -210,8 +212,8 @@
             // 
             // groupBox_yhs
             // 
-            resources.ApplyResources(this.groupBox_yhs, "groupBox_yhs");
             this.groupBox_yhs.Controls.Add(this.button_submit);
+            resources.ApplyResources(this.groupBox_yhs, "groupBox_yhs");
             this.groupBox_yhs.Name = "groupBox_yhs";
             this.groupBox_yhs.TabStop = false;
             // 
@@ -253,10 +255,22 @@
             this.yys_button.UseVisualStyleBackColor = true;
             this.yys_button.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // button2
+            // 
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_2);
+            // 
+            // timer5
+            // 
+            this.timer5.Tick += new System.EventHandler(this.timer5_Tick);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.yys_button);
             this.Controls.Add(this.button_home);
             this.Controls.Add(this.groupBox_gs);
@@ -311,5 +325,7 @@
         private System.Windows.Forms.Button button_submit;
         private System.Windows.Forms.Timer timer4;
         private System.Windows.Forms.Button yys_button;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Timer timer5;
     }
 }

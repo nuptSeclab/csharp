@@ -28,6 +28,8 @@ namespace WindowsFormsApplication
         {
             this.username.Text = "15150577554";
             this.password.Text = "DCRns123";
+            MainForm mf = new MainForm();
+            mf.Show();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -69,6 +71,9 @@ namespace WindowsFormsApplication
             }
             else {
                 MessageBox.Show("登录失败！");
+                MainForm mf = new MainForm();
+                mf.Show();
+                Visible = false; //隐藏登陆窗口
             }
             
             
