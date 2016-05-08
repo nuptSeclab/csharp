@@ -172,7 +172,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="textBox_url.Location" type="System.Drawing.Point, System.Drawing">
     <value>124, 26</value>
@@ -193,7 +193,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_url.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="button_go.Location" type="System.Drawing.Point, System.Drawing">
     <value>591, 20</value>
@@ -217,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button_go.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -289,7 +289,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -619,7 +619,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox_gs.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="button_gs.Location" type="System.Drawing.Point, System.Drawing">
     <value>17, 26</value>
@@ -739,7 +739,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button_home.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;button_submit.Name" xml:space="preserve">
     <value>button_submit</value>
@@ -775,7 +775,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox_yhs.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="button_submit.Location" type="System.Drawing.Point, System.Drawing">
     <value>17, 29</value>
@@ -819,10 +819,10 @@
         dHlwZQBpbWFnZS9wbmc/slZOAAAAF3RFWHRUaHVtYjo6TVRpbWUAMTQxODE5ODIxOMQA7ToAAAARdEVY
         dFRodW1iOjpTaXplADYxMkJCitW4rwAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9v
         dC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExODE2LzExODE2NTQucG5n
-        AocqwAAAALFJREFUSEvt1bsJAkEUheHBVyAWILLahiXJ1uED69gmFsuwAkNDTTWQ/Q/cwEhHmJOoB75k
-        ZjmXfTCb/imW3v4ooxCrhRLlE2ywxlhrxaIyLHHGHTuUG6IiDFDjCtuQPr5nyAoX5A3RJvScZ5i/UWGB
-        LW7h9RBtYIoGB7QZdN0JD+hO9BkPEa1P0SLsA3yPKDcqwOcvOScqgOczVQGs5b6jQiWwH3a+41pRITw/
-        nF9OSh34Ai3yG5gVKQAAAABJRU5ErkJggg==
+        AocqwAAAALJJREFUSEtjYBgF1AoBpo6LDEDMBsXUMhZiDtRwHiDdAsTNQMwFEqMagFpgDqSfA/EvIG6j
+        qiVQC1iAdCYQf6ClJczDypJ0oG/eEx1cSOEsBWTLEsAyQHk5IG4F4p9QjD/ioRZIAOlFQLwTiLcTgUHq
+        7gPxP6hPQMmYFWsSppcFoKRImyAiNldCfQpKrqRFMjEWIBlO/QxHD8NpV1RAXU/zwo52xTVSnUCbCoeY
+        FDZ81QAA+AIt8ggEAv4AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="button_forward.Location" type="System.Drawing.Point, System.Drawing">
@@ -844,7 +844,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button_forward.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="button_back.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -858,10 +858,10 @@
         dHlwZQBpbWFnZS9wbmc/slZOAAAAF3RFWHRUaHVtYjo6TVRpbWUAMTQxODE5ODIxOMQA7ToAAAARdEVY
         dFRodW1iOjpTaXplADU0NUJC/+QkyAAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9v
         dC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExODE2LzExODE2NTAucG5n
-        9weMAAAAAMhJREFUSEvt1csJAjEUheHgayEWIKK2YUliHT6wDpsQy7ACly51qwvxP3AvZDGgzNzoQg98
-        myScDJMhk/4JS2t7lJ6x0aBYeR9LrDDQWEhUBJVvcMcZM9iKBlEJ8vIrFujAVtWMClBV3oatqhkV4GPl
-        F8wRXn4za0wxxuSFEarPR4PoQp+hnvyBEw7Yv0HrdhjCWrNoEOU2UDSBMq/Io0mUOWSPilDmM/WoCF/b
-        pPlV4VER8k3iLjuPyqBN4q9rjwpR5ofzy0npCQ4gLfJaDiJWAAAAAElFTkSuQmCC
+        9weMAAAAALdJREFUSEtjYBgF1AoBpo6LDEDMBsXUMhZiDtRwLiDdDMQtQMwDEqMKQDK8Dcj+BcTPgdic
+        KhZgMfwDUCwTiFkotgCP4cxDzvD3QBenAzHVXf4TaCgItwKxHBDLALEsASyFM36gYc4KTYag1PIPiO8D
+        8U4g3k4EBqlbBMQSWOOI5hagZShQmqduEMFyJZbkSb1IxmMJLINRnpIGiyWUFxV4fEK9wg6LJdQvrtEs
+        oU2FQ5WKZcgaAgAOIC3yBCY5ZgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="button_back.Location" type="System.Drawing.Point, System.Drawing">
@@ -883,46 +883,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button_back.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="yys_button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="yys_button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>807, 113</value>
-  </data>
-  <data name="yys_button.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="yys_button.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="yys_button.Text" xml:space="preserve">
-    <value>营业税</value>
-  </data>
-  <data name="&gt;&gt;yys_button.Name" xml:space="preserve">
-    <value>yys_button</value>
-  </data>
-  <data name="&gt;&gt;yys_button.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;yys_button.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;yys_button.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>8</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>891, 113</value>
+    <value>807, 113</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>93, 38</value>
   </data>
   <data name="button2.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
-    <value>button2</value>
+    <value>营业税零申报</value>
   </data>
   <data name="&gt;&gt;button2.Name" xml:space="preserve">
     <value>button2</value>
@@ -952,7 +925,7 @@
     <value>992, 462</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>自动报税 v1.3.1</value>
+    <value>自动报税 v1.3.2</value>
   </data>
   <data name="&gt;&gt;timer1.Name" xml:space="preserve">
     <value>timer1</value>

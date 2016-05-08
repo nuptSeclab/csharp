@@ -18,6 +18,9 @@ namespace WindowsFormsApplication
 {
     public partial class MainForm : Form
     {
+        string path1 = "D:\\taxfile1.txt";
+        string path2 = "D:\\taxfile2.txt";
+        string path3 = "D:\\taxfile3.txt";
         [DllImport("user32.dll", EntryPoint = "FindWindow", CharSet = CharSet.Auto)]
         private extern static IntPtr FindWindow(string classname, string captionName);
 
@@ -35,32 +38,117 @@ namespace WindowsFormsApplication
 
         public bool first;   //第一次打开
         int failCount = 0;  //登陆失败次数
-        int file, upload, submit, upload_click, confirm;
+        int file, upload, submit, upload_click, confirm;    //个税
+        int yys_submit,yys_yes, yys_msg;
+        int num=0,current_num=0;        //file2申报数量
+        string[] poststr;   //file2申报地址
+        string[] posttype;  //申报类型
+        string dshomepage;  //地税主页
+        int num1 = 0, current_num1 = 0;        //file3申报数量
+        string[] poststr1;  //file3申报地址
         public MainForm()
         {
-            InitializeComponent();
             Initialize();
+            InitializeComponent();
+          
         }
         
         private void Initialize()
         {
 
-            //    webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
+            //webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
             //this.webBrowser.Navigate("https://www.jsds.gov.cn/index/sbLogin.do");
             //webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/static/main.jsp");
             //webBrowserGS.ScrollBarsEnabled = false;
 
+            /*文件2初始化*/
+            StreamReader sr = new StreamReader(path2, Encoding.Default);
+            String line;
+            line = sr.ReadLine();
+            string l = line.ToString();
+            string[] str = l.Split(';');
+            string []firststr = str[0].Split(',');
+            num = Convert.ToInt32(firststr[1]);//报税的数量
+            dshomepage = firststr[0];
+            poststr = new string[num];
+            posttype = new string[num];
+
+            for (int i = 0; i < num; i++)
+            {
+                poststr[i] = str[i + 1].Split(',')[1];//需要零申报的地址
+                posttype[i] = str[i + 1].Split(',')[2];//零申报/上传
+            }
+            sr.Close();
+            /*文件3初始化*/
+            sr = new StreamReader(path3, Encoding.Default);
+            line = sr.ReadLine();
+            l = line.ToString();
+            string[] str1 = l.Split(';');
+            string[] firststr1 = str1[0].Split(',');
+            num1 = Convert.ToInt32(firststr1[1]);//报税的数量
+            poststr1 = new string[num1];
+            for (int i = 0; i < num1; i++)
+            {
+                poststr1[i] = str1[i + 1].Split(',')[1];//需要零申报的地址
+            }
+            sr.Close();
         }
 
         //timer1 用于数字登陆输入密码
         private void timer1_Tick(object sender, EventArgs e)
         {
+            try {
+                if (webBrowser.Url.ToString().Equals("https://ca.jsds.gov.cn/sbLogin.do"))
+                {
+                    //   MessageBox.Show(current_num.ToString());
+                    if (current_num < num) //申报file2
+                    {
+                        if (posttype[current_num] == "0")  //零申报
+                        {
+                            try
+                            {
+                                this.webBrowser.Navigate(poststr[current_num]);
+                            }
+                            catch (Exception ex)
+                            {
+                                //   MessageBox.Show(ex.ToString());
+                                return;
+                            }
+                            yys_submit = 0; yys_yes = 0; yys_msg = 0;
+                            timer5.Enabled = true;
+                        }
+                        else                           //
+                        {
+
+                        }
+                    }
+                    else if (current_num1 < num1)  //申报file3
+                    {
+                        try
+                        {
+                            webBrowser.Navigate(poststr1[current_num1]);                           
+                        }
+                        catch (Exception ex)
+                        {
+                            //MessageBox.Show(ex.ToString());
+                            return;
+                        }
+                        file = 0; upload = 0; submit = 0; upload_click = 0; confirm = 0;
+                        timer4.Enabled = true;
+                        timer2.Enabled = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
 
             //到主页关闭定时器1
             //if (webbrowser.document.url.tostring() != "http://ca.jsds.gov.cn/index/calogin.html" && webbrowser.document.url.tostring() != "http://www.jsds.gov.cn/index/calogin.html#")
             //{
-                //messagebox.show("timer1 disable");
-                //timer1.enabled = false;
+            //messagebox.show("timer1 disable");
+            //timer1.enabled = false;
             //}
             //检测数字证书登陆输入框
             IntPtr mwh1 = IntPtr.Zero;
@@ -80,7 +168,15 @@ namespace WindowsFormsApplication
                     //MessageBox.Show("timer1 stop");
                 }
             }
-          
+            mwh1 = FindWindow(null, "脚本错误");
+            if (mwh1 != IntPtr.Zero)
+            {
+                MessageBox.Show("1");
+                    SendKeys.SendWait("{Space}");
+                    SendKeys.Flush();
+
+            }
+
         }
 
         //退出按钮
@@ -133,14 +229,12 @@ namespace WindowsFormsApplication
             if(url.StartsWith("http://www.jsds.gov.cn/index/caLogin.jsp"))
             {              
                 ClickLogin();    //登陆主页 点击按钮    
-
-
             }
-       
+            if (url.Equals("https://ca.jsds.gov.cn/sbLogin.do"))
+            {
+                //Thread.Sleep(1000);
+            }
             FailCheck(url);     //提交失败等情况 返回主页了
-
-
-
             textBox_HTML.Text = webBrowser.DocumentText;            
         }
 
@@ -229,6 +323,11 @@ namespace WindowsFormsApplication
         //地税登陆失败检测
         private void LoginCheck()
         {
+            string url = webBrowser.Url.ToString();
+
+
+            if (url.Equals("http://www.jsds.gov.cn/index/portal/index.html")|| url.Equals("http://www.jsds.gov.cn/indexAction.do"))
+                this.webBrowser.Navigate("https://ca.jsds.gov.cn:2443/");
             HtmlDocument doc = this.webBrowser.Document;   //把当前的webBrowser1显示的文档实例
             HtmlElementCollection elemColl = doc.GetElementsByTagName("div");
             foreach (HtmlElement elem in elemColl)
@@ -259,7 +358,7 @@ namespace WindowsFormsApplication
                     IntPtr Edit = FindWindowEx(ComboBox, IntPtr.Zero, "Edit", "");
                     if(Edit != IntPtr.Zero)
                     {
-                        StringBuilder s = new StringBuilder("E:\\小怪兽2016年1月.dat");
+                        StringBuilder s = new StringBuilder("D:\\"+current_num1+".dat");
                         SendMessage(Edit, 0xC, IntPtr.Zero, s);
                         IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "打开(&O)");
                         if(button != IntPtr.Zero)
@@ -602,6 +701,26 @@ namespace WindowsFormsApplication
         //点击个税 按钮
         private void button_grsds_Click(object sender, EventArgs e)
         {
+
+            StreamReader sr = new StreamReader(path3, Encoding.Default);
+            String line;
+            line = sr.ReadLine();
+            string l = line.ToString();
+            string[] str = l.Split(';');
+
+            string[] firststr = str[0].Split(',');
+            int num = Convert.ToInt32(firststr[1]);//报税的数量
+
+            string[] poststr = new string[num];
+            string[] datstr = new string[num];
+
+            for (int i = 0; i < num; i++)
+            {
+                poststr[i] = str[i + 1].Split(',')[1];//需要零申报的地址
+            }
+
+
+
             file = 0;
             upload = 0;
             submit = 0;
@@ -610,8 +729,9 @@ namespace WindowsFormsApplication
             timer4.Enabled = true;
             timer2.Enabled = true;
             webBrowser.Navigate("https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
-                          //       http://www.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15
+            //       http://www.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15
         }
+
 
         //个税 点击浏览
         private void button_browse_Click(object sender, EventArgs e)
@@ -745,24 +865,89 @@ namespace WindowsFormsApplication
 
         private void button2_Click_2(object sender, EventArgs e)
         {
+            //读取文件2
+            StreamReader sr = new StreamReader(path2, Encoding.Default);
+            String line;
+            line = sr.ReadLine();
+            string l = line.ToString();
+            string[] str = l.Split(';');
+
+            string[] firststr = str[0].Split(',');
+            int num = Convert.ToInt32(firststr[1]);//报税的数量
+
+            string[] poststr = new string[num];
+
+            for (int i = 0; i < num; i++)
+            {
+                poststr[i] = str[i + 1].Split(',')[1];//需要零申报的地址
+            } 
+
+
             this.webBrowser.Navigate("https://ca.jsds.gov.cn/WB366yyssbAction.do?SSQS=2016-04-01&SSQZ=2016-04-30&SBQX=2016-05-16&SWGLM=320100100396501&ksbsbqxrdm=M01_15");
+            yys_submit = 0; yys_yes = 0; yys_msg = 0;
             timer5.Enabled = true;
             
         }
 
+        //营业税零申报
         private void timer5_Tick(object sender, EventArgs e)
         {
             if (webBrowser.Url.ToString().StartsWith("https://ca.jsds.gov.cn/WB366yyssbAction.do"))
             {
-                
-                HtmlDocument doc = webBrowser.Document;
-                HtmlElement yssr = doc.All["YSSR_JE"];   //把当前的webBrowser1显示的文档实例
-                if (yssr != null)
+                if (yys_msg == 0)
                 {
-                    yssr.InnerText = "0";
+                    IntPtr mwh1 = IntPtr.Zero;
+                    mwh1 = FindWindow(null, "来自网页的消息");
+                    if (mwh1 != IntPtr.Zero)
+                    {
+                        IntPtr Button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确定");
+                        if (Button != IntPtr.Zero)
+                        {
+                            SendMessage(Button, 0xF5, IntPtr.Zero, null);
+                            yys_msg++;
+                        }
+                    }
                 }
 
-
+                if (yys_submit <= 2 && yys_msg==1)
+                {
+                    HtmlDocument doc = webBrowser.Document;
+                    HtmlElement yssr = doc.All["YSSR_JE"];   //把当前的webBrowser1显示的文档实例
+                    if (yssr != null)
+                    {
+                        yssr.InnerText = "0";
+                        yssr.InvokeMember("click");
+                        HtmlElement cb = doc.All["yysfsyhbj"];   //把当前的webBrowser1显示的文档实例
+                        if (cb != null)
+                        {
+                            cb.InvokeMember("click");
+                            cb.InvokeMember("click");
+                        }
+                        if (webBrowser.Document.GetElementById("submitBtn-btnIconEl") != null)
+                        {
+                            webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
+                            yys_submit++;
+                          //  timer5.Enabled = false;
+                        }
+                    }
+                }
+                
+                if(yys_submit>=1 && yys_yes<=2)
+                {
+                    if (webBrowser.Document.GetElementById("button-1006-btnInnerEl") != null)
+                    {
+                        webBrowser.Document.GetElementById("button-1006-btnInnerEl").InvokeMember("click");
+                        yys_yes++;
+                    }
+                }
+                if(yys_yes>=2)  //申报完成
+                {
+                    current_num++;
+                    Thread.Sleep(2000);
+                    webBrowser.Navigate("https://ca.jsds.gov.cn/sbLogin.do");   //回主页
+                    timer5.Enabled = false;
+                }
+             
 
             }
         }
@@ -785,7 +970,9 @@ namespace WindowsFormsApplication
                     break;
                 case 1:
                     //webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
-                    webBrowser.Navigate("https://ca.jsds.gov.cn:2443/");
+                    //webBrowser.Navigate("https://ca.jsds.gov.cn:2443/");
+                    webBrowser.Navigate(dshomepage);
+                    timer1.Enabled = true;
                     //MessageBox.Show("地税标签");
                     break;
                 case 2:
@@ -823,25 +1010,48 @@ namespace WindowsFormsApplication
                     {
                         webBrowser.Document.GetElementById("UploadBtn-btnInnerEl").InvokeMember("click");
                         upload_click = 1;
+                        return;
                     }
                 }
+                
                 if (webBrowser.Document.GetElementById("button-1006-btnInnerEl") != null)
-                {
-                        webBrowser.Document.GetElementById("button-1006-btnInnerEl").InvokeMember("click");
-                        upload ++;
+                {   //是
+                    webBrowser.Document.GetElementById("button-1006-btnInnerEl").InvokeMember("click");
+                    upload ++;
+                    if (upload == 1)
+                        return;
                 }
+                
                 if (webBrowser.Document.GetElementById("button-1005-btnInnerEl") != null)
                 {
                     webBrowser.Document.GetElementById("button-1005-btnInnerEl").InvokeMember("click");
-                    confirm =1;
+                    confirm ++;
+                    //MessageBox.Show("2");
+                    if(confirm==1)
+                        return;
                 }
-                if (upload >=2 && submit<2 && confirm ==1)
+                if (upload >=1 && submit<2 && confirm >=2 && upload_click==1)
                 {
                     if (webBrowser.Document.GetElementById("submitBtn-btnInnerEl") != null)
                     {
                         webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
                         submit++;
+                        //MessageBox.Show("1");
+                        Thread.Sleep(1000);
+                        if (webBrowser.Document.GetElementById("button-1006-btnInnerEl") != null)
+                        {
+                            webBrowser.Document.GetElementById("button-1006-btnInnerEl").InvokeMember("click");
+                        }
+                        return;
                     }
+                }
+                if (submit >= 2)
+                {
+                    current_num1++;
+                    //Thread.Sleep(1000);
+                    webBrowser.Navigate("https://ca.jsds.gov.cn/sbLogin.do");   //回主页
+                    timer4.Enabled = false;
+                    timer2.Enabled = false;
                 }
                 
             }

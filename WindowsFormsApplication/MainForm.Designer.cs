@@ -57,7 +57,6 @@
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.button_forward = new System.Windows.Forms.Button();
             this.button_back = new System.Windows.Forms.Button();
-            this.yys_button = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.timer5 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
@@ -70,8 +69,7 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 1500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // webBrowser
@@ -248,13 +246,6 @@
             this.button_back.UseVisualStyleBackColor = true;
             this.button_back.Click += new System.EventHandler(this.button1_Click);
             // 
-            // yys_button
-            // 
-            resources.ApplyResources(this.yys_button, "yys_button");
-            this.yys_button.Name = "yys_button";
-            this.yys_button.UseVisualStyleBackColor = true;
-            this.yys_button.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // button2
             // 
             resources.ApplyResources(this.button2, "button2");
@@ -264,6 +255,7 @@
             // 
             // timer5
             // 
+            this.timer5.Interval = 1000;
             this.timer5.Tick += new System.EventHandler(this.timer5_Tick);
             // 
             // MainForm
@@ -271,7 +263,6 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.yys_button);
             this.Controls.Add(this.button_home);
             this.Controls.Add(this.groupBox_gs);
             this.Controls.Add(this.groupBox_yhs);
@@ -324,7 +315,6 @@
         private System.Windows.Forms.GroupBox groupBox_yhs;
         private System.Windows.Forms.Button button_submit;
         private System.Windows.Forms.Timer timer4;
-        private System.Windows.Forms.Button yys_button;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer5;
     }
