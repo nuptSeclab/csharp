@@ -108,35 +108,35 @@
             // 
             // tabControl1
             // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.pictureBox1);
             resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.webBrowser);
             resources.ApplyResources(this.tabPage2, "tabPage2");
+            this.tabPage2.Controls.Add(this.webBrowser);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
+            resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.textBox_yzm);
             this.tabPage4.Controls.Add(this.webBrowserGS);
-            resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
@@ -160,8 +160,8 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox_HTML);
             resources.ApplyResources(this.tabPage3, "tabPage3");
+            this.tabPage3.Controls.Add(this.textBox_HTML);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
@@ -172,11 +172,11 @@
             // 
             // groupBox_gs
             // 
+            resources.ApplyResources(this.groupBox_gs, "groupBox_gs");
             this.groupBox_gs.Controls.Add(this.button_gs);
             this.groupBox_gs.Controls.Add(this.button_sbmt);
             this.groupBox_gs.Controls.Add(this.button_file1);
             this.groupBox_gs.Controls.Add(this.button_upld);
-            resources.ApplyResources(this.groupBox_gs, "groupBox_gs");
             this.groupBox_gs.Name = "groupBox_gs";
             this.groupBox_gs.TabStop = false;
             // 
@@ -214,8 +214,8 @@
             // 
             // groupBox_yhs
             // 
-            this.groupBox_yhs.Controls.Add(this.button_submit);
             resources.ApplyResources(this.groupBox_yhs, "groupBox_yhs");
+            this.groupBox_yhs.Controls.Add(this.button_submit);
             this.groupBox_yhs.Name = "groupBox_yhs";
             this.groupBox_yhs.TabStop = false;
             // 
@@ -283,6 +283,8 @@
             this.Controls.Add(this.button_forward);
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.button);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.tabControl1.ResumeLayout(false);

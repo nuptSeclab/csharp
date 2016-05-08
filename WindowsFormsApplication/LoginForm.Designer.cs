@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // LoginButton
@@ -78,7 +80,7 @@
             // 
             this.username.Location = new System.Drawing.Point(112, 48);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(100, 21);
+            this.username.Size = new System.Drawing.Size(127, 21);
             this.username.TabIndex = 4;
             this.username.Text = "admin";
             this.username.Click += new System.EventHandler(this.username_Click);
@@ -87,25 +89,39 @@
             // 
             this.password.Location = new System.Drawing.Point(113, 96);
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(100, 21);
+            this.password.Size = new System.Drawing.Size(126, 21);
             this.password.TabIndex = 5;
             this.password.Text = "admin";
             this.password.UseSystemPasswordChar = true;
             this.password.Click += new System.EventHandler(this.password_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApplication.Properties.Resources.QQ截图201605081308181;
+            this.pictureBox1.Location = new System.Drawing.Point(207, 175);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(65, 23);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 210);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.password);
             this.Controls.Add(this.username);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.LoginButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Text = "登陆";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,6 +135,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox username;
         private System.Windows.Forms.TextBox password;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

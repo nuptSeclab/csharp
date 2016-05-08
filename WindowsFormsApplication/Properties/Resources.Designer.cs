@@ -99,5 +99,25 @@ namespace WindowsFormsApplication.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap QQ截图20160508130818 {
+            get {
+                object obj = ResourceManager.GetObject("QQ截图20160508130818", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap QQ截图201605081308181 {
+            get {
+                object obj = ResourceManager.GetObject("QQ截图201605081308181", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

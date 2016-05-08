@@ -241,5 +241,10 @@ namespace WindowsFormsApplication
         {
             password.Text = null;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.58tax.com/");
+        }
     }
 }
