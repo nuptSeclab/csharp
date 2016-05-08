@@ -63,6 +63,26 @@ namespace WindowsFormsApplication.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _58tax {
+            get {
+                object obj = ResourceManager.GetObject("58tax", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _58tax1 {
+            get {
+                object obj = ResourceManager.GetObject("58tax1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_back_24px_1181650_easyicon_net {
             get {
                 object obj = ResourceManager.GetObject("arrow_back_24px_1181650_easyicon.net", resourceCulture);
