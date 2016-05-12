@@ -15,9 +15,9 @@ namespace WindowsFormsApplication
 {
     public partial class LoginForm : Form
     {
-        string path1 = "D:\\taxfile1.txt";
-        string path2 = "D:\\taxfile2.txt";
-        string path3 = "D:\\taxfile3.txt";
+        string path1 = "taxfile1.txt";
+        string path2 = "taxfile2.txt";
+        string path3 = "taxfile3.txt";
         public LoginForm()
         {
             InitializeComponent();
@@ -26,6 +26,7 @@ namespace WindowsFormsApplication
 
         private void Initialize()
         {
+
             this.username.Text = "15005175574";
             this.password.Text = "Wk12345";
          //   MainForm mf = new MainForm();
@@ -82,20 +83,6 @@ namespace WindowsFormsApplication
                
             }            
             
-           // sw.Close();
-            //Response.Write(content);
-            //return retString;
-            //if (username.Text=="admin" && password.Text=="admin")
-            //{
-            //    MainForm mf = new MainForm();
-            //    mf.Show();
-            //    Visible = false; //隐藏登陆窗口
-            //}
-            //else
-            //{
-            //    MessageBox.Show("failed");
-            //}
-            
         }
 
         private bool DownloadDat(CookieContainer cookie)
@@ -127,7 +114,7 @@ namespace WindowsFormsApplication
             {
                 datstr[i] = str[i + 1].Split(',')[2];//dat的地址
              //   MessageBox.Show(datstr[i]);
-                string DatPath = "D:\\" + i + ".dat";
+                string DatPath = i + ".dat";
                 HttpWebRequest request = WebRequest.Create(datstr[i]) as HttpWebRequest;
                 //发送请求并获取相应回应数据
                 request.CookieContainer = cookie;

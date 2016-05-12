@@ -18,9 +18,9 @@ namespace WindowsFormsApplication
 {
     public partial class MainForm : Form
     {
-        string path1 = "D:\\taxfile1.txt";
-        string path2 = "D:\\taxfile2.txt";
-        string path3 = "D:\\taxfile3.txt";
+        string path1 = "taxfile1.txt";
+        string path2 = "taxfile2.txt";
+        string path3 = "taxfile3.txt";
         [DllImport("user32.dll", EntryPoint = "FindWindow", CharSet = CharSet.Auto)]
         private extern static IntPtr FindWindow(string classname, string captionName);
 
@@ -84,7 +84,7 @@ namespace WindowsFormsApplication
             }
             else
             {
-                MessageBox.Show("文件2为空");
+                MessageBox.Show("文件2为空！请先在网站进行参数配置！");
             }
             sr.Close();
             /*文件3初始化*/
@@ -105,7 +105,7 @@ namespace WindowsFormsApplication
             }
             else
             {
-                MessageBox.Show("文件3为空");
+                MessageBox.Show("文件3为空！请先在网站进行参数配置！");
             }
             sr.Close();
             //获取文件1的ukey
@@ -190,6 +190,10 @@ namespace WindowsFormsApplication
                         file = 0; upload = 0; submit = 0; upload_click = 0; confirm = 0;
                         timer4.Enabled = true;
                         timer2.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("已完成报税，建议用户自行检查报税结果");
                     }
                 }
             }
@@ -373,7 +377,7 @@ namespace WindowsFormsApplication
             }
         }
         
-        //timer2 
+        //timer2 浏览文件
         private void timer2_Tick(object sender, EventArgs e)
         {
             IntPtr mwh1 = IntPtr.Zero;
@@ -387,7 +391,7 @@ namespace WindowsFormsApplication
                     IntPtr Edit = FindWindowEx(ComboBox, IntPtr.Zero, "Edit", "");
                     if(Edit != IntPtr.Zero)
                     {
-                        StringBuilder s = new StringBuilder("D:\\"+current_num1+".dat");
+                        StringBuilder s = new StringBuilder(current_num1+".dat");
                         SendMessage(Edit, 0xC, IntPtr.Zero, s);
                         IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "打开(&O)");
                         if(button != IntPtr.Zero)
@@ -429,300 +433,6 @@ namespace WindowsFormsApplication
             // MessageBox.Show(postData);
             //MessageBox.Show(additionalHeaders);
             string url = "https://ca.jsds.gov.cn/wb029_WByhssbAction.do";
-            this.webBrowser.Navigate(url, null, postBuffer, additionalHeaders);
-        }
-
-        /*个人所得税 普通算法 上传测试 未通过*/
-        private void submit_grsds(string cookie)
-        {
-            string postData =
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"tbrq\"\n" +
-
-              "2016 - 04 - 01\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"nsrsbh\"\n" +
-
-              "320104302723175\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"swglm\"\n" +
-
-              "320100100396501\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"nsrmc\"\n" +
-
-              "南京小怪兽财务信息咨询有限公司\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"ssqq\"\n" +
-
-              "2016 - 03 - 01\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"ssqz\"\n" +
-
-              "2016 - 03 - 31\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"zclx\"\n" +
-
-              "其他有限责任公司\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"fddbr\"\n" +
-
-              "王孜豫\n" +
-              "-----------------------------7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"dh\"\n" +
-
-              "13776601441\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"yb\"\n" +
-
-              "210000\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"file\"; filename = \"\"\n" +
-              "Content - Type: application / octet - stream\n" +
-
-
-                "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"file1\"; filename = \"C:\\Users\\wack\\Desktop\\鏂板缓鏂囦欢澶筡灏忔€吔\\灏忔€吔2016骞?鏈?dat\n" +
-              "Content - Type: application / octet - stream\n" +
-
-              "C: \\Users\\wack\\Desktop\\新建文件夹\\个人所得税明细申报客户端软件（适用新税法）\\templates\\个人所得税申报_A_普通算法明细数据.htm\n" +
-              "7.0\n" +
-              "320100100396501\n" +
-              "南京小怪兽财务信息咨询有限公司\n" +
-              "S\n" +
-              "王孜豫,06,320106198110073214,156,0,1,,,,,010001,2000.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,3500.00,0.00,0.00,0.030,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,\n" +
-              "张雪婷,06,320121199401192123,156,0,1,,,南京市鼓楼区中环国际广场4726,南京小怪兽财务信息咨询有限公司,040000,800.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,800.00,0.00,0.00,0.200,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,\n" +
-              "苗婷,06,320107199503303421,156,0,1,,,南京市鼓楼区中环国际广场4726,南京小怪兽财务信息咨询有限公司,040000,800.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,800.00,0.00,0.00,0.200,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,\n" +
-              "6ac665fbf3b563b6efcfbcd70e1cb730\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"handleCode\"\n" +
-
-              "upload\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"bb\"\n" +
-
-              "2\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"errorMessage\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"filename\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"bj\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"handleDesc\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"sbqx\"\n" +
-
-              "2016 - 04 - 20\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"path\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"pzxh\"\n" +
-
-              "2EDDC2FC3F9191BEE053C0A8661591BE\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"khyh\"\n" +
-
-              "涓浗閾惰鑲′唤鏈夐檺鍏徃鍗椾含鍩庝腑鏀\n" +
-              "-----------------------------7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"yhzh\"\n" +
-
-              "522266790983\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"sbje\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"cfsbbh\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"sucessMsg\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"caVO.str_signature\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"caVO.str_certificate\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"nsrQrtjBz\"\n" +
-
-              "0\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"txlJyCount\"\n" +
-
-              "0\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"qzlJyCount\"\n" +
-
-              "0\n" +
-              "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"ymKj_Info\"\n" +
-
-
-                  "---------------------------- - 7e01571c110d1a\n" +
-              "Content - Disposition: form - data; name = \"cqSb\"\n" +
-
-              "0\n" +
-              "---------------------------- - 7e01571c110d1a--\n"
-              ;
-            Byte[] postBuffer = Encoding.UTF8.GetBytes(postData);
-            //MessageBox.Show(postData);
-            String additionalHeaders =
-               "Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*\n" +
-               "Referer:Referer: https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15\n" +
-               "Accept-Encoding:gzip, deflate\n" +
-               "Accept-Language: zh-cn\n" +
-               "x-prototype-version: 1.6.0\n" +
-               "x-requested-with: XMLHttpRequest\n" +
-               "Content-Type: multipart/form-data; boundary=---------------------------7e01571c110d1a\n" +
-               "Accept-Encoding: gzip, deflate\n" +
-               "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)\n" +
-               "Host: ca.jsds.gov.cn\n" +
-               "Content-Length:" + postBuffer.Length +
-               "\nConnection: Keep-Alive\n" +
-               "Cache-Control: no-cache\n" +
-               "Cookie:" + cookie
-               ;
-
-            string url = "https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do";
-            webBrowser.Navigate(url, null, postBuffer, additionalHeaders);       
-        }
-        
-
-        /*个人所得税 普通算法 POST测试 （上传文件） 未通过*/
-        public void post_grsds(string cookie)
-        {
-            string postData = "-----------------------------7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"tbrq\"\n\n" +
-                "2016 - 04 - 01\n---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"nsrsbh\"\n\n" +
-                "320104302723175\n---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"swglm\"\n\n" +
-                "320100100396501\n---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"nsrmc\"\n\n" +
-                "南京小怪兽财务信息咨询有限公司\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"ssqq\"\n\n" +
-                "2016 - 03 - 01\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"ssqz\"\n\n" +
-                "2016 - 03 - 31\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"zclx\"\n\n" +
-                "其他有限责任公司\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"fddbr\"\n\n" +
-                "王孜豫\n" +
-                "-----------------------------7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"dh\"\n\n" +
-                "13776601441\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"yb\"\n\n" +
-                "210000\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"file\"; filename = \"\"\n" +
-                "Content - Type: application / octet - stream\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"file1\"; filename = \"C:\\Users\\wack\\Desktop\\鏂板缓鏂囦欢澶筡灏忔€吔\\灏忔€吔2016骞?鏈?dat\"\n" +
-                "Content - Type: application / octet - stream\n" +
-
-                @"C: \Users\wack\Desktop\新建文件夹\个人所得税明细申报客户端软件（适用新税法）\templates\个人所得税申报_A_普通算法明细数据.htm
-                7.0
-                320100100396501
-                南京小怪兽财务信息咨询有限公司
-                S
-                王孜豫,06,320106198110073214,156,0,1,,,,,010001,2000.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,3500.00,0.00,0.00,0.030,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,
-                张雪婷,06,320121199401192123,156,0,1,,,南京市鼓楼区中环国际广场4726,南京小怪兽财务信息咨询有限公司,040000,800.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,800.00,0.00,0.00,0.200,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,
-                苗婷,06,320107199503303421,156,0,1,,,南京市鼓楼区中环国际广场4726,南京小怪兽财务信息咨询有限公司,040000,800.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,800.00,0.00,0.00,0.200,0.00,0.00,0.00,0.00,0.00,0.00,&& 0,,
-                6ac665fbf3b563b6efcfbcd70e1cb730
-                ---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"handleCode\"\n" +
-                "upload\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"bb\"\n" +
-                "2\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"errorMessage\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"filename\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"bj\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"handleDesc\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"sbqx\"\n" +
-                "2016 - 04 - 20\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"path\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"pzxh\"\n" +
-                "2F121B98B88DA07AE053C0A86615A07A\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"khyh\"\n" +
-                "涓浗閾惰鑲′唤鏈夐檺鍏徃鍗椾含鍩庝腑鏀\n" +
-                "-----------------------------7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"yhzh\"\n" +
-                "522266790983\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"sbje\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"cfsbbh\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"sucessMsg\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"caVO.str_signature\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"caVO.str_certificate\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"nsrQrtjBz\"\n" +
-                "0\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"txlJyCount\"\n" +
-                "0\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"qzlJyCount\"\n" +
-                "0\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"ymKj_Info\"\n" +
-                "---------------------------- - 7e0147213067c\n" +
-                "Content - Disposition: form - data; name = \"cqSb\"\n" +
-                "0\n" +
-                "---------------------------- - 7e0147213067c--";
-            Byte[] postBuffer = Encoding.UTF8.GetBytes(postData);
-            MessageBox.Show(postData);
-            String additionalHeaders =
-               "Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*\n" +
-               "Accept-Encoding:gzip, deflate\n" +
-               "Accept-Language: zh-cn\n" +
-               "x-prototype-version: 1.6.0\n" +
-               "Referer:https://ca.jsds.gov.cn/wb_DkdjptUpLoadAction.do?SSQS=2016-03-01&SSQZ=2016-03-31&SBQX=2016-04-20&SWGLM=320100100396501&ksbsbqxrdm=M01_15\n" +
-               "x-requested-with: XMLHttpRequest\n" +
-               "Content-Type: multipart/form-data; boundary=---------------------------7e0147213067c\n" +
-               "Accept-Encoding: gzip, deflate\n" +
-               "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)\n" +
-               "Host: ca.jsds.gov.cn\n" +
-               "Content-Length:" + postBuffer.Length +
-               "\nConnection: Keep-Alive\n" +
-               "Cache-Control: no-cache\n" +
-               "Cookie:" + cookie
-               ;
-
-            string url = "https://ca.jsds.gov.cn//wb_DkdjptUpLoadAction.do";
             this.webBrowser.Navigate(url, null, postBuffer, additionalHeaders);
         }
 
@@ -1000,6 +710,7 @@ namespace WindowsFormsApplication
                 case 1:
                     //webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
                     //webBrowser.Navigate("https://ca.jsds.gov.cn:2443/");
+                    //MessageBox.Show(dshomepage);
                     webBrowser.Navigate(dshomepage);
                     timer1.Enabled = true;
 
