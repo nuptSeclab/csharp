@@ -64,9 +64,15 @@ namespace WindowsFormsApplication
                     MessageBox.Show("读取文件错误！");
                     return;
                 }
-       //         DownloadFile2(f1, myCookieContainer);
-       //         DownloadFile3(this.username.Text, myCookieContainer);
-       //         DownloadDat(myCookieContainer);
+                DownloadFile2(f1, myCookieContainer);
+                DownloadFile3(this.username.Text, myCookieContainer);
+                bool ret = DownloadDat(myCookieContainer);
+                /*
+                if(!ret)
+                {
+                    MessageBox.Show("下载dat文件错误!");
+                    Application.Exit();
+                }*/
                 MainForm mf = new MainForm();
                 mf.Show();
                 Visible = false; //隐藏登陆窗口
@@ -74,8 +80,7 @@ namespace WindowsFormsApplication
             else {
                 MessageBox.Show("登录失败！");
                
-            }
-            
+            }            
             
            // sw.Close();
             //Response.Write(content);
@@ -93,9 +98,16 @@ namespace WindowsFormsApplication
             
         }
 
-        private void DownloadDat(CookieContainer cookie)
+        private bool DownloadDat(CookieContainer cookie)
         {
             //读取dat
+            //FileInfo fi = new FileInfo(path3);
+            //if (fi.Length == 0)
+            //{
+            //    MessageBox.Show("读取dat错误");
+            //    return;
+            //}
+
             StreamReader sr = new StreamReader(path3, Encoding.Default);
             String line;
             line = sr.ReadLine();
@@ -103,10 +115,14 @@ namespace WindowsFormsApplication
             string[] str = l.Split(';');
 
             string[] firststr = str[0].Split(',');
+            if(line.Length==0)
+            {
+                return false;
+            }
             int num = Convert.ToInt32(firststr[1]);//报税的数量
 
             string[] datstr = new string[num];
-
+            //MessageBox.Show(firststr[1]);
             for (int i = 0; i < num; i++)
             {
                 datstr[i] = str[i + 1].Split(',')[2];//dat的地址
@@ -130,6 +146,7 @@ namespace WindowsFormsApplication
                 stream.Close();
                 responseStream.Close();
             }
+            return true;
         }
 
         //下载文件3
@@ -207,7 +224,7 @@ namespace WindowsFormsApplication
         private void DownloadFile1(string uname,CookieContainer cookie)
         {
             // 设置参数
-            HttpWebRequest request = WebRequest.Create("http://www.58tax.com/autoApply/tax_report_files?id="+uname+"&month=01&info=1") as HttpWebRequest;
+            HttpWebRequest request = WebRequest.Create("http://www.58tax.com/autoApply/tax_report_files?id="+uname+"&month=05&info=1") as HttpWebRequest;
             //发送请求并获取相应回应数据
             request.CookieContainer = cookie;
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;

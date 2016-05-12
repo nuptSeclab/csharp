@@ -43,9 +43,10 @@ namespace WindowsFormsApplication
         int num=0,current_num=0;        //file2申报数量
         string[] poststr;   //file2申报地址
         string[] posttype;  //申报类型
-        string dshomepage;  //地税主页
+        string dshomepage= "https://ca.jsds.gov.cn:2443/";  //地税主页
         int num1 = 0, current_num1 = 0;        //file3申报数量
         string[] poststr1;  //file3申报地址
+        string ukey;
         public MainForm()
         {
             Initialize();
@@ -63,40 +64,93 @@ namespace WindowsFormsApplication
 
             /*文件2初始化*/
             StreamReader sr = new StreamReader(path2, Encoding.Default);
-            String line;
+            String line, l;string[] str; string[]firststr;
             line = sr.ReadLine();
-            string l = line.ToString();
-            string[] str = l.Split(';');
-            string []firststr = str[0].Split(',');
-            num = Convert.ToInt32(firststr[1]);//报税的数量
-            dshomepage = firststr[0];
-            poststr = new string[num];
-            posttype = new string[num];
-
-            for (int i = 0; i < num; i++)
+            if (line.Length != 0)
             {
-                poststr[i] = str[i + 1].Split(',')[1];//需要零申报的地址
-                posttype[i] = str[i + 1].Split(',')[2];//零申报/上传
+                l = line.ToString();
+                str = l.Split(';');
+                firststr = str[0].Split(',');
+                num = Convert.ToInt32(firststr[1]);//报税的数量
+                dshomepage = firststr[0];
+                poststr = new string[num];
+                posttype = new string[num];
+
+                for (int i = 0; i < num; i++)
+                {
+                    poststr[i] = str[i + 1].Split(',')[1];//需要零申报的地址
+                    posttype[i] = str[i + 1].Split(',')[2];//零申报/上传
+                }
+            }
+            else
+            {
+                MessageBox.Show("文件2为空");
             }
             sr.Close();
             /*文件3初始化*/
             sr = new StreamReader(path3, Encoding.Default);
             line = sr.ReadLine();
-            l = line.ToString();
-            string[] str1 = l.Split(';');
-            string[] firststr1 = str1[0].Split(',');
-            num1 = Convert.ToInt32(firststr1[1]);//报税的数量
-            poststr1 = new string[num1];
-            for (int i = 0; i < num1; i++)
+            if (line.Length != 0)
             {
-                poststr1[i] = str1[i + 1].Split(',')[1];//需要零申报的地址
+                l = line.ToString();
+                string[] str1 = l.Split(';');
+                string[] firststr1 = str1[0].Split(',');
+                num1 = Convert.ToInt32(firststr1[1]);//报税的数量
+                poststr1 = new string[num1];
+                for (int i = 0; i < num1; i++)
+                {
+                    poststr1[i] = str1[i + 1].Split(',')[1];//需要零申报的地址
+                                                            //MessageBox.Show(str1[i + 1]);
+                }
+            }
+            else
+            {
+                MessageBox.Show("文件3为空");
             }
             sr.Close();
+            //获取文件1的ukey
+
+            sr = new StreamReader(path1, Encoding.Default);
+            line = sr.ReadLine();
+            l = line.ToString();
+            string[] str3 = l.Split(',');
+            ukey = str3[4];
+            sr.Close();
+            //MessageBox.Show(ukey);
+
+
+
         }
 
         //timer1 用于数字登陆输入密码
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //检测数字证书登陆输入框
+            IntPtr mwh1 = IntPtr.Zero;
+            mwh1 = FindWindow(null, "数字证书登录");
+            if (mwh1 != IntPtr.Zero)
+            {
+                IntPtr edit = FindWindowEx(mwh1, IntPtr.Zero, "Edit", null);
+                //  IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确定");
+                if (edit != IntPtr.Zero)
+                {
+                    //MessageBox.Show("find edit");
+                    StringBuilder s = new StringBuilder(ukey);
+                    SendMessage(edit, 0xC, IntPtr.Zero, s);
+                    SendKeys.SendWait("{Enter}");
+                    SendKeys.Flush();
+                    //    this.timer1.Enabled = false;    //关闭定时器
+                    //MessageBox.Show("timer1 stop");
+                }
+            }
+            mwh1 = FindWindow(null, "脚本错误");
+            if (mwh1 != IntPtr.Zero)
+            {
+                //MessageBox.Show("1");
+                SendKeys.SendWait("{Space}");
+                SendKeys.Flush();
+
+            }
             try {
                 if (webBrowser.Url.ToString().Equals("https://ca.jsds.gov.cn/sbLogin.do"))
                 {
@@ -150,32 +204,7 @@ namespace WindowsFormsApplication
             //messagebox.show("timer1 disable");
             //timer1.enabled = false;
             //}
-            //检测数字证书登陆输入框
-            IntPtr mwh1 = IntPtr.Zero;
-            mwh1 = FindWindow(null, "数字证书登录");
-            if (mwh1 != IntPtr.Zero)
-            {
-                IntPtr edit = FindWindowEx(mwh1, IntPtr.Zero, "Edit", null);
-              //  IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确定");
-                if (edit != IntPtr.Zero)
-                {
-                    //MessageBox.Show("find edit");
-                    StringBuilder s = new StringBuilder("123456");
-                    SendMessage(edit, 0xC, IntPtr.Zero, s);
-                    SendKeys.SendWait("{Enter}");
-                    SendKeys.Flush();
-                //    this.timer1.Enabled = false;    //关闭定时器
-                    //MessageBox.Show("timer1 stop");
-                }
-            }
-            mwh1 = FindWindow(null, "脚本错误");
-            if (mwh1 != IntPtr.Zero)
-            {
-                MessageBox.Show("1");
-                    SendKeys.SendWait("{Space}");
-                    SendKeys.Flush();
-
-            }
+            
 
         }
 
@@ -973,6 +1002,7 @@ namespace WindowsFormsApplication
                     //webBrowser.Navigate("https://ca.jsds.gov.cn:2443/");
                     webBrowser.Navigate(dshomepage);
                     timer1.Enabled = true;
+
                     //MessageBox.Show("地税标签");
                     break;
                 case 2:
@@ -1044,7 +1074,7 @@ namespace WindowsFormsApplication
                         }
                         return;
                     }
-                }
+                } 
                 if (submit >= 2)
                 {
                     current_num1++;
