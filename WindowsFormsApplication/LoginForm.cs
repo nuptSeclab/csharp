@@ -28,15 +28,35 @@ namespace WindowsFormsApplication
         {
 
             this.username.Text = "15005175574";
-            this.password.Text = "Wk12345";
-         //   MainForm mf = new MainForm();
-         //   mf.Show();
+            this.password.Text = null;
+         
+            if (File.Exists(@"userconfig.txt"))
+            {
+                StreamReader sr = new StreamReader("userconfig.txt", Encoding.Default);
+                string lines;
+                while ((lines = sr.ReadLine()) != null)
+                {
+                    string l = lines.ToString();
+                    string[] str = l.Split(',');
+                    this.UserCombo.Items.Add(str[0]);
+                }
+                sr.Close();
+                StreamReader sr2 = new StreamReader("userconfig.txt", Encoding.Default);
+                string line = sr2.ReadLine();
+                string[] str2 = line.ToString().Split(',');
+                this.UserCombo.Text = str2[0];
+                sr2.Close();
+
+            }
+                
+            //   MainForm mf = new MainForm();
+            //   mf.Show();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             CookieContainer myCookieContainer = new CookieContainer();
-            string strId = this.username.Text;
+            string strId = this.UserCombo.Text;
             string strPassword = this.password.Text;
             ASCIIEncoding encoding = new ASCIIEncoding();
             string postData = "loginName=" + strId;
@@ -58,7 +78,7 @@ namespace WindowsFormsApplication
             if (myResponse.ResponseUri.ToString().StartsWith("http://www.58tax.com/index"))
             {
                 myCookieContainer.Add(myResponse.Cookies);
-                DownloadFile1(this.username.Text,myCookieContainer);
+                DownloadFile1(this.UserCombo.Text,myCookieContainer);
                 File1 f1 = ReadFile(path1);
                 if (f1 == null)
                 {
@@ -66,8 +86,11 @@ namespace WindowsFormsApplication
                     return;
                 }
                 DownloadFile2(f1, myCookieContainer);
-                DownloadFile3(this.username.Text, myCookieContainer);
+                DownloadFile3(this.UserCombo.Text, myCookieContainer);
                 bool ret = DownloadDat(myCookieContainer);
+                if(this.CheckUser.Checked)
+                    WriteUserInfo(this.UserCombo.Text, this.password.Text);
+                
                 /*
                 if(!ret)
                 {
@@ -82,6 +105,30 @@ namespace WindowsFormsApplication
                 MessageBox.Show("登录失败！");
                
             }            
+            
+        }
+
+        private void WriteUserInfo(string user, string password)
+        {
+            //FileStream fs = null;
+            string userconfig = "userconfig.txt";
+            string userInfo = user + "," + password;
+            //MessageBox.Show(userInfo);
+            if (!File.Exists(@"userconfig.txt"))
+                File.Create(@"userconfig.txt").Close();
+            StreamReader sr = new StreamReader(userconfig,Encoding.Default);
+            string lines;
+            while ((lines = sr.ReadLine()) != null)
+            {
+                if (lines.Equals(userInfo))
+                {
+                    return;
+                }
+            }
+            sr.Close();
+            StreamWriter sw = new StreamWriter(userconfig, true);
+            sw.WriteLine(userInfo);
+            sw.Close();
             
         }
 
@@ -233,13 +280,13 @@ namespace WindowsFormsApplication
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            username.Text = null;
+            UserCombo.Text = null;
             password.Text = null;
         }
 
         private void username_Click(object sender, EventArgs e)
         {
-            username.Text = null;
+            UserCombo.Text = null;
         }
         private void password_Click(object sender,EventArgs e)
         {
@@ -249,6 +296,28 @@ namespace WindowsFormsApplication
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://www.58tax.com/");
+        }
+
+        private void CheckUser_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (File.Exists(@"userconfig.txt"))
+            {
+                StreamReader sr = new StreamReader("userconfig.txt", Encoding.Default);
+                string lines;
+                while ((lines = sr.ReadLine()) != null)
+                {
+                    string l = lines.ToString();
+                    string[] str = l.Split(',');
+                    if (this.UserCombo.Text.Equals(str[0]))
+                        this.password.Text = str[1];
+                }
+                sr.Close();
+            }
         }
     }
 }
