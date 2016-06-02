@@ -319,5 +319,76 @@ namespace WindowsFormsApplication
                 sr.Close();
             }
         }
+
+        private void lgbutton_Click(object sender, EventArgs e)
+        {
+            CookieContainer myCookieContainer = new CookieContainer();
+            string strId = this.UserCombo.Text;
+            string strPassword = this.password.Text;
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            string postData = "loginName=" + strId;
+            postData += ("&password=" + strPassword);
+            byte[] data = encoding.GetBytes(postData);
+            // Prepare web request 
+            HttpWebRequest myRequest =
+            (HttpWebRequest)WebRequest.Create("http://www.58tax.com/loginCheck");
+            myRequest.Method = "POST";
+            myRequest.CookieContainer = myCookieContainer;
+            myRequest.ContentType = "application/x-www-form-urlencoded"; myRequest.ContentLength = data.Length;
+            Stream newStream = myRequest.GetRequestStream();
+            // Send the data. 
+            newStream.Write(data, 0, data.Length);
+            newStream.Close();
+            // Get response 
+            HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse();
+
+            if (myResponse.ResponseUri.ToString().StartsWith("http://www.58tax.com/index"))
+            {
+                myCookieContainer.Add(myResponse.Cookies);
+                DownloadFile1(this.UserCombo.Text, myCookieContainer);
+                File1 f1 = ReadFile(path1);
+                if (f1 == null)
+                {
+                    MessageBox.Show("读取文件错误！");
+                    return;
+                }
+                DownloadFile2(f1, myCookieContainer);
+                DownloadFile3(this.UserCombo.Text, myCookieContainer);
+                bool ret = DownloadDat(myCookieContainer);
+                if (this.CheckUser.Checked)
+                    WriteUserInfo(this.UserCombo.Text, this.password.Text);
+
+                /*
+                if(!ret)
+                {
+                    MessageBox.Show("下载dat文件错误!");
+                    Application.Exit();
+                }*/
+                MainForm mf = new MainForm();
+                mf.Show();
+                Visible = false; //隐藏登陆窗口
+            }
+            else
+            {
+                MessageBox.Show("登录失败！");
+
+            }
+        }
+
+        private void rstbutton_Click(object sender, EventArgs e)
+        {
+            UserCombo.Text = null;
+            password.Text = null;
+        }
+
+        private void wbbutton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.58tax.com/");
+        }
+
+        private void rgbutton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.58tax.com/register");
+        }
     }
 }
