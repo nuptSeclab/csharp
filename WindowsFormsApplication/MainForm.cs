@@ -146,8 +146,10 @@ namespace WindowsFormsApplication
             mwh1 = FindWindow(null, "脚本错误");
             if (mwh1 != IntPtr.Zero)
             {
+
                 //MessageBox.Show("1");
-                SendKeys.SendWait("{Space}");
+                SendKeys.SendWait("{Enter}");
+                //SendKeys.SendWait("{Space}");
                 SendKeys.Flush();
 
             }
@@ -193,7 +195,9 @@ namespace WindowsFormsApplication
                     }
                     else
                     {
+                        timer1.Enabled = false;
                         MessageBox.Show("已完成报税，建议用户自行检查报税结果");
+                       
                     }
                 }
             }
@@ -268,7 +272,7 @@ namespace WindowsFormsApplication
                 //Thread.Sleep(1000);
             }
             FailCheck(url);     //提交失败等情况 返回主页了
-            textBox_HTML.Text = webBrowser.DocumentText;            
+    
         }
 
         //选择上传的文件
@@ -631,7 +635,7 @@ namespace WindowsFormsApplication
         //营业税零申报
         private void timer5_Tick(object sender, EventArgs e)
         {
-            if (webBrowser.Url.ToString().StartsWith("https://ca.jsds.gov.cn/WB366yyssbAction.do"))
+            if (webBrowser.Url.ToString().StartsWith("https://ca.jsds.gov.cn/WB399cjjyssbAction.do"))
             {
                 if (yys_msg == 0)
                 {
@@ -647,8 +651,8 @@ namespace WindowsFormsApplication
                         }
                     }
                 }
-
-                if (yys_submit <= 2 && yys_msg==1)
+    
+                if (yys_submit <= 2)
                 {
                     HtmlDocument doc = webBrowser.Document;
                     HtmlElement yssr = doc.All["YSSR_JE"];   //把当前的webBrowser1显示的文档实例
@@ -661,13 +665,17 @@ namespace WindowsFormsApplication
                         {
                             cb.InvokeMember("click");
                             cb.InvokeMember("click");
-                        }
-                        if (webBrowser.Document.GetElementById("submitBtn-btnIconEl") != null)
-                        {
-                            webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
-                            yys_submit++;
-                          //  timer5.Enabled = false;
-                        }
+                        }                       
+                    }
+                    if (webBrowser.Document.GetElementById("submitBtn-btnIconEl") != null)
+                    {
+                        webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
+                        yys_submit++;
+                        //  timer5.Enabled = false;
+                    }
+                    if (webBrowser.Document.GetElementById("button-1006-btnInnerEl") != null)
+                    {
+                        webBrowser.Document.GetElementById("button-1006-btnInnerEl").InvokeMember("click");
                     }
                 }
                 
@@ -679,6 +687,8 @@ namespace WindowsFormsApplication
                         yys_yes++;
                     }
                 }
+                
+
                 if(yys_yes>=2)  //申报完成
                 {
                     current_num++;
