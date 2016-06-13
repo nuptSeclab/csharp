@@ -47,16 +47,19 @@ namespace WindowsFormsApplication
         int num1 = 0, current_num1 = 0;        //file3申报数量
         string[] poststr1;  //file3申报地址
         string ukey;
+        string current_path;
+
+        bool gs281 = false; //国税第一个
+        bool gs690 = false; //国税第二个
         public MainForm()
         {
             Initialize();
             InitializeComponent();
-          
         }
         
         private void Initialize()
         {
-
+            current_path = System.Environment.CurrentDirectory;
             //webBrowser.Navigate("http://www.jsds.gov.cn/index/caLogin.html");
             //this.webBrowser.Navigate("https://www.jsds.gov.cn/index/sbLogin.do");
             //webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/static/main.jsp");
@@ -125,6 +128,8 @@ namespace WindowsFormsApplication
         //timer1 用于数字登陆输入密码
         private void timer1_Tick(object sender, EventArgs e)
         {
+
+
             //检测数字证书登陆输入框
             IntPtr mwh1 = IntPtr.Zero;
             mwh1 = FindWindow(null, "数字证书登录");
@@ -153,6 +158,7 @@ namespace WindowsFormsApplication
                 SendKeys.Flush();
 
             }
+           
             try {
                 if (webBrowser.Url.ToString().Equals("https://ca.jsds.gov.cn/sbLogin.do"))
                 {
@@ -395,7 +401,7 @@ namespace WindowsFormsApplication
                     IntPtr Edit = FindWindowEx(ComboBox, IntPtr.Zero, "Edit", "");
                     if(Edit != IntPtr.Zero)
                     {
-                        StringBuilder s = new StringBuilder(current_num1+".dat");
+                        StringBuilder s = new StringBuilder(current_path + '\\' + current_num1+".dat");
                         SendMessage(Edit, 0xC, IntPtr.Zero, s);
                         IntPtr button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "打开(&O)");
                         if(button != IntPtr.Zero)
@@ -521,14 +527,27 @@ namespace WindowsFormsApplication
             textBox_url.Text = this.webBrowser.Url.ToString();   
         }
 
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_3(object sender, EventArgs e)
+        {
+            string url = this.textBox_url.Text;
+            this.webBrowserGS.Navigate(url);
+        }
 
         private void webBrowser_gs_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if(webBrowserGS.Document.Url.ToString() == "https://221.226.83.19:7001/newtax/ShowInform.do")
+            textBox_url.Text = this.webBrowserGS.Url.ToString();
+            if (webBrowserGS.Document.Url.ToString() == "https://221.226.83.19:7001/newtax/ShowInform.do")
             {
-                webBrowserGS.Visible = false;
-                MessageBox.Show("登陆成功！");
-                
+                //webBrowserGS.Visible = false;
+                //MessageBox.Show("登陆成功！");
+                //webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/getzzsnsrinfojs");
+                webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/nssb_GetSssq.do");
+
             }
 
             if (webBrowserGS.Document.Url.ToString() == "https://221.226.83.19:7001/newtax/static/login.jsp?login_error=2")
@@ -545,8 +564,89 @@ namespace WindowsFormsApplication
                 MessageBox.Show("登陆失败，请重新登陆！");
             }
 
-        
-            webBrowserGS.Document.Window.ScrollTo(700, 150);
+            if(webBrowserGS.Document.Url.ToString() ==  "https://221.226.83.19:7001/newtax/static/main.jsp")
+                webBrowserGS.Document.Window.ScrollTo(700, 150);
+
+            if (webBrowserGS.Document.Url.ToString().Equals("https://221.226.83.19:7001/newtax/nssb_GetSssq.do"))
+            {//点击创建
+                HtmlElementCollection input = this.webBrowserGS.Document.GetElementsByTagName("input");
+                for (int ii = 0; ii < input.Count; ii++)
+                {
+                    if (input[ii].GetAttribute("type").ToLower().Equals("submit"))
+                    {
+                        input[ii].InvokeMember("click");
+                    }
+                }
+            }
+
+            if (webBrowserGS.Document.Url.ToString().Equals("https://221.226.83.19:7001/newtax/nssb_Access.do"))
+            {//点击创建
+                if(!gs281)
+                {
+                    HtmlElementCollection link = this.webBrowserGS.Document.GetElementsByTagName("a");
+                    for (int ii = 0; ii < link.Count; ii++)
+                    {
+                        //点击2005版增值税纳税申报表(小规模纳税人适用)
+                        if (link[ii].GetAttribute("href").StartsWith("https://221.226.83.19:7001/newtax/nssb_report281_access.do"))
+                        {
+                            link[ii].InvokeMember("click");
+                        }
+                    
+                    }
+                }else if (!gs690)
+                {
+                    HtmlElementCollection link = this.webBrowserGS.Document.GetElementsByTagName("a");
+                    for (int ii = 0; ii < link.Count; ii++)
+                    {
+                        //点击2005版增值税纳税申报表(小规模纳税人适用)
+                        if (link[ii].GetAttribute("href").StartsWith("https://221.226.83.19:7001/newtax/nssb_report690_access.do"))
+                        {
+                            link[ii].InvokeMember("click");
+                        }
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("国税申报完成，请用户自行检查");
+                }
+            }
+            if(webBrowserGS.Document.Url.ToString().StartsWith("https://221.226.83.19:7001/newtax/nssb_report281_access.do"))
+            {//保存报表281
+             //	2005版增值税纳税申报表(小规模纳税人适用)
+                HtmlElementCollection link = this.webBrowserGS.Document.GetElementsByTagName("a");
+                for (int ii = 0; ii < link.Count; ii++)
+                {
+                    //MessageBox.Show(link[ii].GetAttribute("href").ToLower());
+                    //点击2005版增值税纳税申报表(小规模纳税人适用)
+                    if (link[ii].GetAttribute("href").Equals("javascript:checkReoprt281()"))
+                    {
+                        link[ii].InvokeMember("click");
+                        gs281 = true;
+                        webBrowserGS.Navigate( "https://221.226.83.19:7001/newtax/nssb_Access.do");
+                    }
+
+                }
+
+            }
+            if (webBrowserGS.Document.Url.ToString().StartsWith("https://221.226.83.19:7001/newtax/nssb_report690_access.do"))
+            {//保存报表690
+             //	2005版增值税纳税申报表(小规模纳税人适用)
+                HtmlElementCollection link = this.webBrowserGS.Document.GetElementsByTagName("a");
+                for (int ii = 0; ii < link.Count; ii++)
+                {
+                    //MessageBox.Show(link[ii].GetAttribute("href").ToLower());
+                    //点击2005版增值税纳税申报表(小规模纳税人适用)
+                    if (link[ii].GetAttribute("href").Equals("javascript:getconfirm('此操作将清除此报表所有现有数据！请确认','/newtax/nssb_report690_clear.do')"))
+                    {
+                        link[ii].InvokeMember("click");
+                        gs690 = true;
+                        webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/nssb_Access.do");
+                    }
+
+                }
+
+            }
             //textBox_url.Text = webBrowserGS.Url.ToString(); 
             //if (webBrowserGS.Document.GetElementById("right") != null)
             //{
@@ -671,15 +771,15 @@ namespace WindowsFormsApplication
                     {
                         webBrowser.Document.GetElementById("submitBtn-btnInnerEl").InvokeMember("click");
                         yys_submit++;
-                        //  timer5.Enabled = false;
+                        return;
                     }
-                    if (webBrowser.Document.GetElementById("button-1006-btnInnerEl") != null)
-                    {
-                        webBrowser.Document.GetElementById("button-1006-btnInnerEl").InvokeMember("click");
-                    }
+                   
                 }
-                
-                if(yys_submit>=1 && yys_yes<=2)
+                if (webBrowser.Document.GetElementById("button-1006-btnInnerEl") != null)
+                {
+                    webBrowser.Document.GetElementById("button-1006-btnInnerEl").InvokeMember("click");
+                }
+                if (yys_submit>=1 && yys_yes<=2)
                 {
                     if (webBrowser.Document.GetElementById("button-1006-btnInnerEl") != null)
                     {
@@ -695,9 +795,11 @@ namespace WindowsFormsApplication
                     Thread.Sleep(2000);
                     webBrowser.Navigate("https://ca.jsds.gov.cn/sbLogin.do");   //回主页
                     timer5.Enabled = false;
-                }
-             
-
+                }            
+            }
+            if (webBrowser.Document.GetElementById("button-1006-btnInnerEl") != null)
+            {
+                webBrowser.Document.GetElementById("button-1006-btnInnerEl").InvokeMember("click");
             }
         }
 
@@ -723,13 +825,17 @@ namespace WindowsFormsApplication
                     //MessageBox.Show(dshomepage);
                     webBrowser.Navigate(dshomepage);
                     timer1.Enabled = true;
-
                     //MessageBox.Show("地税标签");
                     break;
                 case 2:
                     //webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/static/main.jsp");
                     webBrowserGS.Navigate("https://221.226.83.19:7001/newtax/static/main.jsp");
                     webBrowserGS.ScrollBarsEnabled = false;
+                    timer1.Enabled = false;
+                    timer2.Enabled = false;
+                    timer4.Enabled = false;
+                    timer5.Enabled = false;
+                    timer3.Enabled = true;
                     //MessageBox.Show("国税标签");
                     break;
                 case 3:
@@ -741,7 +847,16 @@ namespace WindowsFormsApplication
         private void timer3_Tick(object sender, EventArgs e)
         {
             GsSecurityCheck();
-
+            IntPtr mwh1 = IntPtr.Zero;
+            mwh1 = FindWindow(null, "来自网页的消息");
+            if (mwh1 != IntPtr.Zero)
+            {
+                IntPtr Button = FindWindowEx(mwh1, IntPtr.Zero, "Button", "确定");
+                if (Button != IntPtr.Zero)
+                {
+                    SendMessage(Button, 0xF5, IntPtr.Zero, null);
+                }
+            }
         }
 
         private void timer4_Tick(object sender, EventArgs e)

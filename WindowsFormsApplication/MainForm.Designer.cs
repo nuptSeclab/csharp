@@ -40,6 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.webBrowserGS = new System.Windows.Forms.WebBrowser();
             this.button_home = new System.Windows.Forms.Button();
@@ -119,11 +120,20 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button2);
             this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.webBrowserGS);
             resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
+            // 
+            // button2
+            // 
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_3);
             // 
             // button1
             // 
@@ -228,5 +238,6 @@
         private System.Windows.Forms.Timer timer5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button_go;
+        private System.Windows.Forms.Button button2;
     }
 }
